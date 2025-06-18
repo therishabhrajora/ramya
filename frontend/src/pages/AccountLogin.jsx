@@ -1,5 +1,6 @@
 import { DiBackbone } from "react-icons/di";
 import "../styles/homepage/accountLogin.css";
+import "../index.css"
 import { Link } from "react-router-dom";
 import NavBar from "../components/homePage/NavBar";
 import Footer from "../components/homePage/Footer";
@@ -23,7 +24,7 @@ function AccountLogin() {
               placeholder="Enter your password"
             />
           </div>
-          <Link to="">
+          <Link className=".Link"to="">
             <p className="forgot-password">forgot your password ?</p>
           </Link>
           <div className="sign-in-btn">Sign in</div>
