@@ -1,0 +1,79 @@
+.shopping {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20px 0 0 100px;
+}
+.ecoflex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.classic {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stethoscope {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shopping h1 {
+  font-size: 30px;
+  color: rgb(0, 0, 110);
+}
+
+.scrubList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  overflow-x: hidden;
+}
+
+.scrubList .scrubCard .scrubDetails h3{
+  text-overflow: ellipsis;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.scrubList .scrubCard img:hover{
+  cursor: pointer;
+}
+
+.shopping h5 {
+  color: slategray;
+}
+
+.shopping .scrubDetails {
+  color: black;
+}
+
+.addToCartbtn{
+    width: 100%;
+    background-color: rgb(150, 245, 171);
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin-top: 5px;
+
+}
+
+.addToCartbtn:hover {
+    background-color: rgb(100, 200, 120);
+    cursor: pointer;
+}
+
+.scrubCard .scrubDetails .rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+

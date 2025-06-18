@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.baseBg{
+    background-color: pink;
+}
+
+.baseBackgroundColor{
+    background-color: rgb(255, 89, 117);
+}
+
+.baseButtonColor{
+    background-color:rgb(245, 150, 166)
+}
+
+.baseTextColor{
+    color:rgb(0, 0, 110);
+}
+
+.Link{
+    text-decoration: none;
+}
+.Link:active{
+    color:rgb(0, 0, 110);
+}
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+.navBar{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    position:fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 100px;
+    font-size:xx-large;
+    font-weight:900;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+li{
+    list-style: none;
+    padding: 0 20px;
+}
+
+.menuBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight:600;
+}
+
+.menuBar li .Link{
+    color: rgb(49, 49, 163);
+}
+
+.menuBar li .Link:hover{
+    color:rgba(49, 49, 163, 0.637);
+   text-decoration: underline;
+   cursor: pointer;
+}
+
+
+.cartMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+
+}
+
+.cartMenu li:hover{
+    color:rgb(72, 75, 78);
+    cursor: pointer;
+}
+
+
+
+
+
+

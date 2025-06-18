@@ -1,0 +1,97 @@
+.filterCollectionContainer {
+  width: 95%;
+  margin: 20px auto;
+}
+.sortBySection {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.sortBySection span {
+  text-transform: uppercase;
+  font-size: small;
+}
+
+.filter-collection {
+  display: flex;
+}
+
+.filter-collection .filterSection {
+  width: 20%;
+  padding: 10px 30px 10px 10px;
+  border-right: 1px solid slategray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.filterByColour,
+.filterByPockets,
+.filterByGender,
+.filterByFabric {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+.filter-collection .filterSection h3 {
+  display: flex;
+  justify-content: space-between;
+}
+.filter-collection .filterSection ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-collection .filterSection ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+  font-size: smaller;
+  text-transform: capitalize;
+}
+
+.filter-collection .filterSection ul li input {
+  cursor: pointer;
+}
+
+
+.filter-collection .filterResults {
+  width: 80%;
+  padding: 10px 10px 10px 20px;
+  border-left: 1px solid slategray;
+}
+
+.filterResults{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+
+
+
+.filterResults .scrubCard .scrubDetails{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+
+.filterResults .scrubCard .scrubDetails h3{
+  font-size: 14px;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.filterResults .scrubCard{
+  cursor: pointer;
+}

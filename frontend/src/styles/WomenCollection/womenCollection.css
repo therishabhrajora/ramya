@@ -1,0 +1,15 @@
+.menCollection{
+    width: 80%;
+    margin: 50px auto;
+}
+.menCollection h2{
+    font-size: 2rem;
+}
+
+.product-grid{
+    display: flex;
+    gap: 20px;
+    
+}
+
+

@@ -1,0 +1,21 @@
+.aboutRamya {
+  display: flex;
+  padding: 50px 100px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aboutRamya .Readmorebtn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+
+
+
+
+
