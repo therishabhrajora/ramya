@@ -1,112 +1,16 @@
 import "../../styles/homepage/shoppingSection.css";
-import ecoflex_vneck_mens from "../../assets/men/excoflex_vneck_mens.webp";
-import ecoflex_vneck_womens from "../../assets/women/excoflex_vneck_womens.webp";
-import excoflex_vneck_womens_black from "../../assets/women/excoflex_vneck_womens(black).webp";
-import ecoflex_vneck_mens_black from "../../assets/men/excoflex_vneck_mens(black).webp";
 import heroimage from "../../assets/heroImage.webp";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../slices/ProductSlice";
 function ShoppingSection() {
-  const ecoFlexScrubs = [
-    {
-      id: 1,
-      name: "Ecoflex V-Neck Scrub (Mens)",
-      image: ecoflex_vneck_mens,
-      price: 2399,
-      color: "blue",
-      rating: 4.8,
-    },
-    {
-      id: 2,
-      name: "Ecoflex V-Neck Scrub (Womens)",
-      image: ecoflex_vneck_womens,
-      price: 2399,
-      color: "blue",
-      rating: 4.1,
-    },
-    {
-      id: 3,
-      name: "Ecoflex V-Neck Scrub (Womens) - Black",
-      image: excoflex_vneck_womens_black,
-      price: 2399,
-      color: "black",
-      rating: 4.3,
-    },
-    {
-      id: 4,
-      name: "Ecoflex V-Neck Scrub (Mens) - Black",
-      image: ecoflex_vneck_mens_black,
-      price: 2399,
-      color: "black",
-      rating: 4.0,
-    },
-  ];
-  const classicScrubs = [
-    {
-      id: 1,
-      name: "Ecoflex V-Neck Scrub (Mens)",
-      image: ecoflex_vneck_mens,
-      price: 1099,
-      color: "blue",
-      rating: 4.6,
-    },
-    {
-      id: 2,
-      name: "Ecoflex V-Neck Scrub (Womens)",
-      image: ecoflex_vneck_womens,
-      price: 1099,
-      color: "blue",
-      rating: 4.8,
-    },
-    {
-      id: 3,
-      name: "Ecoflex V-Neck Scrub (Womens) - Black",
-      image: excoflex_vneck_womens_black,
-      price: 1099,
-      color: "black",
-      rating: 4.3,
-    },
-    {
-      id: 4,
-      name: "Ecoflex V-Neck Scrub (Mens) - Black",
-      image: ecoflex_vneck_mens_black,
-      price: 1099,
-      color: "black",
-      rating: 4.4,
-    },
-  ];
-  const stethoscope = [
-    {
-      id: 1,
-      name: "Ecoflex V-Neck Scrub (Mens)",
-      image: ecoflex_vneck_mens,
-      price: 2499,
-      color: "blue",
-      rating: 4.9,
-    },
-    {
-      id: 2,
-      name: "Ecoflex V-Neck Scrub (Womens)",
-      image: ecoflex_vneck_womens,
-      price: 2499,
-      color: "blue",
-      rating: 4.2,
-    },
-    {
-      id: 3,
-      name: "Ecoflex V-Neck Scrub (Womens) - Black",
-      image: excoflex_vneck_womens_black,
-      price: 2499,
-      color: "black",
-      rating: 4.1,
-    },
-    {
-      id: 4,
-      name: "Ecoflex V-Neck Scrub (Mens) - Black",
-      image: ecoflex_vneck_mens_black,
-      price: 2499,
-      color: "black",
-      rating: 4.4,
-    },
-  ];
+const dispatch=useDispatch();
+const allCollections = useSelector((state) => state.product.products);
+
+const ecoflexProducts = allCollections.filter((product) => product.category==="ecoflex");
+const classicProducts = allCollections.filter((product) => product.category==="classic");
+const stethoscope = allCollections.filter((product) => product.category==="stethoscope");
+
+
 
   return (
     <>
@@ -115,7 +19,7 @@ function ShoppingSection() {
           <h1>Shop Ecoflex Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {ecoFlexScrubs.map((scrub) => (
+            {ecoflexProducts.map((scrub) => (
               <div className="scrubCard" key={scrub.id}>
                 <img src={scrub.image} alt={scrub.name} width="300px" />
                 <div className="scrubDetails">
@@ -126,7 +30,7 @@ function ShoppingSection() {
                   <h3>{scrub.name}</h3>
                   <p>Price: ₹{scrub.price}</p>
                   <p>Color: {scrub.color}</p>
-                  <div className="addToCartbtn">Add to Cart</div>
+                  <div className="addToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
                 </div>
               </div>
             ))}
@@ -136,7 +40,7 @@ function ShoppingSection() {
           <h1>Shop Classic Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {classicScrubs.map((scrub) => (
+            {classicProducts.map((scrub) => (
               <div className="scrubCard" key={scrub.id}>
                 <img src={scrub.image} alt={scrub.name} width="300px" />
                 <div className="scrubDetails">
@@ -147,7 +51,7 @@ function ShoppingSection() {
                   <h3>{scrub.name}</h3>
                   <p>Price: ₹{scrub.price}</p>
                   <p>Color: {scrub.color}</p>
-                  <div className="addToCartbtn">Add to Cart</div>
+                   <div className="addToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
                 </div>
               </div>
             ))}
@@ -168,7 +72,7 @@ function ShoppingSection() {
                   <h3>{scrub.name}</h3>
                   <p>Price: ₹{scrub.price}</p>
                   <p>Color: {scrub.color}</p>
-                  <div className="addToCartbtn">Add to Cart</div>
+                   <div className="addToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
                 </div>
               </div>
             ))}

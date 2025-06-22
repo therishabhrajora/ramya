@@ -23,7 +23,7 @@
 .categoryList li{
     list-style: none;
     border: rgb(0, 0, 110) 1px solid;
-    padding: 10px 30px
+    padding: 10px 30px;
 }
 
 .byColor{

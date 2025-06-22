@@ -10,13 +10,11 @@ function FilterCollection() {
     .filter((product) => product.gender === "men")
     .slice(0, -4);
   const [sortBy, setSortBy] = useState("default");
-
   const sortProducts = (e) => {
     setSortBy(e.target.value);
   };
-
   const sortFunctions = {
-    default: (a, b) => a.id - b.id, 
+    default: (a, b) => a.id - b.id,
     priceLowToHigh: (a, b) => a.price - b.price,
     priceHighToLow: (a, b) => b.price - a.price,
     ratingHighToLow: (a, b) => b.rating - a.rating,

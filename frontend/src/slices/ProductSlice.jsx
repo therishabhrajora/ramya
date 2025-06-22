@@ -22,13 +22,15 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Mens)",
         image: ecoflex_vneck_mens,
         gender: "men",
+        category: "ecoflex",
         price: 2399,
         color: "blue",
         rating: 4.8,
       },
       {
         id: 2,
-        name: "Ecoflex V-Neck Scrub (Womens)",
+        name: "Classic Ecoflex V-Neck Scrub (Womens)",
+        category: "classic",
         image: ecoflex_vneck_womens,
         gender: "women",
         price: 2399,
@@ -37,7 +39,8 @@ const productSlice = createSlice({
       },
       {
         id: 3,
-        name: "Ecoflex V-Neck Scrub (Womens) - Black",
+        name: "Classic Ecoflex V-Neck Scrub (Womens) - Black",
+        category: "classic",
         image: excoflex_vneck_womens_black,
         gender: "women",
         price: 2399,
@@ -46,7 +49,8 @@ const productSlice = createSlice({
       },
       {
         id: 4,
-        name: "Ecoflex V-Neck Scrub (Mens) - Black",
+        name: "Classic Ecoflex V-Neck Scrub (Mens) - Black",
+        category: "classic",
         image: ecoflex_vneck_mens_black,
         gender: "men",
         price: 2399,
@@ -58,13 +62,15 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Mens)",
         image: ecoflex_vneck_mens,
         gender: "men",
+        category: "ecoflex",
         price: 1099,
         color: "blue",
         rating: 4.6,
       },
       {
         id: 6,
-        name: "Ecoflex V-Neck Scrub (Womens)",
+        name: " Classic Ecoflex V-Neck Scrub (Womens)",
+        category: "classic",
         image: ecoflex_vneck_womens,
         gender: "women",
         price: 1099,
@@ -77,12 +83,14 @@ const productSlice = createSlice({
         image: excoflex_vneck_womens_black,
         gender: "women",
         price: 1099,
+        category: "ecoflex",
         color: "black",
         rating: 4.3,
       },
       {
         id: 8,
-        name: "Ecoflex V-Neck Scrub (Mens) - Black",
+        name: "Classic Ecoflex V-Neck Scrub (Mens) - Black",
+        category: "classic",
         image: ecoflex_vneck_mens_black,
         gender: "men",
         price: 1099,
@@ -94,6 +102,7 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Mens)",
         image: ecoflex_vneck_mens,
         gender: "men",
+        category: "ecoflex",
         price: 2499,
         color: "blue",
         rating: 4.9,
@@ -103,6 +112,7 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Womens)",
         image: ecoflex_vneck_womens,
         gender: "women",
+        category: "ecoflex",
         price: 2499,
         color: "blue",
         rating: 4.2,
@@ -112,6 +122,7 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Womens) - Black",
         image: excoflex_vneck_womens_black,
         gender: "women",
+        category: "ecoflex",
         price: 2499,
         color: "black",
         rating: 4.1,
@@ -121,6 +132,7 @@ const productSlice = createSlice({
         name: "Ecoflex V-Neck Scrub (Mens) - Black",
         image: ecoflex_vneck_mens_black,
         gender: "men",
+        category: "ecoflex",
         price: 2499,
         color: "black",
         rating: 4.4,
@@ -153,6 +165,7 @@ const productSlice = createSlice({
         name: "Ecoflex Scrub Suit (Mens)",
         gender: "men",
         image: ecoflexMen,
+        category: "ecoflex",
         price: 1800,
         color: "blue",
         rating: 4.5,
@@ -163,6 +176,7 @@ const productSlice = createSlice({
         name: "Stethoscope (Mens)",
         gender: "men",
         image: underScrubMen,
+        category: "stethoscope",
         price: 1200,
         color: "grey",
         rating: 4.4,
@@ -196,6 +210,7 @@ const productSlice = createSlice({
         name: "Ecoflex Scrub Suit (Womens)",
         gender: "women",
         image: ecoflexWomen,
+        category: "ecoflex",
         price: 1800,
         color: "blue",
         rating: 4.3,
@@ -207,13 +222,37 @@ const productSlice = createSlice({
         gender: "women",
         image: underScrubWomen,
         price: 1200,
+        category: "stethoscope",
         color: "grey",
         rating: 4.2,
         description: "Comfortable under scrub for added warmth and comfort.",
       },
     ],
+    cartProducts: [],
   },
-  reducers: {},
+  reducers: {
+    addToCart: (state, action) => {
+      const product = state.products.find(
+        (item) => item.id === action.payload.id
+      );
+      if (product) {
+        const productInCart = state.cartProducts.find(
+          (item) => item.id === product.id
+        );
+        if (productInCart) {
+          productInCart.quantity =
+            (productInCart.quantity || 0) + action.payload.quantity;
+        } else {
+          state.cartProducts.push({
+            ...product,
+            quantity: action.payload.quantity,
+          });
+        }
+        localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
+      }
+    },
+  },
 });
 
+export const { addToCart } = productSlice.actions;
 export default productSlice.reducer;
