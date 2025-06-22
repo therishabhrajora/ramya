@@ -5,30 +5,26 @@
   height: 100%;
   width: 300px;
   background-color: white;
- 
+  overflow-y: auto;
+  border: 1px solid rgb(184, 178, 178);
+  box-shadow: 0 4px 24px 0 rgba(16, 47, 78, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.cart-section2 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgb(184, 178, 178);
-    box-shadow: 0 4px 24px 0 rgba(16, 47, 78, 0.25);
-}
-
-.cart-section2 .close-btn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: x-large;
+.close-btn {
+  margin-right: 20px;
+  margin-top: 10px;
   cursor: pointer;
+  font-size: x-large;
+  font-weight: 700;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
-.cart-section .cart-empty {
+.cart-section .cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +32,7 @@
   gap: 5px;
 }
 
-.cart-empty .shopping-btn {
+.cart .shopping-btn {
   width: fit-content;
   padding: 10px 10px;
   border-radius: 5px;
@@ -44,8 +40,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+
+.shopping-btn:hover {
+  background-color: #ff3b4f;
 }
 
 
+.cart ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: small;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
 
+.cart ul li{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid rgb(184, 178, 178);
+}
 
+.cart ul li h3{
+  font-size: small;
+  margin: 0;
+  padding: 0;
+}
+
+.cart ul li .productDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  gap: 5px;
+}
+
+.productDetails .productInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.productDetails .action-btn{
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #d4304bc7;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  font-size: larger;
+}
+
+.action-btn:hover{
+  background-color: #b12c3f;
+}
