@@ -95,3 +95,16 @@
 .filterResults .scrubCard{
   cursor: pointer;
 }
+
+.sortProduct{
+  border:  none;
+}
+
+.sortProduct:focus{
+  outline: none;
+}
+
+.sortProduct option{
+  text-transform: capitalize;
+  font-size: small;
+}

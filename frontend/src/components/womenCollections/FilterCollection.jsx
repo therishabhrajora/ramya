@@ -4,17 +4,51 @@ import { IoMdArrowDropup } from "react-icons/io";
 import "../../index.css";
 import "../../styles/WomenCollection/filterCollection.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 function FilterCollection() {
+
+  
   const allCollections = useSelector((state) => state.product.products);
-  const womenProducts = allCollections.filter(
-    (product) => product.gender === "women"
-  ).slice(0,-4);
+  const womenProducts = allCollections
+    .filter((product) => product.gender === "women")
+    .slice(0, -4);
+
+  const [sortBy, setSortBy] = useState("default");
+
+  const sortProducts = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const sortFunctions = {
+    default: (a, b) => a.id - b.id,
+    priceLowToHigh: (a, b) => a.price - b.price,
+    priceHighToLow: (a, b) => b.price - a.price,
+    ratingHighToLow: (a, b) => b.rating - a.rating,
+    ratingLowToHigh: (a, b) => a.rating - b.rating,
+  };
+  womenProducts.sort(sortFunctions[sortBy]);
+
+
+
   return (
     <div className="filterCollectionContainer">
       <p className="sortBySection">
         <IoIosArrowDown />
         <span>SORT BY: </span>
-        <span>Most Popular</span>
+        <select
+          className="sortProduct"
+          name="sortProduct"
+          id="sortProduct"
+          value={sortBy}
+          onChange={(e) => sortProducts(e)}
+        >
+          <option value="default">Default</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+          <option value="ratingHighToLow">Rating: High to Low</option>
+          <option value="ratingLowToHigh">Rating: Low to High</option>
+          <option value="newArrivals">New Arrivals</option>
+        </select>
       </p>
       <div className="filter-collection">
         <section className="filterSection">
