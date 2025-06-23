@@ -1,10 +1,11 @@
 import { IoMdArrowDropup } from "react-icons/io";
-
 import "../../index.css";
 import "../../styles/MenCollection/filterCollection.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { addToCart } from "../../slices/ProductSlice";
 function FilterCollection() {
+  const dispatch = useDispatch();
   const allCollections = useSelector((state) => state.product.products);
   const menProducts = allCollections
     .filter((product) => product.gender === "men")
@@ -153,6 +154,7 @@ function FilterCollection() {
                 <h3>{scrub.name}</h3>
                 <p>Price: ₹{scrub.price}</p>
                 <p>Color: {scrub.color}</p>
+                <div className="addToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
               </div>
             </div>
           ))}

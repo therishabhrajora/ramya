@@ -85,11 +85,13 @@
   gap: 5px;
 }
 
-.filterResults .scrubCard .scrubDetails h3{
+.scrubDetails h3{
   font-size: 14px;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  max-width: 100%;         /* Good, but not enough */
+  white-space: nowrap;     /* ✅ required */
+  overflow: hidden;        /* ✅ required */
+  text-overflow: ellipsis; /* ✅ required */
+  display: block;  
 }
 
 .filterResults .scrubCard{
