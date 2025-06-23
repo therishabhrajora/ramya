@@ -1,13 +1,14 @@
 import { MdOutlineClose } from "react-icons/md";
 import { cartOpen } from "../slices/NavBarSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../styles/homepage/Cart.css";
 import { MdDeleteForever } from "react-icons/md";
+import { removeFromCart } from "../slices/ProductSlice";
 
 function Cart() {
   const dispatch = useDispatch();
-  const selectedProducts = JSON.parse(localStorage.getItem("cartProducts"));
+  const selectedProducts = useSelector((state) => state.product.cartProducts);
   console.log("Selected Products:", selectedProducts);
   return (
     <div className="cart-section">
@@ -28,8 +29,13 @@ function Cart() {
                       <p>Price: ₹{product.price}</p>
                       <p>Color: {product.color}</p>
                     </div>
-                    <div className="action-btn">
-                      <p><MdDeleteForever /></p>
+                    <div
+                      className="remove-btn"
+                      onClick={() => dispatch(removeFromCart(product))}
+                    >
+                      <p>
+                        <MdDeleteForever />
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -37,15 +43,27 @@ function Cart() {
             </ul>
           </div>
         ) : (
-          <p>No products in the cart.</p>
+          <div className="emptyCart">
+            <p>No products in the cart.</p>
+            <Link
+              className="Link"
+              to={"/collections"}
+              onClick={() => dispatch(cartOpen())}
+            >
+              <p className="shopping-btn">Continue Shopping &rarr;</p>
+            </Link>
+          </div>
         )}
-        <Link
+        {selectedProducts.length > 0 ?(
+          <Link
           className="Link"
           to={"/collections"}
           onClick={() => dispatch(cartOpen())}
         >
           <p className="shopping-btn">Continue Shopping &rarr;</p>
         </Link>
+        ):null}
+        
       </div>
     </div>
   );

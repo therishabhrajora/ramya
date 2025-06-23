@@ -251,8 +251,17 @@ const productSlice = createSlice({
         localStorage.setItem("cartProducts", JSON.stringify(state.cartProducts));
       }
     },
+    removeFromCart: (state, action) => {
+      const productid = action.payload.id;
+      console.log("Removing product with ID:", productid);
+       const updatedCart = state.cartProducts.filter(
+        (item) => item.id !== productid
+      );
+      state.cartProducts=updatedCart
+      localStorage.setItem("cartProducts", JSON.stringify(updatedCart));
+    },
   },
 });
 
-export const { addToCart } = productSlice.actions;
+export const { addToCart, removeFromCart } = productSlice.actions;
 export default productSlice.reducer;
