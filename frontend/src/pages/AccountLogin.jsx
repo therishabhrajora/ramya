@@ -14,17 +14,17 @@ function AccountLogin() {
           <h1 className="text-3xl">Login</h1>
           <div className="email">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" />
+            <input type="email" id="loginemail" placeholder="Enter your email" />
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              id="password"
+              id="loginpassword"
               placeholder="Enter your password"
             />
           </div>
-          <Link className=".Link"to="">
+          <Link className="Link"to="">
             <p className="forgot-password">forgot your password ?</p>
           </Link>
           <div className="sign-in-btn">Sign in</div>
