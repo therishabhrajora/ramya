@@ -22,7 +22,7 @@ public class SecurityConfig {
         http.cors(cors -> cors.configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
             config.setAllowCredentials(true);
-            config.addAllowedOrigin("https://localhost:5173");
+            config.addAllowedOrigin("http://localhost:5173");
             config.addAllowedHeader("*");
             config.addAllowedMethod("*");
             return config;
