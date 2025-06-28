@@ -6,14 +6,10 @@ import "../../styles/homepage/navBar.css";
 import "../../styles/homepage/Cart.css";
 import { Link } from "react-router-dom";
 import {
-  increasecount,
   menCollectionOpen,
-  menCollectionClose,
   womenCollectionOpen,
-  womenCollectionClose,
   cartOpen,
 } from "../../slices/NavBarSlice";
-
 
 import { useDispatch, useSelector } from "react-redux";
 import MenHoverSection from "../HoverComponents/MenHoverSection";
@@ -30,7 +26,7 @@ function NavBar() {
   );
 
   const cartProducts = useSelector((state) => state.product.cartProducts);
-  const cartCount=cartProducts.length;
+  const cartCount = cartProducts.length;
 
   return (
     <div className="navBar baseBackgroundColor">
@@ -44,7 +40,6 @@ function NavBar() {
           className="men"
           onMouseEnter={() => {
             dispatch(menCollectionOpen());
-            
           }}
           // onMouseLeave={() => dispatch(menCollectionClose())}
         >
@@ -59,7 +54,6 @@ function NavBar() {
             to="/collections/women"
             onMouseEnter={() => {
               dispatch(womenCollectionOpen());
-             
             }}
             // onMouseLeave={() => dispatch(womenCollectionClose())}
           >
@@ -102,13 +96,12 @@ function NavBar() {
           {cartCount > 0 ? (
             <div className="cartCount">
               <span>{cartCount}</span>
-              <IoCartOutline  className="cart-icon"/>
+              <IoCartOutline className="cart-icon" />
             </div>
           ) : (
             <IoCartOutline />
           )}
         </li>
-       
       </div>
     </div>
   );
