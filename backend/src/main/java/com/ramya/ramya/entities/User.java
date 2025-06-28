@@ -1,8 +1,11 @@
 package com.ramya.ramya.entities;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +25,7 @@ import lombok.Setter;
 @Data
 public class User {
     @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "must be filled")
     private String firstName;
@@ -35,7 +40,7 @@ public class User {
     @NotBlank(message = "must be filled")
     @Length(max = 10)
     private String phone;
-    @NotBlank(message = "must be filled")
+    @Value("user")
     private String role;
 
 }
