@@ -9,5 +9,4 @@ public class RamyaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RamyaApplication.class, args);
 	}
- 	
 }
