@@ -38,9 +38,9 @@ function NavBar() {
       <div className="menuBar baseTextColor">
         <li
           className="men"
-          onMouseEnter={() => {
-            dispatch(menCollectionOpen());
-          }}
+          // onMouseEnter={() => {
+          //   dispatch(menCollectionOpen());
+          // }}
           // onMouseLeave={() => dispatch(menCollectionClose())}
         >
           <Link className="Link" to="/collections/men">
@@ -52,9 +52,9 @@ function NavBar() {
           <Link
             className="Link"
             to="/collections/women"
-            onMouseEnter={() => {
-              dispatch(womenCollectionOpen());
-            }}
+            // onMouseEnter={() => {
+            //   dispatch(womenCollectionOpen());
+            // }}
             // onMouseLeave={() => dispatch(womenCollectionClose())}
           >
             Women
