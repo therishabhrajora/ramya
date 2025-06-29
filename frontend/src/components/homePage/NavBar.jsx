@@ -88,7 +88,7 @@ function NavBar() {
           <IoSearchOutline />
         </li>
         <li className="login">
-          <Link className="Link" to="/account/login">
+          <Link className="Link" to="/account">
             <CgProfile />
           </Link>
         </li>
