@@ -23,12 +23,11 @@ function AccountLogin() {
   const handleRegisterForm = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:9090/collections/register",
         registeredData
       );
-      console.log(res.config.data);
-      alert("suuccessfully register");
+     
       setRegisteredData({
         firstName: "",
         lastName: "",
@@ -37,7 +36,8 @@ function AccountLogin() {
         phone: "",
       });
     } catch (e) {
-      console.log(e);
+      let error=e.response.data.message;
+      alert(error);
     }
   };
   return (
