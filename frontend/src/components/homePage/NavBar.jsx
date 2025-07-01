@@ -9,6 +9,8 @@ import {
   menCollectionOpen,
   womenCollectionOpen,
   cartOpen,
+  menCollectionClose,
+  womenCollectionClose
 } from "../../slices/NavBarSlice";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -38,10 +40,10 @@ function NavBar() {
       <div className="menuBar baseTextColor">
         <li
           className="men"
-          // onMouseEnter={() => {
-          //   dispatch(menCollectionOpen());
-          // }}
-          // onMouseLeave={() => dispatch(menCollectionClose())}
+          onMouseEnter={() => {
+            dispatch(menCollectionOpen());
+          }}
+          onMouseLeave={() => dispatch(menCollectionClose())}
         >
           <Link className="Link" to="/collections/men">
             Men
@@ -52,10 +54,10 @@ function NavBar() {
           <Link
             className="Link"
             to="/collections/women"
-            // onMouseEnter={() => {
-            //   dispatch(womenCollectionOpen());
-            // }}
-            // onMouseLeave={() => dispatch(womenCollectionClose())}
+            onMouseEnter={() => {
+              dispatch(womenCollectionOpen());
+            }}
+            onMouseLeave={() => dispatch(womenCollectionClose())}
           >
             Women
           </Link>
