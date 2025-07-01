@@ -29,19 +29,24 @@ public class User {
     private String id;
     @NotBlank(message = "must be filled")
     private String firstName;
+
     @NotBlank(message = "must be filled")
     private String lastName;
+
     @NotBlank(message = "must be filled")
     @Email
     @Pattern(regexp = ".+@.+\\..+", message = "Invalid email format")
     @Column(unique = true)
     private String email;
+
     @NotBlank(message = "must be filled")
     private String password;
+
     @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
     @NotBlank(message = "must be filled")
     @Length(max = 10)
     private String phone; 
+    
     @Value("user")
     private String role;
 
