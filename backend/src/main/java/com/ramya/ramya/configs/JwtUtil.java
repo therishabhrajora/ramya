@@ -24,12 +24,13 @@ public class JwtUtil {
     }
 
 
-    public static String extractUsername(String token){
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
+    public String extractUsername(String token){
+        return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
     }
 
     public boolean validateToken(String token,UserDetails userDetails){
-        String username=extractUsername(token);
+        String username = extractUsername(token);
+        System.out.println("this user exist ===" + username);
         return (username.equals(userDetails.getUsername()));
     }
 
