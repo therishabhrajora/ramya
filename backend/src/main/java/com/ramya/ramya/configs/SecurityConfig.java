@@ -53,10 +53,10 @@ public class SecurityConfig {
             return config;
         }));
 
-        http.oauth2Login(oauth -> {
-            oauth.loginPage("/collections/account");
-            oauth.successHandler(oAuthenticationSuccessHandler);
-        });
+        // http.oauth2Login(oauth -> {
+        //     oauth.loginPage("/collections/account");
+        //     oauth.successHandler(oAuthenticationSuccessHandler);
+        // });
 
         http.logout(logout -> logout
                 .logoutUrl("/collections/logout")
