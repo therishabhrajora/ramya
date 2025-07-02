@@ -38,8 +38,16 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .httpBasic(httpbasic -> httpbasic.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/**").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers(
+                                "/collections/**" // homepage, men/women, register, login
+                        )
+                        .permitAll()
+
+                        // 🔐 Secure endpoints
+                        .requestMatchers("/user/**").authenticated()
+
+                        // fallback: block anything else
+                        .anyRequest().denyAll())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -54,13 +62,13 @@ public class SecurityConfig {
         }));
 
         // http.oauth2Login(oauth -> {
-        //     oauth.loginPage("/collections/account");
-        //     oauth.successHandler(oAuthenticationSuccessHandler);
+        // oauth.loginPage("/collections/account");
+        // oauth.successHandler(oAuthenticationSuccessHandler);
         // });
 
         http.logout(logout -> logout
                 .logoutUrl("/collections/logout")
-                .logoutSuccessUrl("/collections/login?logout=true")
+                .logoutSuccessUrl("/collections/account?logout=true")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .permitAll());
