@@ -42,7 +42,19 @@ public class PageController {
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> handleRegisterForm(@RequestBody User user, BindingResult bindingResult) {
-        return userService.saveUser(user);
+        try {
+            if (bindingResult.hasErrors()) {
+                Map<String, String> errors = new HashMap<>();
+                bindingResult.getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
+                return ResponseEntity.badRequest().body(errors);
+            }
+            userService.saveUser(user);
+            Map<String, String> successResponse = Map.of("message", "User registered successfully");
+            return ResponseEntity.ok(successResponse);
+        } catch (Exception e) {
+            Map<String, String> errorResponse = Map.of("error", "Invalid input");
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
     }
 
     @PostMapping("/login")
@@ -53,11 +65,14 @@ public class PageController {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-            System.out.println("userdetails========="+userDetails);
+            System.out.println("user details ==============="+userDetails);
 
             String token = jwtUtil.generateToken(userDetails);
             User user = userService.getUserByEmail(userDetails.getUsername());
+
+            System.out.println("token====="+token);
+            System.out.println("user====="+user);
+
 
             ObjectMapper objectMapper = new ObjectMapper();
 
@@ -77,6 +92,11 @@ public class PageController {
             Map<String, String> errorResponse = Map.of("error", "Authentication failed");
             return ResponseEntity.status(401).body(errorResponse);
         }
+    }
+
+    @RequestMapping("/logout")
+    public String logout() {
+        return "logout";
     }
 
 }
