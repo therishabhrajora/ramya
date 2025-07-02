@@ -26,7 +26,8 @@ function App() {
         <Route path="/collections/stethoscope" element={<Stethoscope />} />
         <Route path="/collections/track-order" element={<TrackOrder />} />
         <Route path="/collections/bulk-order" element={<BulkOrder />} />
-        <Route path="/account" element={<AccountLogin />} />
+        <Route path="/collections/account" element={<AccountLogin />} />
+        <Route path="/collections/logout" element={<AccountLogin />} />
         <Route path="/collections/products" element={<ProductOrder />} />
       </Routes>
     </>
