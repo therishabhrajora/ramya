@@ -5,8 +5,14 @@ import NavBar from "../components/homePage/NavBar";
 import Footer from "../components/homePage/Footer";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess } from "../slices/AuthSlice";
 
 function AccountLogin() {
+  const dispatch=useDispatch()
+  const {token, user, isLoggedIn}=useSelector((state)=>state.auth);
+  console.log(token,user,isLoggedIn)
+  
   const [registeredData, setRegisteredData] = useState({
     firstName: "",
     lastName: "",
@@ -31,15 +37,23 @@ function AccountLogin() {
   const handleLoginForm = async (e) => {
     e.preventDefault();
     try {
-      const res=axios.post("http://localhost:9090/collections/login", loginData);
+      const res = await axios.post(
+        "http://localhost:9090/collections/login",
+        loginData,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        
       setLoginData({
         email: "",
         password: "",
       });
 
-      res.then((res)=>{
-        console.log(res);
-      })
+      dispatch(loginSuccess({
+        token:res.data.token,
+        user:res.data.user,
+      }))
     } catch (e) {
       console.log(e);
     }
@@ -60,9 +74,6 @@ function AccountLogin() {
         password: "",
         phone: "",
       });
-
-
-
     } catch (e) {
       let error = e.response.data.message;
       alert(error);
