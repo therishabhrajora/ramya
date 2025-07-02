@@ -25,24 +25,19 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public ResponseEntity<Map<String, String>> saveUser( User user) {
-        Optional<User> userExist = userRepo.findByEmail(user.getEmail());
-        System.out.println("this is user exist "+userExist);
+    public ResponseEntity<String> saveUser( User user) {
+         Optional<User> userExist = userRepo.findByEmail(user.getEmail());
+         System.out.println("user exist ============"+userExist);
         if (userExist.isPresent()) {
-            System.out.println("inside if");
-            return ResponseEntity
-                .badRequest()
-                .body(Map.of("message", "User is already present"));
+            return ResponseEntity.ok("user already present");
         } else {
-            System.out.println(
-                "inside else"
-            );
-            String id = UUID.randomUUID().toString();
+            String userID = UUID.randomUUID().toString();
+            user.setId(userID);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setId(id);
+        
             userRepo.save(user);
-            return ResponseEntity
-                .ok(Map.of("message", "User registered successfully"));
+
+            return ResponseEntity.ok("user signup successfull");
         }
     }
 
