@@ -16,9 +16,12 @@ import org.springframework.web.cors.CorsConfiguration;
 
 import com.ramya.ramya.services.CustomUserDetailService;
 
+import helper.DatabaseConstants;
+
 @Configuration
 @EnableAutoConfiguration
 public class SecurityConfig {
+    String CORS_ORIGIN=DatabaseConstants.CORS_ORIGIN;
 
     private JwtRequestFilter jwtRequestFilter;
     private CustomUserDetailService userDetailService;
@@ -38,10 +41,9 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .httpBasic(httpbasic -> httpbasic.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/collections/**" // homepage, men/women, register, login
-                        )
-                        .permitAll()
+                        .requestMatchers("/collections/**").permitAll() // homepage, men/women, register, login
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user/**").hasRole("USER")
 
                         // 🔐 Secure endpoints
                         .requestMatchers("/user/**").authenticated()
@@ -55,7 +57,7 @@ public class SecurityConfig {
         http.cors(cors -> cors.configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
             config.setAllowCredentials(true);
-            config.addAllowedOrigin("http://localhost:5173");
+            config.addAllowedOrigin(CORS_ORIGIN);
             config.addAllowedHeader("*");
             config.addAllowedMethod("*");
             return config;
