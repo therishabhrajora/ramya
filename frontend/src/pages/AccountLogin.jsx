@@ -1,6 +1,6 @@
 import "../styles/homepage/accountLogin.css";
 import "../index.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../components/homePage/NavBar";
 import Footer from "../components/homePage/Footer";
 import { useState } from "react";
@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
 
 function AccountLogin() {
-  const dispatch=useDispatch()
-  const {token, user, isLoggedIn}=useSelector((state)=>state.auth);
-  console.log(token,user,isLoggedIn)
-  
+  const dispatch = useDispatch();
+  const navigate=useNavigate();
+  const { token, user, isLoggedIn, role } = useSelector((state) => state.auth); 
+
   const [registeredData, setRegisteredData] = useState({
     firstName: "",
     lastName: "",
@@ -43,17 +43,19 @@ function AccountLogin() {
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
-        });
-        
+        }
+      );
+      const { token, user, role } = res.data;
+
       setLoginData({
         email: "",
         password: "",
       });
 
-      dispatch(loginSuccess({
-        token:res.data.token,
-        user:res.data.user,
-      }))
+
+    dispatch(loginSuccess({ token, user, role }));
+
+      navigate("/collections");
     } catch (e) {
       console.log(e);
     }
