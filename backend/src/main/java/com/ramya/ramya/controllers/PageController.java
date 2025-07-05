@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ramya.ramya.configs.JwtUtil;
-import com.ramya.ramya.entities.LoginRequest;
-import com.ramya.ramya.entities.Products;
+
 import com.ramya.ramya.entities.User;
 import com.ramya.ramya.services.CustomUserDetailService;
-import com.ramya.ramya.services.ProductService;
+
 import com.ramya.ramya.services.UserService;
 
+import forms.LoginRequest;
+import forms.UserForm;
 import helper.ErrorMessages;
 import helper.ResponseMessageConstants;
 import jakarta.validation.Valid;
@@ -33,22 +34,22 @@ import jakarta.validation.Valid;
 public class PageController {
 
     private final UserService userService;
-    private final ProductService productService;
+   
     private AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final CustomUserDetailService userDetailService;
 
     public PageController(UserService userService, AuthenticationManager authenticationManager, JwtUtil jwtUtil,
-            CustomUserDetailService userDetailService, ProductService productService) {
+            CustomUserDetailService userDetailService) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userDetailService = userDetailService;
-        this.productService = productService;
+     
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> handleRegisterForm(@Valid @RequestBody User user,
+    public ResponseEntity<Map<String, String>> handleRegisterForm(@Valid @RequestBody UserForm userForm,
             BindingResult bindingResult) {
         try {
             if (bindingResult.hasErrors()) {
@@ -56,6 +57,14 @@ public class PageController {
                 bindingResult.getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(errors);
             }
+
+            User user=new User();
+            user.setEmail(userForm.getEmail());
+            user.setFirstName(userForm.getFirstName());
+            user.setLastName(userForm.getLastName());
+            user.setPassword(userForm.getPassword());
+            user.setPhone(userForm.getPhone());
+
             userService.saveUser(user);
             Map<String, String> successResponse = Map.of("message", ResponseMessageConstants.USER_REGISTERED);
             return ResponseEntity.ok(successResponse);
@@ -101,10 +110,7 @@ public class PageController {
 
     }
 
-    @RequestMapping("admin/add-products")
-    public void addProducts(@Valid @RequestBody Products products) {
-        productService.saveProducts(products);
-    }
+  
 
     @RequestMapping("/logout")
     public String logout() {
