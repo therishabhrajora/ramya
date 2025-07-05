@@ -1,8 +1,11 @@
 package com.ramya.ramya.services;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ramya.ramya.entities.Products;
 import com.ramya.ramya.repositories.ProductsRepo;
@@ -10,9 +13,12 @@ import com.ramya.ramya.repositories.ProductsRepo;
 @Service
 public class ProductService {
     private final ProductsRepo productsRepo;
+    private final ImageService imageService;
 
-    ProductService(ProductsRepo productsRepo) {
+    @Autowired
+    ProductService(ProductsRepo productsRepo,ImageService imageService) {
         this.productsRepo = productsRepo;
+        this.imageService=imageService;
     }
 
     public void saveProducts(Products products) {
@@ -25,7 +31,8 @@ public class ProductService {
         String id = String.join("-", arr);
 
         products.setProductId(id);
-        productsRepo.save(products);
+        System.out.println("products is ====================="+products);
+     //   productsRepo.save(products);
     }
 
 }
