@@ -8,6 +8,7 @@ import Stethoscope from "./components/stethoscpe/Stethoscope";
 import TrackOrder from "./components/tackOrder/TrackOrder";
 import BulkOrder from "./components/bulkOrder/BulkOrder";
 import AccountLogin from "./pages/AccountLogin";
+import Products from "./pages/admin/Products";
 import { useSelector } from "react-redux";
 import Cart from "./pages/Cart";
 import ProductOrder from "./components/products/ProductOrder";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/collections/account" element={<AccountLogin />} />
         <Route path="/collections/logout" element={<AccountLogin />} />
         <Route path="/collections/products" element={<ProductOrder />} />
+        <Route path="/collections/admin/add-products" element={<Products/>} />
       </Routes>
     </>
   );
