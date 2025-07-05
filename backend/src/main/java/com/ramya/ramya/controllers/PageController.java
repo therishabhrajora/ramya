@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,29 +18,38 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ramya.ramya.configs.JwtUtil;
 import com.ramya.ramya.entities.LoginRequest;
+import com.ramya.ramya.entities.Products;
 import com.ramya.ramya.entities.User;
 import com.ramya.ramya.services.CustomUserDetailService;
+import com.ramya.ramya.services.ProductService;
 import com.ramya.ramya.services.UserService;
+
+import helper.ErrorMessages;
+import helper.ResponseMessageConstants;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/collections")
 public class PageController {
 
     private final UserService userService;
+    private final ProductService productService;
     private AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final CustomUserDetailService userDetailService;
 
     public PageController(UserService userService, AuthenticationManager authenticationManager, JwtUtil jwtUtil,
-            CustomUserDetailService userDetailService) {
+            CustomUserDetailService userDetailService, ProductService productService) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userDetailService = userDetailService;
+        this.productService = productService;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> handleRegisterForm(@RequestBody User user, BindingResult bindingResult) {
+    public ResponseEntity<Map<String, String>> handleRegisterForm(@Valid @RequestBody User user,
+            BindingResult bindingResult) {
         try {
             if (bindingResult.hasErrors()) {
                 Map<String, String> errors = new HashMap<>();
@@ -49,35 +57,33 @@ public class PageController {
                 return ResponseEntity.badRequest().body(errors);
             }
             userService.saveUser(user);
-            Map<String, String> successResponse = Map.of("message", "User registered successfully");
+            Map<String, String> successResponse = Map.of("message", ResponseMessageConstants.USER_REGISTERED);
             return ResponseEntity.ok(successResponse);
         } catch (Exception e) {
-            Map<String, String> errorResponse = Map.of("error", "Invalid input");
+            Map<String, String> errorResponse = Map.of("error", ErrorMessages.INVALID_CREDENTIALS);
             return ResponseEntity.badRequest().body(errorResponse);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> handleLoginForm(@RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
+    public ResponseEntity<?> handleLoginForm(@Valid @RequestBody LoginRequest loginRequest,
+            BindingResult bindingResult) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            System.out.println("user details ==============="+userDetails);
 
             String token = jwtUtil.generateToken(userDetails);
             User user = userService.getUserByEmail(userDetails.getUsername());
-
-            System.out.println("token====="+token);
-            System.out.println("user====="+user);
-
+            String role = userDetails.getAuthorities().iterator().next().getAuthority();
 
             ObjectMapper objectMapper = new ObjectMapper();
 
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
+            response.put("role", role);
             response.put("user", objectMapper.convertValue(user, Map.class));
 
             return ResponseEntity.ok(response);
@@ -89,9 +95,15 @@ public class PageController {
                         .forEach(fieldError -> error.put(fieldError.getField(), fieldError.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(error);
             }
-            Map<String, String> errorResponse = Map.of("error", "Authentication failed");
+            Map<String, String> errorResponse = Map.of("error", ErrorMessages.AUTHENTICATION_FAILED);
             return ResponseEntity.status(401).body(errorResponse);
         }
+
+    }
+
+    @RequestMapping("admin/add-products")
+    public void addProducts(@Valid @RequestBody Products products) {
+        productService.saveProducts(products);
     }
 
     @RequestMapping("/logout")
