@@ -8,13 +8,12 @@ import axios from "axios";
 function Products() {
   const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
 
-
   const [productsData, setProductsData] = useState({
     productId: "",
     category: "",
     color: "",
     gender: "",
-    imageLink: "",
+    image: "",
     name: "",
     pocket: "",
     price: "",
@@ -26,12 +25,23 @@ function Products() {
   };
   const handleProductsForm = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", productsData.name);
+    formData.append("gender", productsData.gender);
+    formData.append("category", productsData.category);
+    formData.append("color", productsData.color);
+    formData.append("price", productsData.price);
+    formData.append("pocket", productsData.pocket);
+    formData.append("rating", productsData.rating);
+    formData.append("image", productsData.image);
     try {
       axios.post(
         "http://localhost:9090/collections/admin/add-products",
-        productsData,
+        formData,
         {
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
           withCredentials: true,
         }
       );
@@ -40,7 +50,7 @@ function Products() {
         category: "",
         color: "",
         gender: "",
-        imageLink: "",
+        image: null,
         name: "",
         pocket: "",
         price: "",
@@ -138,18 +148,32 @@ function Products() {
               </div>
             </div>
             <div className="right">
-              <div className="label-input imagelink">
+              <div className="label-input image">
                 <label htmlFor="imagelink">Select Image</label>
                 <input
                   type="file"
-                  id="imagelink"
-                  name="imagelink"
+                  id="image"
+                  name="image"
+                  accept="image/*"
                   // autocomplete="new-imagelink"
-                  placeholder="Enter your imageLink"
-                  value={productsData.imageLink}
-                  onChange={handleProductsChange}
+                  placeholder="Enter your image"
+                  onChange={(e) =>
+                    setProductsData({
+                      ...productsData,
+                      image: e.target.files[0],
+                    })
+                  }
                 />
               </div>
+              {productsData.image && (
+                <img
+                  src={URL.createObjectURL(productsData.image)}
+                  alt="preview"
+                  width="150"
+                  style={{ marginTop: "10px", borderRadius: "8px" }}
+                />
+              )}
+
               <button className="register-btn" type="submit">
                 Add Product
               </button>
