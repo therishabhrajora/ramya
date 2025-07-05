@@ -1,8 +1,12 @@
 package com.ramya.ramya.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,18 +20,20 @@ public class CustomUserDetailService implements UserDetailsService {
 
     private final UserRepo userRepo;
 
+
     @Autowired
-    public CustomUserDetailService(UserRepo userRepo){
-        this.userRepo=userRepo;
+    public CustomUserDetailService(UserRepo userRepo) {
+        this.userRepo = userRepo;
     }
 
-
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        User user=userRepo.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("User not found with email"+ email));
-        System.out.println("user found"+user);
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),new ArrayList<>());
-        
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email" + email));
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                List.of(new SimpleGrantedAuthority(user.getRole())));
     }
 
 }
