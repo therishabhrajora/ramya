@@ -1,5 +1,7 @@
 package com.ramya.ramya.entities;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
@@ -23,7 +25,7 @@ public class Products {
     @NotBlank(message = "must be filled")
     private String name;
     
-    private String imageLink;
+    private String image;
     @NotBlank(message = "must be filled")
     private String gender;
     @NotBlank(message = "must be filled")
@@ -39,5 +41,7 @@ public class Products {
 
     @Min(value = 1, message = "Pocket must be at least 1")
     private float rating;
+
+    private String cloudinaryImagePublicId;
 
 }
