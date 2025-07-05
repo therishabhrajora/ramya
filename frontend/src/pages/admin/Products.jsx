@@ -56,7 +56,7 @@ function Products() {
       <NavBar />
       <div className="products-form">
         <form onSubmit={handleProductsForm} className="product">
-          <h1 className="text-3xl">Register</h1>
+          <h1 className="text-3xl">Add Product</h1>
           <div className="input-section">
             <div className="left">
               <div className="label-input name">
