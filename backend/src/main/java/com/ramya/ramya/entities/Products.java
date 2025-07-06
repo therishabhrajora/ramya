@@ -22,26 +22,20 @@ import lombok.Setter;
 public class Products {
     @Id
     private String productId;
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String name;
-    
     private String image;
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String gender;
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String category;
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String color;
-
     @Min(value = 1, message = "Pocket must be at least 1")
     private float price;
-
     @Min(value = 1, message = "Pocket must be at least 1")
     private int pocket;
-
     @Min(value = 1, message = "Pocket must be at least 1")
     private float rating;
-
     private String cloudinaryImagePublicId;
-
 }
