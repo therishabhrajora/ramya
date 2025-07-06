@@ -13,16 +13,15 @@ import com.ramya.ramya.repositories.ProductsRepo;
 @Service
 public class ProductService {
     private final ProductsRepo productsRepo;
-    private final ImageService imageService;
 
     @Autowired
-    ProductService(ProductsRepo productsRepo,ImageService imageService) {
+    ProductService(ProductsRepo productsRepo) {
         this.productsRepo = productsRepo;
-        this.imageService=imageService;
+
     }
 
     public void saveProducts(Products products) {
-        
+
         ArrayList<String> arr = new ArrayList<>();
         arr.add(products.getName().replaceAll(" ", "-").toLowerCase());
         arr.add(products.getCategory());
@@ -31,8 +30,7 @@ public class ProductService {
         String id = String.join("-", arr);
 
         products.setProductId(id);
-        System.out.println("products is ====================="+products);
-     //   productsRepo.save(products);
+        productsRepo.save(products);
     }
 
 }
