@@ -1,11 +1,11 @@
 package forms;
 
+import static helper.ValidationMessageConstants.*;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,11 +18,11 @@ import lombok.ToString;
 @ToString
 public class LoginRequest {
     @Email
-    @Pattern(regexp = ".+@.+\\..+", message = "Invalid email format")
+    @Pattern(regexp = ".+@.+\\..+", message = INVALID_EMAIL)
     @Column(unique = true)
     private String email;
 
-    @NotBlank(message = "must be filled")
+    @NotBlank(message = PASSWORD_REQUIRED)
     private String password;
 
 }
