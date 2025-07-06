@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,9 +33,8 @@ public class AdminController {
     public void addProducts(@Valid @ModelAttribute ProductForm productForm, BindingResult bindingResult) {
 
         String fileName = UUID.randomUUID().toString();
-        System.out.println("file========="+productForm.getImage());
+       
         String fileURl = imageService.uploadImage(productForm.getImage(), fileName);
-        System.out.println("file imformation:{===============}" + productForm.getImage().getOriginalFilename());
 
         Products products = new Products();
         products.setCategory(productForm.getCategory());
@@ -49,8 +47,6 @@ public class AdminController {
         products.setRating(productForm.getRating());
         products.setImage(fileURl);
         products.setCloudinaryImagePublicId(fileName);
-
-       
 
         productService.saveProducts(products);
     }
