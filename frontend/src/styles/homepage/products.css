@@ -1,9 +1,10 @@
 .products-form{
     display: flex;
-    width: 100%;
+    width: 60%;
     justify-content: space-evenly;
     padding:70px 0;
     color: rgb(55, 60, 65);
+    margin: 0 auto;
 }
 .products-form .product h1{
     text-align: center;
@@ -13,6 +14,13 @@
 .products-form .input-section{
     display: flex;
     gap: 20px;
+}
+
+.products-form .left{
+    width: 50%;
+}
+.products-form .right{
+    width: 60%;
 }
 
 .input-section .left,.input-section .right{
@@ -38,6 +46,17 @@
 
 .label-input label{
     text-transform: capitalize;
+}
+
+.right .imagePreview{
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+}
+
+.imagePreview img{
+    width: 100%;
 }
 
 
@@ -76,3 +95,5 @@
     background-color: rgb(255, 89, 117);
     transition: ease .3s;
 }
+
+
