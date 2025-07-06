@@ -32,6 +32,8 @@ public class ImageService {
     }
 
     public String getURlFormPublicId(String publicId){
-        return cloudinary.url().transformation(new Transformation<>().width(AppConstants.PRODUCT_IMAGE_WIDTH).height(AppConstants.PRODUCT_IMAGE_HEIGHT).crop(AppConstants.PRODUCT_IMAGE_CROP)).generate(publicId);
+        return cloudinary.url()
+            .transformation(new Transformation<>().width(AppConstants.PRODUCT_IMAGE_WIDTH).height(AppConstants.PRODUCT_IMAGE_HEIGHT).crop("fit"))
+            .generate(publicId);
     }
 }
