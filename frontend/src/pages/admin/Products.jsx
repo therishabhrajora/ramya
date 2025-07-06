@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import NavBar from "../../components/homePage/NavBar";
 import Footer from "../../components/homePage/Footer";
@@ -7,13 +7,13 @@ import axios from "axios";
 
 function Products() {
   const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
-
+  const imageInputRef=useRef(null);
   const [productsData, setProductsData] = useState({
     productId: "",
     category: "",
     color: "",
     gender: "",
-    image: "",
+    image: null,
     name: "",
     pocket: "",
     price: "",
@@ -56,8 +56,9 @@ function Products() {
         price: "",
         rating: "",
       });
+      imageInputRef.current.value = null;
     } catch (e) {
-      console.log(e);
+      console.log("Upload error",e);
     }
   };
 
@@ -155,6 +156,7 @@ function Products() {
                   id="image"
                   name="image"
                   accept="image/*"
+                   ref={imageInputRef}
                   // autocomplete="new-imagelink"
                   placeholder="Enter your image"
                   onChange={(e) =>
@@ -165,15 +167,15 @@ function Products() {
                   }
                 />
               </div>
-              {productsData.image && (
-                <img
-                  src={URL.createObjectURL(productsData.image)}
-                  alt="preview"
-                  width="150"
-                  style={{ marginTop: "10px", borderRadius: "8px" }}
-                />
-              )}
-
+              <div class="imagePreview">
+                {productsData.image && (
+                  <img
+                    src={URL.createObjectURL(productsData.image)}
+                    alt="preview"
+                    style={{ marginTop: "10px", borderRadius: "8px" }}
+                  />
+                )}
+              </div>
               <button className="register-btn" type="submit">
                 Add Product
               </button>
