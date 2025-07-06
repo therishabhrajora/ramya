@@ -26,8 +26,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class OAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
   private final UserRepo userRepo;
   private final JwtUtil jwtUtil;
-    String header=SecurityConstants.HEADER_STRING;
-    String token_prefix=SecurityConstants.TOKEN_PREFIX;
+  String header = SecurityConstants.HEADER_STRING;
+  String token_prefix = SecurityConstants.TOKEN_PREFIX;
 
   public OAuthenticationSuccessHandler(UserRepo userRepo, JwtUtil jwtUtil) {
     this.jwtUtil = jwtUtil;
@@ -42,9 +42,9 @@ public class OAuthenticationSuccessHandler implements AuthenticationSuccessHandl
     var onAuthenticationToken = (OAuth2AuthenticationToken) authentication;
     String authorizedClientRegisterationId = onAuthenticationToken.getAuthorizedClientRegistrationId();
     var oauthUser = (DefaultOAuth2User) authentication.getPrincipal();
- 
+
     String jwtToken = jwtUtil.generateToken((UserDetails) authentication.getPrincipal());
-  
+
     response.setHeader(header, token_prefix + jwtToken);
     oauthUser.getAttributes().forEach((key, value) -> {
       logger.info(key + ": " + value); // Uncomment if logger is defined
