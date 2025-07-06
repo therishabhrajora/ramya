@@ -26,23 +26,22 @@ import lombok.Setter;
 public class User {
     @Id
     private String id;
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String firstName;
 
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String lastName;
 
-    @NotBlank(message = "must be filled")
+    @NotBlank
     @Email
-    @Pattern(regexp = ".+@.+\\..+", message = "Invalid email format")
     @Column(unique = true)
     private String email;
 
-    @NotBlank(message = "must be filled")
+    @NotBlank
     private String password;
 
     @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
-    @NotBlank(message = "must be filled")
+    @NotBlank
     @Length(max = 10)
     private String phone; 
     
