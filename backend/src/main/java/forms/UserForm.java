@@ -13,22 +13,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 public class UserForm {
+
+    @NotBlank(message = FIELD_REQUIRED)
     private String firstName;
-    
 
     @NotBlank(message = FIELD_REQUIRED)
     private String lastName;
 
     @NotBlank(message = FIELD_REQUIRED)
-    @Email
-    @Pattern(regexp = ".+@.+\\..+", message = INVALID_EMAIL)
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = INVALID_EMAIL)
+    @Email(message = INVALID_EMAIL)
     @Column(unique = true)
     private String email;
 
@@ -38,5 +38,5 @@ public class UserForm {
     @Pattern(regexp = "^[0-9]{10}$", message = PHONE_NUMBER_MUST_BE_10_DIGIT)
     @NotBlank(message = FIELD_REQUIRED)
     @Length(max = 10)
-    private String phone; 
+    private String phone;
 }
