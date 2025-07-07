@@ -28,23 +28,39 @@ li{
     padding: 0 20px;
 }
 
-
-.menuBar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight:600;
+.menuBar {
+  display: flex;
+  justify-content: space-around; /* changed from space-between for better spacing */
+  align-items: center;
+  font-weight: 600;
+  gap: 1.5rem; /* Adds consistent spacing between menu items */
+  padding: 0 1rem;
 }
 
-.menuBar li .Link{
-    color: rgb(49, 49, 163);
+.menuBar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.menuBar li .Link:hover{
-    color:rgba(49, 49, 163, 0.637);
-   text-decoration: underline;
-   cursor: pointer;
+.menuBar li {
+  position: relative;
+  display: inline-block;
 }
+
+.menuBar .Link {
+  color: rgb(49, 49, 163);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menuBar .Link:hover {
+  color: rgba(49, 49, 163, 0.637);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 
 
 .cartMenu{
@@ -58,6 +74,23 @@ li{
 .cartMenu li:hover{
     color:rgb(72, 75, 78);
     cursor: pointer;
+}
+
+.cartMenu .login .admin-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color:black;
+}
+
+.admin-section .admin-profile{
+    position: relative;
+
+}
+
+.user-profile{
+    position: relative;
 }
 
 .cart .cartCount{
