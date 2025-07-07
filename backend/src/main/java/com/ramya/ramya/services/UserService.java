@@ -1,4 +1,5 @@
 package com.ramya.ramya.services;
+
 import java.util.Optional;
 import java.util.UUID;
 
@@ -7,17 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 import com.ramya.ramya.entities.User;
 import com.ramya.ramya.repositories.UserRepo;
 
+import forms.UserForm;
 import helper.ResponseMessageConstants;
 import helper.RoleConstants;
 
 @Service
 public class UserService {
-    String ROLE_ADMIN=RoleConstants.ROLE_ADMIN;
-    String ROLE_USER=RoleConstants.ROLE_USER;
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
@@ -28,20 +27,25 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public ResponseEntity<String> saveUser(User user) {
-        Optional<User> userExist = userRepo.findByEmail(user.getEmail());
+    public ResponseEntity<String> saveUser(UserForm userForm) {
+        Optional<User> userExist = userRepo.findByEmail(userForm.getEmail());
         if (userExist.isPresent()) {
             return ResponseEntity.ok(ResponseMessageConstants.USER_ALREADY_EXISTS);
         } else {
-            if(userRepo.count()==0){
-                user.setRole(ROLE_ADMIN);
-            }else{
-                user.setRole(ROLE_USER);
-            }
+            User user = new User();
             String userID = UUID.randomUUID().toString();
-            
             user.setId(userID);
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setEmail(userForm.getEmail());
+            user.setFirstName(userForm.getFirstName());
+            user.setLastName(userForm.getLastName());
+            user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+            user.setPhone(userForm.getPhone());
+
+            if (userRepo.count() == 0) {
+                user.setRole(RoleConstants.ROLE_ADMIN);
+            } else {
+                user.setRole(RoleConstants.ROLE_USER);
+            }
 
             userRepo.save(user);
 
