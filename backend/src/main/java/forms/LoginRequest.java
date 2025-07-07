@@ -17,8 +17,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class LoginRequest {
-    @Email
-    @Pattern(regexp = ".+@.+\\..+", message = INVALID_EMAIL)
+    @NotBlank(message = EMAIL_REQUIRED)
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = INVALID_EMAIL)
+    @Email(message = INVALID_EMAIL)
     @Column(unique = true)
     private String email;
 
