@@ -1,0 +1,40 @@
+.profile {
+  position: absolute;
+  height: auto; /* set to auto to fit dynamic content */
+  width: fit-content;
+  background-color: gray;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  font-size: large;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* optional */
+}
+
+.profile li {
+  list-style: none;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
+}
+
+.profile li:hover {
+  background-color: #dcdcdc;
+  color: black;
+}
+
+.profile li.email {
+  text-transform: lowercase;
+  font-style: italic;
+}
+
+.profile li.logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: red;
+}
