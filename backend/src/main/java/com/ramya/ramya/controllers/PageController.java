@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 public class PageController {
 
     private final UserService userService;
-   
+
     private AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final CustomUserDetailService userDetailService;
@@ -45,7 +45,7 @@ public class PageController {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userDetailService = userDetailService;
-     
+
     }
 
     @PostMapping("/register")
@@ -57,16 +57,8 @@ public class PageController {
                 bindingResult.getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(errors);
             }
-
-            User user=new User();
-            user.setEmail(userForm.getEmail());
-            user.setFirstName(userForm.getFirstName());
-            user.setLastName(userForm.getLastName());
-            user.setPassword(userForm.getPassword());
-            user.setPhone(userForm.getPhone());
-
-            userService.saveUser(user);
-            Map<String, String> successResponse = Map.of("message", ResponseMessageConstants.USER_REGISTERED);
+            ResponseEntity<String> reponse = userService.saveUser(userForm);
+            Map<String, String> successResponse = Map.of("message", reponse.getBody());
             return ResponseEntity.ok(successResponse);
         } catch (Exception e) {
             Map<String, String> errorResponse = Map.of("error", ErrorMessages.INVALID_CREDENTIALS);
@@ -78,6 +70,13 @@ public class PageController {
     public ResponseEntity<?> handleLoginForm(@Valid @RequestBody LoginRequest loginRequest,
             BindingResult bindingResult) {
         try {
+            if (bindingResult.hasErrors()) {
+                Map<String, String> errors = new HashMap<>();
+                bindingResult.getFieldErrors()
+                        .forEach(fieldError -> errors.put(fieldError.getField(), fieldError.getDefaultMessage()));
+                return ResponseEntity.badRequest().body(errors);
+            }
+
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
@@ -98,19 +97,11 @@ public class PageController {
             return ResponseEntity.ok(response);
 
         } catch (Exception e) {
-            if (bindingResult.hasErrors()) {
-                Map<String, String> error = new HashMap<>();
-                bindingResult.getFieldErrors()
-                        .forEach(fieldError -> error.put(fieldError.getField(), fieldError.getDefaultMessage()));
-                return ResponseEntity.badRequest().body(error);
-            }
             Map<String, String> errorResponse = Map.of("error", ErrorMessages.AUTHENTICATION_FAILED);
             return ResponseEntity.status(401).body(errorResponse);
         }
 
     }
-
-  
 
     @RequestMapping("/logout")
     public String logout() {
