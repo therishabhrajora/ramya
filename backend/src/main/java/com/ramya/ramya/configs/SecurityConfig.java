@@ -70,7 +70,7 @@ public class SecurityConfig {
 
         http.logout(logout -> logout
                 .logoutUrl("/collections/logout")
-                .logoutSuccessUrl("/collections/account?logout=true")
+                .logoutSuccessUrl("/collections?logout=true")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .permitAll());
