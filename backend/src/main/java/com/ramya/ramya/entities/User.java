@@ -24,8 +24,10 @@ import lombok.Setter;
 @Setter
 @Data
 public class User {
+    
     @Id
     private String id;
+
     @NotBlank
     private String firstName;
 
