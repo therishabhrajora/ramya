@@ -10,8 +10,10 @@ import { loginSuccess } from "../slices/AuthSlice";
 
 function AccountLogin() {
   const dispatch = useDispatch();
-  const navigate=useNavigate();
-  const { token, user, isLoggedIn, role } = useSelector((state) => state.auth); 
+  const navigate = useNavigate();
+  const [loginErrorMessage, setLoginErrorMessage] = useState({});
+  const [registerErrorMessage, setRegisterErrorMessage] = useState({});
+  const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
 
   const [registeredData, setRegisteredData] = useState({
     firstName: "",
@@ -52,12 +54,12 @@ function AccountLogin() {
         password: "",
       });
 
-
-    dispatch(loginSuccess({ token, user, role }));
+      dispatch(loginSuccess({ token, user, role }));
 
       navigate("/collections");
     } catch (e) {
-      console.log(e);
+      let error = e.response.data;
+      setLoginErrorMessage(error);
     }
   };
 
@@ -77,8 +79,8 @@ function AccountLogin() {
         phone: "",
       });
     } catch (e) {
-      let error = e.response.data.message;
-      alert(error);
+      let error = e.response.data;
+      setRegisterErrorMessage(error);
     }
   };
 
@@ -91,7 +93,7 @@ function AccountLogin() {
           <div className="email">
             <label htmlFor="email">Email</label>
             <input
-              type="email"
+              type="text"
               id="loginemail"
               autoComplete="off"
               value={loginData.email}
@@ -99,6 +101,7 @@ function AccountLogin() {
               name="email"
               placeholder="Enter your email"
             />
+            <small>{loginErrorMessage.email ? loginErrorMessage.email:null }</small>
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
@@ -111,6 +114,9 @@ function AccountLogin() {
               onChange={handleLoginChange}
               placeholder="Enter your password"
             />
+            {loginErrorMessage.password && (
+              <small>{loginErrorMessage.password}</small>
+            )}
           </div>
           <Link className="Link" to="">
             <p className="forgot-password">forgot your password ?</p>
@@ -132,6 +138,9 @@ function AccountLogin() {
               value={registeredData.firstName}
               onChange={handleRegisterChange}
             />
+            {registerErrorMessage.firstName && (
+              <small>{registerErrorMessage.firstName}</small>
+            )}
           </div>
           <div className="last-name">
             <label htmlFor="last-name">Last Name</label>
@@ -143,17 +152,23 @@ function AccountLogin() {
               value={registeredData.lastName}
               onChange={handleRegisterChange}
             />
+            {registerErrorMessage.lastName && (
+              <small>{registerErrorMessage.lastName}</small>
+            )}
           </div>
           <div className="email">
             <label htmlFor="email">Email</label>
             <input
-              type="email"
+              type="text"
               name="email"
               id="registerEmail"
               placeholder="Enter your email"
               value={registeredData.email}
               onChange={handleRegisterChange}
             />
+            {registerErrorMessage.email && (
+              <small>{registerErrorMessage.email}</small>
+            )}
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
@@ -166,6 +181,9 @@ function AccountLogin() {
               value={registeredData.password}
               onChange={handleRegisterChange}
             />
+            {registerErrorMessage.password && (
+              <small>{registerErrorMessage.password}</small>
+            )}
           </div>
           <div className="phone">
             <label htmlFor="phone">Phone</label>
@@ -177,6 +195,9 @@ function AccountLogin() {
               placeholder="Enter your phone"
               onChange={handleRegisterChange}
             />
+            {registerErrorMessage.phone && (
+              <small>{registerErrorMessage.phone}</small>
+            )}
           </div>
           <button className="register-btn" type="submit">
             Register
