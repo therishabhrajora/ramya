@@ -6,6 +6,10 @@
     color: rgb(55, 60, 65);
 }
 
+.account-login small{
+    color: rgb(240, 114, 114);
+}
+
 .account-login .login,.account-login .register{
     display: flex;
     flex-direction: column;
