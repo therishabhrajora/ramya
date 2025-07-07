@@ -1,7 +1,7 @@
 
 function ProductOrder() {
   const selectedProducts = JSON.parse(localStorage.getItem("cartProducts"));
-  console.log("Selected Products:", selectedProducts);
+  
   return (
     <div>
       {selectedProducts && selectedProducts.length > 0 ? (
