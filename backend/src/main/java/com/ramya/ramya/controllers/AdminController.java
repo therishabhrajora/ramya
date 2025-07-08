@@ -37,11 +37,11 @@ public class AdminController {
         String fileURl = imageService.uploadImage(productForm.getImage(), fileName);
 
         Products products = new Products();
-        products.setCategory(productForm.getCategory());
-        products.setColor(productForm.getColor());
-        products.setColor(productForm.getColor());
-        products.setGender(productForm.getGender());
-        products.setName(productForm.getName());
+        products.setCategory(productForm.getCategory().toLowerCase());
+        products.setColor(productForm.getColor().toLowerCase());
+        products.setColor(productForm.getColor().toLowerCase());
+        products.setGender(productForm.getGender().toLowerCase());
+        products.setName(productForm.getName().toLowerCase());
         products.setPocket(productForm.getPocket());
         products.setPrice(productForm.getPrice());
         products.setRating(productForm.getRating());
