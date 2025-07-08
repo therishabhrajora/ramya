@@ -1,103 +1,102 @@
-.menHoverSection{
-    position: absolute;
-    width: 100%;
-    padding: 20px 70px;
-    top:57px;
-    left: 0;
-    background-color: rgb(252, 175, 255);
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+.menHoverSection {
+  position: absolute;
+  width: 100%;
+  padding: 20px 70px;
+  top: 57px;
+  left: 0;
+  background-color: rgb(252, 175, 255);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  transition: all .3s ease-in-out 1s;
 }
 
-.womenHoverSection{
-    position: absolute;
-    width: 100%;
-    padding: 20px 70px;
-    top:57px;
-    left: 0;
-    background-color: rgb(252, 175, 255);
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+.womenHoverSection {
+  position: absolute;
+  width: 100%;
+  padding: 20px 70px;
+  top: 57px;
+  left: 0;
+  background-color: rgb(252, 175, 255);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  transition: all .3s ease-in-out 1s;
 }
 
-ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-transform: capitalize  ;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
 }
 
-ul li .Link{
-    text-decoration: none;
-    color: black;
+ul li .Link {
+  text-decoration: none;
+  color: black;
 }
 
-.head{
-    font-size: 18px;
-    font-weight: 600;
+.head {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-
-
-.categories ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+.categories ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.scrubs-fabric{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;  
+.scrubs-fabric {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.scrubs-fabric ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+.scrubs-fabric ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-
-.labCoat-pocket{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px
+.labCoat-pocket {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.labCoat-pocket ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px
+.labCoat-pocket ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.assessories-apparel{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+.assessories-apparel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.assessories-apparel ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+.assessories-apparel ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.shopByColor{
-    display: flex;
-    gap: 10px;
-    padding: 10px;
+.shopByColor {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
 }
 
-.shopByColor ul{
-    display: flex;
-    flex-direction: column;
-    min-width:fit-content ;
-    gap: 10px;
-} 
+.shopByColor ul {
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  gap: 10px;
+}
