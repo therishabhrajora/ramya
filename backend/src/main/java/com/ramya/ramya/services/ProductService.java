@@ -1,6 +1,7 @@
 package com.ramya.ramya.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,15 @@ public class ProductService {
         products.setProductId(id);
         productsRepo.save(products);
     }
+
+    public List<Products> findProducts() {
+        return productsRepo.findAll();
+    }
+
+
+    
+
+
+
 
 }
