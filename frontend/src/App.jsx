@@ -9,11 +9,29 @@ import TrackOrder from "./components/tackOrder/TrackOrder";
 import BulkOrder from "./components/bulkOrder/BulkOrder";
 import AccountLogin from "./pages/AccountLogin";
 import Products from "./pages/admin/Products";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "./pages/Cart";
 import ProductOrder from "./components/products/ProductOrder";
+import { useEffect } from "react";
+import axios from "axios";
+import { setProducts } from "./slices/ProductSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await axios.get(
+          "http://localhost:9090/collections/products"
+        );
+        dispatch(setProducts(res.data));
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    }
+    fetchProducts();
+  }, []);
   const isCartOpen = useSelector((state) => state.navBar.cartOpen);
   return (
     <>
@@ -30,7 +48,7 @@ function App() {
         <Route path="/collections/account" element={<AccountLogin />} />
         <Route path="/collections/logout" element={<AccountLogin />} />
         <Route path="/collections/products" element={<ProductOrder />} />
-        <Route path="/collections/admin/add-products" element={<Products/>} />
+        <Route path="/collections/admin/add-products" element={<Products />} />
       </Routes>
     </>
   );
