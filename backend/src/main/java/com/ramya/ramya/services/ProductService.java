@@ -2,14 +2,17 @@ package com.ramya.ramya.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.http5.api.Response;
 import com.ramya.ramya.entities.Products;
 import com.ramya.ramya.repositories.ProductsRepo;
+
+import helper.ResponseMessageConstants;
 
 @Service
 public class ProductService {
@@ -21,7 +24,7 @@ public class ProductService {
 
     }
 
-    public void saveProducts(Products products) {
+    public ResponseEntity<String> saveProducts(Products products) {
 
         ArrayList<String> arr = new ArrayList<>();
         arr.add(products.getName().replaceAll(" ", "-").toLowerCase());
@@ -32,6 +35,8 @@ public class ProductService {
 
         products.setProductId(id);
         productsRepo.save(products);
+
+        return ResponseEntity.ok(ResponseMessageConstants.CREATE_SUCCESS);
     }
 
     public List<Products> findProducts() {
