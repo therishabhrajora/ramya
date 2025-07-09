@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import NavBar from "../../components/homePage/NavBar";
 import Footer from "../../components/homePage/Footer";
-import "../../styles/homepage/products.css";
+import "frontend/src/styles/homepage/products.css";
 import axios from "axios";
 
 function Products() {

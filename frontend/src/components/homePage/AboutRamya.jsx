@@ -1,7 +1,7 @@
 import { GoPlus } from "react-icons/go";
 
 import "../../index.css";
-import "../../styles/homepage/AboutRamya.css";
+import "frontend/src/styles/homepage/AboutRamya.css";
 
 function AboutRamya() {
   return (

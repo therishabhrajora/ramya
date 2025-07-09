@@ -1,4 +1,4 @@
-import "../../styles/homepage/ShoppingSection.css";
+import "frontend/src/styles/homepage/ShoppingSection.css";
 import heroimage from "../../assets/heroImage.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../slices/ProductSlice";

@@ -6,8 +6,8 @@ import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
 import "../../index.css";
-import "../../styles/homepage/navBar.css";
-import "../../styles/homepage/carts.css";
+import "frontend/src/styles/homepage/navBar.css";
+import "frontend/src/styles/homepage/carts.css";
 import { Link } from "react-router-dom";
 import {
   menCollectionOpen,
