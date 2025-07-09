@@ -3,7 +3,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import MenCollections from "./pages/MenCollections";
 import WomenCollections from "./pages/WomenCollections";
-import Ecoflex from "./components/ecoflexSection/ecoflex";
+import Ecoflex from "./components/ecoflexSection/Ecoflex";
 import Stethoscope from "./components/stethoscpe/Stethoscope";
 import TrackOrder from "./components/tackOrder/TrackOrder";
 import BulkOrder from "./components/bulkOrder/BulkOrder";
