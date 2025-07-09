@@ -1,5 +1,5 @@
 import Banner from "../../assets/men/MensBanner.webp";
-import "../../styles/MenCollection/HeroSection.css";
+import "../../styles/MenCollection/heroSection.css";
 
 
 function HeroSection() {
