@@ -124,7 +124,7 @@ function NavBar() {
         </li>
 
         <li className="login">
-          {console.log("this is openProfile: ", isProfileOpen)}
+          
           {isLoggedIn ? (
             role === "ROLE_ADMIN" ? (
               <ul
@@ -151,7 +151,7 @@ function NavBar() {
                 onMouseEnter={() => dispatch(profileOpen())}
                 onMouseLeave={() => dispatch(closeProfile())}
               >
-                {console.log("this is openProfile: ", isProfileOpen)}
+                
                 <li className="Link user-profile">
                   <CgProfile />
                 </li>
