@@ -1,5 +1,5 @@
 import "../../index.css";
-import "../../styles/homepage/categorySection.css";
+import "../../styles/homepage/CategorySection.css";
 import navyblue from "../../assets/navyblue.png";
 import black from "../../assets/black.png";
 import wine from "../../assets/wine.png";

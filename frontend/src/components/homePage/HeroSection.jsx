@@ -1,5 +1,5 @@
 import heroimage from "../../assets/Generic_Homepage_Banner_32_BIT_1.webp";
-import "../../styles/homepage/heroSection.css";
+import "../../styles/homepage/HeroSection.css";
 
 function HeroSection() {
   return (
