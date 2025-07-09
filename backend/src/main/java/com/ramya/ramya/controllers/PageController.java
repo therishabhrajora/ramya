@@ -57,8 +57,9 @@ public class PageController {
                 bindingResult.getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(errors);
             }
-            ResponseEntity<String> reponse = userService.saveUser(userForm);
-            Map<String, String> successResponse = Map.of("message", reponse.getBody());
+            ResponseEntity<String> response = userService.saveUser(userForm);
+            System.out.println(response);
+            Map<String, String> successResponse = Map.of("message", response.getBody());
             return ResponseEntity.ok(successResponse);
         } catch (Exception e) {
             Map<String, String> errorResponse = Map.of("error", ErrorMessages.INVALID_CREDENTIALS);
