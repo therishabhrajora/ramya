@@ -44,7 +44,7 @@ function FilterCollection() {
 
   let handleCheckBoxes = (e) => {
     let value = e.target.value;
-    console.log(value);
+  
     if (e.target.checked) {
       setSelectCheckBox((prev) => [...prev, value]);
     } else {
@@ -52,7 +52,7 @@ function FilterCollection() {
     }
   };
 
-  console.log(selectCheckBox);
+
   return (
     <div className="filterCollectionContainer">
       <p className="sortBySection">

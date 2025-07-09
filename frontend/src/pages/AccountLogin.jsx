@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
+import { MdSouth } from "react-icons/md";
 
 function AccountLogin() {
   const dispatch = useDispatch();
@@ -64,20 +65,28 @@ function AccountLogin() {
   };
 
   const handleRegisterForm = async (e) => {
+  
     e.preventDefault();
     try {
-      await axios.post(
+      const res=await axios.post(
         "http://localhost:9090/collections/register",
         registeredData
       );
-
-      setRegisteredData({
+      if(res.data.message){
+        alert(res.data.message);
+      }else{
+         setRegisteredData({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         phone: "",
       });
+      }
+      
+
+     
+      
     } catch (e) {
       let error = e.response.data;
       setRegisterErrorMessage(error);

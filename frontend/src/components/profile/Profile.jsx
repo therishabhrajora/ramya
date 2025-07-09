@@ -16,7 +16,7 @@ function Profile() {
 
   const handleLogout = () => {
     dispatch(logout());
-    console.log("removed tokens");
+  
     dispatch(profileOpen())
     navigate("/collections");
   };

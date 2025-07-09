@@ -9,7 +9,7 @@ import { removeFromCart } from "../slices/ProductSlice";
 function Cart() {
   const dispatch = useDispatch();
   const selectedProducts = useSelector((state) => state.product.cartProducts);
-  console.log("Selected Products:", selectedProducts);
+
   return (
     <div className="cart-section">
       <span className="close-btn " onClick={() => dispatch(cartOpen())}>

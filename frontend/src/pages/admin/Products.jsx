@@ -6,7 +6,7 @@ import "../../styles/homepage/products.css";
 import axios from "axios";
 
 function Products() {
-  const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
+  // const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
   const imageInputRef=useRef(null);
   const [productsData, setProductsData] = useState({
     productId: "",
