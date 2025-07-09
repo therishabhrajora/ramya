@@ -30,6 +30,7 @@ public class UserService {
     public ResponseEntity<String> saveUser(UserForm userForm) {
         Optional<User> userExist = userRepo.findByEmail(userForm.getEmail());
         if (userExist.isPresent()) {
+            System.out.println("user already exist");
             return ResponseEntity.ok(ResponseMessageConstants.USER_ALREADY_EXISTS);
         } else {
             User user = new User();
