@@ -2,9 +2,10 @@ import { MdOutlineClose } from "react-icons/md";
 import { cartOpen } from "../slices/NavBarSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "../styles/homepage/cart.css";
+
 import { MdDeleteForever } from "react-icons/md";
 import { removeFromCart } from "../slices/ProductSlice";
+import "../styles/homepage/cart.css";
 
 function Cart() {
   const dispatch = useDispatch();
