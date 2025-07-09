@@ -35,7 +35,7 @@ function App() {
   const isCartOpen = useSelector((state) => state.navBar.cartOpen);
   return (
     <>
-      {console.log(isCartOpen, "cart open")}
+     
       {isCartOpen ? <Cart /> : null}
       <Routes>
         <Route path="/collections" element={<HomePage />} />
