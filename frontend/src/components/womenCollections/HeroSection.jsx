@@ -1,5 +1,5 @@
 import Banner from "../../assets/women/women-collection-banner.webp";
-import "../../styles/womenCollection/HeroSection.css";
+import "../../styles/womenCollection/heroSection.css";
 
 
 function HeroSection() {

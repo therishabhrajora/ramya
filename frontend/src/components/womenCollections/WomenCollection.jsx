@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import "../../styles/womenCollection/WomenCollection.css";
+import "../../styles/womenCollection/womenCollection.css";
 
 function WomenCollection() {
   const allCollections = useSelector((state) => state.product.products);
