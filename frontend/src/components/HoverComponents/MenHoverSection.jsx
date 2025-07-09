@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../index.css";
-import "../../styles/HoverComponents/HoverSection.css";
+import "../../styles/hoverComponents/hoverSection.css";
 
 function MenHoverSection() {
     return ( 

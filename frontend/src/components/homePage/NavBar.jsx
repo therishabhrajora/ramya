@@ -7,7 +7,7 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
 import "../../index.css";
 import "../../styles/homepage/navBar.css";
-import "../../styles/homepage/Cart.css";
+import "../../styles/homepage/cart.css";
 import { Link } from "react-router-dom";
 import {
   menCollectionOpen,
@@ -20,8 +20,8 @@ import {
 } from "../../slices/NavBarSlice";
 
 import { useDispatch, useSelector } from "react-redux";
-import MenHoverSection from "../HoverComponents/MenHoverSection";
-import WomenHoverSection from "../HoverComponents/WomenHoverSection";
+import MenHoverSection from "../hoverComponents/MenHoverSection";
+import WomenHoverSection from "../hoverComponents/WomenHoverSection";
 import Profile from "../profile/profile";
 
 function NavBar() {

@@ -2,7 +2,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 
 import "../../index.css";
-import "../../styles/WomenCollection/filterCollection.css";
+import "../../styles/womenCollection/filterCollection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../slices/ProductSlice";
