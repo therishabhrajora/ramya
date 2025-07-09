@@ -7,7 +7,7 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
 import "../../index.css";
 import "../../styles/homepage/navBar.css";
-import "../../styles/homepage/cart.css";
+import "../../styles/homepage/carts.css";
 import { Link } from "react-router-dom";
 import {
   menCollectionOpen,

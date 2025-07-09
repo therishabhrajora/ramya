@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { MdDeleteForever } from "react-icons/md";
 import { removeFromCart } from "../slices/ProductSlice";
-import "../styles/homepage/cart.css";
+import "../styles/homepage/carts.css";
 
 function Cart() {
   const dispatch = useDispatch();
