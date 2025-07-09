@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+
 import NavBar from "../../components/homePage/NavBar";
 import Footer from "../../components/homePage/Footer";
 import "../../styles/homepage/products.css";

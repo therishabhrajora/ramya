@@ -5,7 +5,7 @@ import NavBar from "../components/homePage/NavBar";
 import Footer from "../components/homePage/Footer";
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
 import { MdSouth } from "react-icons/md";
 
@@ -14,7 +14,6 @@ function AccountLogin() {
   const navigate = useNavigate();
   const [loginErrorMessage, setLoginErrorMessage] = useState({});
   const [registerErrorMessage, setRegisterErrorMessage] = useState({});
-  const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
 
   const [registeredData, setRegisteredData] = useState({
     firstName: "",
