@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
-import "frontend/src/styles/profile/profile.css";
+import "../../style/profile/profile.css";
 import { useDispatch } from "react-redux";
 import { profileOpen } from "../../slices/NavBarSlice";
 import { logout } from "../../slices/AuthSlice";

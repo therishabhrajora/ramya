@@ -2,7 +2,7 @@ import { IoIosCall } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
 import "../../index.css";
-import "frontend/src/styles/homepage/footer.css";
+import "../../style/homepage/footer.css";
 
 function Footer() {
   return (

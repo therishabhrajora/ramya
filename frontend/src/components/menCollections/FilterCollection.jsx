@@ -1,6 +1,6 @@
 import { IoMdArrowDropup } from "react-icons/io";
 import "../../index.css";
-import "frontend/src/styles/menCollection/filterCollection.css";
+import "../../style/menCollection/filterCollection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../slices/ProductSlice";
