@@ -1,7 +1,7 @@
 package helper;
 
 public class DatabaseConstants {
-    public static final String CORS_ORIGIN = "http://localhost:5173";
+    public static final String CORS_ORIGIN = "https://ramyascrubs.netlify.app/";
 
     private DatabaseConstants() {
     }
