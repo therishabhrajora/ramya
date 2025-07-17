@@ -66,13 +66,14 @@ function AccountLogin() {
   };
 
   const handleRegisterForm = async (e) => {
-  
+    alert("register call")
     e.preventDefault();
     try {
       const res=await axios.post(
         ENDPOINTS.register,
         registeredData
       );
+      alert("register try")
       if(res.data.message){
         alert(res.data.message);
       }else{
@@ -89,6 +90,7 @@ function AccountLogin() {
      
       
     } catch (e) {
+      alert("e catch")
       let error = e.response.data;
       setRegisterErrorMessage(error);
     }
