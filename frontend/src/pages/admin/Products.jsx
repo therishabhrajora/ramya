@@ -4,8 +4,10 @@ import NavBar from "../../components/homePage/NavBar";
 import Footer from "../../components/homePage/Footer";
 import "../../style/homepage/products.css";
 import axios from "axios";
+import { ENDPOINTS } from "../../helper/Constants";
 
 function Products() {
+
   // const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
   const imageInputRef=useRef(null);
   const [productsData, setProductsData] = useState({
@@ -36,7 +38,7 @@ function Products() {
     formData.append("image", productsData.image);
     try {
       axios.post(
-        "http://localhost:9090/collections/admin/add-products",
+        ENDPOINTS.addProducts,
         formData,
         {
           headers: {

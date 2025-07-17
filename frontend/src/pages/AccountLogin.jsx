@@ -8,8 +8,10 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
 import { MdSouth } from "react-icons/md";
+import { ENDPOINTS } from "../helper/Constants";
 
 function AccountLogin() {
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginErrorMessage, setLoginErrorMessage] = useState({});
@@ -40,7 +42,7 @@ function AccountLogin() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:9090/collections/login",
+       ENDPOINTS.login,
         loginData,
         {
           headers: { "Content-Type": "application/json" },
@@ -68,7 +70,7 @@ function AccountLogin() {
     e.preventDefault();
     try {
       const res=await axios.post(
-        "http://localhost:9090/collections/register",
+        ENDPOINTS.register,
         registeredData
       );
       if(res.data.message){
