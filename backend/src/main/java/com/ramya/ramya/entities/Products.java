@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
+@Table(name = "products")
 public class Products {
     @Id
     private String productId;
