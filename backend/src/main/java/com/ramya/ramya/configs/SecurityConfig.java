@@ -54,14 +54,15 @@ public class SecurityConfig {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        http.cors(cors -> cors.configurationSource(request -> {
-            CorsConfiguration config = new CorsConfiguration();
-            config.setAllowCredentials(true);
-            config.addAllowedOrigin(CORS_ORIGIN);
-            config.addAllowedHeader("*");
-            config.addAllowedMethod("*");
-            return config;
-        }));
+            http.cors(cors -> cors.configurationSource(request -> {
+                CorsConfiguration config = new CorsConfiguration();
+                config.setAllowCredentials(true);
+                config.addAllowedOrigin(CORS_ORIGIN);
+                config.addAllowedOrigin("http://localhost:3000");
+                config.addAllowedHeader("*");
+                config.addAllowedMethod("*");
+                return config;
+            }));
 
         // http.oauth2Login(oauth -> {
         // oauth.loginPage("/collections/account");

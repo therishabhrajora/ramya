@@ -36,7 +36,7 @@ function App() {
     <>
       {isCartOpen ? <Cart /> : null}
       <Routes>
-        <Route path="/" element={<Navigate to="/collections" />} />
+        {/* <Route path="/" element={<Navigate to="/collections" />} /> */}
         <Route path="/collections" element={<HomePage />} />
         <Route path="/collections/men" element={<MenCollections />} />
         <Route path="/collections/women" element={<WomenCollections />} />
