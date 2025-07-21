@@ -1,4 +1,4 @@
-export   const DATABASE_ORIGIN = process.env.DATABASE_ORIGIN;
+export   const DATABASE_ORIGIN = process.env.REACT_APP_DATABASE_ORIGIN;
 export const  ENDPOINTS={
     addProducts:`${DATABASE_ORIGIN}/collections/admin/add-products`,
     login: `${DATABASE_ORIGIN}/collections/login`,

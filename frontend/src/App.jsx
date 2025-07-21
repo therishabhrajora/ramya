@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { setProducts } from "./slices/ProductSlice";
 import { ENDPOINTS } from "./helper/Constants";
+import { MdSouth } from "react-icons/md";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
     async function fetchProducts() {
       try {
         const res = await axios.get(ENDPOINTS.products);
+        console.log("this is res.data",res.data);
         dispatch(setProducts(res.data));
       } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -37,6 +39,7 @@ function App() {
       {isCartOpen ? <Cart /> : null}
       <Routes>
         {/* <Route path="/" element={<Navigate to="/collections" />} /> */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/collections" element={<HomePage />} />
         <Route path="/collections/men" element={<MenCollections />} />
         <Route path="/collections/women" element={<WomenCollections />} />

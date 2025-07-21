@@ -6,9 +6,9 @@ function ShoppingSection() {
 const dispatch=useDispatch();
 const allCollections = useSelector((state) => state.product.products);
 
-const ecoflexProducts = allCollections.filter((product) => product.category==="ecoflex");
-const classicProducts = allCollections.filter((product) => product.category==="classic");
-const stethoscope = allCollections.filter((product) => product.category==="stethoscope");
+  const ecoflexProducts = allCollections.filter((product) => product.category==="ecoflex");
+  const classicProducts = allCollections.filter((product) => product.category==="classic");
+  const stethoscope = allCollections.filter((product) => product.category==="stethoscope");
 
 
 
