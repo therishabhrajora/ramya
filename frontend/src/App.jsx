@@ -25,8 +25,8 @@ function App() {
     async function fetchProducts() {
       try {
         const res = await axios.get(ENDPOINTS.products);
-        
-        dispatch(setProducts(res.data));
+        console.log(res.data);
+       // dispatch(setProducts(res.data));
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }

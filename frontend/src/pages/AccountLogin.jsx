@@ -10,9 +10,7 @@ import { loginSuccess } from "../slices/AuthSlice";
 import { MdSouth } from "react-icons/md";
 import { ENDPOINTS } from "../helper/Constants";
 
-
 function AccountLogin() {
- 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginErrorMessage, setLoginErrorMessage] = useState({});
@@ -42,14 +40,10 @@ function AccountLogin() {
   const handleLoginForm = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-       ENDPOINTS.login,
-        loginData,
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(ENDPOINTS.login, loginData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
       const { token, user, role } = res.data;
 
       setLoginData({
@@ -67,31 +61,21 @@ function AccountLogin() {
   };
 
   const handleRegisterForm = async (e) => {
-    alert("register call")
+    alert("register call");
     e.preventDefault();
     try {
-      const res=await axios.post(
-        ENDPOINTS.register,
-        registeredData
-      );
-      alert("register try")
-      if(res.data.message){
-        alert(res.data.message);
-      }else{
-         setRegisteredData({
+      alert("this is before respose");
+      const res = await axios.post(ENDPOINTS.register, registeredData);
+      alert("after res")
+      setRegisteredData({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         phone: "",
       });
-      }
-      
-
-     
-      
     } catch (e) {
-      alert("e catch")
+      alert("e catch");
       let error = e.response.data;
       setRegisterErrorMessage(error);
     }
@@ -114,7 +98,9 @@ function AccountLogin() {
               name="email"
               placeholder="Enter your email"
             />
-            <small>{loginErrorMessage.email ? loginErrorMessage.email:null }</small>
+            <small>
+              {loginErrorMessage.email ? loginErrorMessage.email : null}
+            </small>
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
