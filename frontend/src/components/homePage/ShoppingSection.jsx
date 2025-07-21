@@ -6,9 +6,9 @@ function ShoppingSection() {
 const dispatch=useDispatch();
 const allCollections = useSelector((state) => state.product.products);
 
-  const ecoflexProducts = allCollections.filter((product) => product.category==="ecoflex");
-  const classicProducts = allCollections.filter((product) => product.category==="classic");
-  const stethoscope = allCollections.filter((product) => product.category==="stethoscope");
+  // const ecoflexProducts = allCollections.filter((product) => product.category==="ecoflex");
+  // const classicProducts = allCollections.filter((product) => product.category==="classic");
+  // const stethoscope = allCollections.filter((product) => product.category==="stethoscope");
 
 
 
@@ -19,7 +19,7 @@ const allCollections = useSelector((state) => state.product.products);
           <h1>Shop Ecoflex Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {ecoflexProducts.map((scrub) => (
+            {allCollections.map((scrub) => (
               <div className="scrubCard" key={scrub.id}>
                 <img src={scrub.image} alt={scrub.name} width="300px" />
                 <div className="scrubDetails">
@@ -40,7 +40,7 @@ const allCollections = useSelector((state) => state.product.products);
           <h1>Shop Classic Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {classicProducts.map((scrub) => (
+            {allCollections.map((scrub) => (
               <div className="scrubCard" key={scrub.id}>
                 <img src={scrub.image} alt={scrub.name} width="300px" />
                 <div className="scrubDetails">
@@ -61,7 +61,7 @@ const allCollections = useSelector((state) => state.product.products);
           <h1>Shop Stethoscope</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {stethoscope.map((scrub) => (
+            {allCollections.map((scrub) => (
               <div className="scrubCard" key={scrub.id}>
                 <img src={scrub.image} alt={scrub.name} width="300px" />
                 <div className="scrubDetails">
