@@ -66,7 +66,7 @@ function AccountLogin() {
     try {
       alert("this is before respose");
       const res = await axios.post(ENDPOINTS.register, registeredData);
-      alert("after res")
+      alert("after res");
       setRegisteredData({
         firstName: "",
         lastName: "",

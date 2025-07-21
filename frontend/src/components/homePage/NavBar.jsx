@@ -42,89 +42,89 @@ function NavBar() {
 
   return (
     <div className="navBar baseBackgroundColor">
-      <div className="logo">
-        <Link className="Link" to="/collections">
-          RamYa
-        </Link>
-      </div>
-      <div className="menuBar baseTextColor">
-        {/* Men Menu */}
-        <div
-          className="menu-item-wrapper"
-          onMouseEnter={() => dispatch(menCollectionOpen())}
-          onMouseLeave={() => dispatch(menCollectionClose())}
-        >
+      <div className="left">
+        <div className="logo">
+          <Link className="Link" to="/collections">
+            RamYa
+          </Link>
+        </div>
+        <div className="menuBar baseTextColor">
+          {/* Men Menu */}
+          <div
+            className="menu-item-wrapper"
+            onMouseEnter={() => dispatch(menCollectionOpen())}
+            onMouseLeave={() => dispatch(menCollectionClose())}
+          >
+            <ul className="menu-list">
+              <li className="men">
+                <Link className="Link" to="/collections/men">
+                  Men
+                </Link>
+              </li>
+            </ul>
+            {isMenCollectionOpen && (
+              <div className="hover-wrapper">
+                <MenHoverSection />
+              </div>
+            )}
+          </div>
+
+          <div
+            className="menu-item-wrapper"
+            onMouseEnter={() => dispatch(womenCollectionOpen())}
+            onMouseLeave={() => dispatch(womenCollectionClose())}
+          >
+            <ul className="menu-list">
+              <li className="women">
+                <Link className="Link" to="/collections/women">
+                  Women
+                </Link>
+              </li>
+            </ul>
+            {isWomenCollectionOpen && (
+              <div className="hover-wrapper">
+                <WomenHoverSection />
+              </div>
+            )}
+          </div>
+
+          {/* Static links (no hover) */}
           <ul className="menu-list">
-            <li className="men">
-              <Link className="Link" to="/collections/men">
-                Men
+            <li className="exoflex">
+              <Link className="Link" to="/collections/ecoflex">
+                Ecoflex
               </Link>
             </li>
           </ul>
-          {isMenCollectionOpen && (
-            <div className="hover-wrapper">
-              <MenHoverSection />
-            </div>
-          )}
-        </div>
-
-        <div
-          className="menu-item-wrapper"
-          onMouseEnter={() => dispatch(womenCollectionOpen())}
-          onMouseLeave={() => dispatch(womenCollectionClose())}
-        >
-          <ul className="menu-list">
-            <li className="women">
-              <Link className="Link" to="/collections/women">
-                Women
+          <ul>
+            <li className="stethoscope">
+              <Link className="Link" to="/collections/stethoscope">
+                Stethoscope
               </Link>
             </li>
           </ul>
-          {isWomenCollectionOpen && (
-            <div className="hover-wrapper">
-              <WomenHoverSection />
-            </div>
-          )}
+          <ul>
+            <li className="trackOrder">
+              <Link className="Link" to="/collections/track-order">
+                Track Order
+              </Link>
+            </li>
+          </ul>
+          <ul>
+            <li className="bulkOrder">
+              <Link className="Link" to="/collections/bulk-order">
+                Bulk Order
+              </Link>
+            </li>
+          </ul>
         </div>
-
-        {/* Static links (no hover) */}
-        <ul className="menu-list">
-          <li className="exoflex">
-            <Link className="Link" to="/collections/ecoflex">
-              Ecoflex
-            </Link>
-          </li>
-        </ul>
-        <ul>
-          <li className="stethoscope">
-            <Link className="Link" to="/collections/stethoscope">
-              Stethoscope
-            </Link>
-          </li>
-        </ul>
-        <ul>
-          <li className="trackOrder">
-            <Link className="Link" to="/collections/track-order">
-              Track Order
-            </Link>
-          </li>
-        </ul>
-        <ul>
-          <li className="bulkOrder">
-            <Link className="Link" to="/collections/bulk-order">
-              Bulk Order
-            </Link>
-          </li>
-        </ul>
       </div>
-
-      <div className="cartMenu">
+      <div className="right cartMenu">
         <li className="search">
           <IoSearchOutline />
         </li>
 
         <li className="login">
-          
           {isLoggedIn ? (
             role === "ROLE_ADMIN" ? (
               <ul
@@ -151,7 +151,6 @@ function NavBar() {
                 onMouseEnter={() => dispatch(profileOpen())}
                 onMouseLeave={() => dispatch(closeProfile())}
               >
-                
                 <li className="Link user-profile">
                   <CgProfile />
                 </li>
@@ -164,6 +163,7 @@ function NavBar() {
             </Link>
           )}
         </li>
+
         <li className="cart" onClick={() => dispatch(cartOpen())}>
           {cartCount > 0 ? (
             <div className="cartCount">

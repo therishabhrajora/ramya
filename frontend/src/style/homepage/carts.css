@@ -123,3 +123,67 @@
 .remove-btn:hover{
   background-color: #b12c3f;
 }
+
+
+
+
+
+
+
+/* For small tablets and below (≤768px) */
+@media screen and (max-width: 768px) {
+  .cart-section {
+    width: 50vw;
+  }
+}
+@media screen and (max-width: 640px) {
+  .cart-section {
+    width: 100vw;
+  }
+}
+
+/* 📱 For Mobile Devices (≤480px) */
+@media screen and (max-width: 480px) {
+  .cart-section {
+    width: 100vw;
+    border: none;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .cart ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 5px;
+  }
+
+  .cart .shopping-btn,
+  .productDetails .remove-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .productDetails .productInfo {
+    font-size: 14px;
+  }
+
+  .cart ul {
+    font-size: 14px;
+  }
+
+  .cart .emptyCart {
+    height: auto;
+    padding: 40px 10px;
+    gap: 15px;
+  }
+}
