@@ -1,5 +1,7 @@
 package com.ramya.ramya.configs;
 
+import java.util.List;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +23,7 @@ import helper.DatabaseConstants;
 @Configuration
 @EnableAutoConfiguration
 public class SecurityConfig {
-    String CORS_ORIGIN=DatabaseConstants.CORS_ORIGIN;
+    String CORS_ORIGIN = DatabaseConstants.CORS_ORIGIN;
 
     private JwtRequestFilter jwtRequestFilter;
     private CustomUserDetailService userDetailService;
@@ -54,15 +56,20 @@ public class SecurityConfig {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-            http.cors(cors -> cors.configurationSource(request -> {
-                CorsConfiguration config = new CorsConfiguration();
-                config.setAllowCredentials(true);
-                config.addAllowedOrigin(CORS_ORIGIN);
-                config.addAllowedOrigin("http://localhost:3000");
-                config.addAllowedHeader("*");
-                config.addAllowedMethod("*");
-                return config;
-            }));
+        http.cors(cors -> cors.configurationSource(request -> {
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowCredentials(true);
+
+            config.setAllowedOrigins(List.of(
+                    "https://ramyascrubs.netlify.app",
+                    "http://localhost:3000"));
+
+            config.addAllowedHeader("*");
+            config.addAllowedMethod("*");
+            return config;
+        }))
+       
+
 
         // http.oauth2Login(oauth -> {
         // oauth.loginPage("/collections/account");
@@ -80,6 +87,7 @@ public class SecurityConfig {
                 .invalidSessionUrl("/login?invalidSession=true"));
 
         return http.build();
+         
     }
 
     @Bean
