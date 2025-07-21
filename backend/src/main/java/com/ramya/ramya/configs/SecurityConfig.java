@@ -67,7 +67,7 @@ public class SecurityConfig {
             config.addAllowedHeader("*");
             config.addAllowedMethod("*");
             return config;
-        }))
+        }));
        
 
 
