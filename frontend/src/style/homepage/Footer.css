@@ -1,23 +1,22 @@
-.footer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding : 50px 100px;
-    color:rgb(41, 47, 53);
-    margin-bottom: 25px;
-    border-top-right-radius: 200px ;
-    
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 50px 100px;
+  color: rgb(41, 47, 53);
+  margin-bottom: 25px;
+  border-top-right-radius: 200px;
 }
 
-.footer section .head{
-    font-size: x-large;
-    font-weight: bold;
-    color:rgb(57, 63, 70)
+.footer section .head {
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(57, 63, 70);
 }
 
-.footer section{
-    display: flex ;
-    flex-direction: column;
-    gap:10px
+.footer section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .contactUs {
@@ -62,12 +61,6 @@
   opacity: 1;
 }
 
-
-
-
-
-
-
 @media screen and (max-width: 1024px) {
   .footer {
     grid-template-columns: 1fr 1fr;
@@ -96,10 +89,12 @@
 /* ------------------------------- */
 @media screen and (max-width: 480px) {
   .footer {
-    grid-template-columns: 1fr;
-    padding: 30px 20px;
-    gap: 20px;
-    text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 50px 100px;
+  color: rgb(41, 47, 53);
+  margin-bottom: 25px;
+  border-top-right-radius: 0px;
   }
 
   .footer section {
@@ -107,9 +102,13 @@
   }
 
   .contactUs {
-    flex-direction: column;
-    padding: 30px 20px;
-    gap: 20px;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 1;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 25px;
   }
 
   .contactUs p {

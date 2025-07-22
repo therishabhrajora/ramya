@@ -118,7 +118,7 @@ li {
 }
 
 @media screen and (max-width: 480px) {
- .logo {
+  .logo {
     padding-left: 20px;
     font-size: x-large;
   }
@@ -130,8 +130,8 @@ li {
   }
 
   .menuBar {
-   /* font-size: medium; */
-   display: none;
+    /* font-size: medium; */
+    display: none;
   }
 
   .cartMenu {
@@ -142,10 +142,11 @@ li {
   }
 }
 
+
 @media screen and (min-width: 481px) and (max-width: 703px) {
-    .menuBar{
-        display: none;
-    }
+  .menuBar {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -161,7 +162,7 @@ li {
   }
 
   .menuBar {
-   font-size: medium;
+    font-size: medium;
   }
 
   .cartMenu {
