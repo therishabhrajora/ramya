@@ -77,36 +77,3 @@
 
 
 
-@media screen and (max-width: 768px) {
-    .account-login {
-        flex-direction: column;
-        align-items: center;
-        padding: 50px 10px;
-    }
-
-    .login input,
-    .register input {
-        width: 100%;
-        max-width: 350px;
-    }
-}
-
-/* Mobiles */
-@media screen and (max-width: 480px) {
-    .account-login {
-        padding: 40px 10px;
-        gap: 20px;
-    }
-
-    .login input,
-    .register input {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .login .sign-in-btn,
-    .register .register-btn {
-        height: 45px;
-        font-size: 14px;
-    }
-}

@@ -3,7 +3,7 @@ import "../../style/homepage/heroSection.css";
 
 function HeroSection() {
   return (
-    <>
+    <div className="heroSectionContainer">
       <div className="heroSection">
         <img src={heroimage} className="heroImage" alt="" />
       </div>
@@ -22,7 +22,7 @@ function HeroSection() {
           <li>LONG   SHIFTED   VERIFIED</li>
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

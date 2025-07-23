@@ -23,99 +23,78 @@ function ShoppingSection() {
           <h1>Shop Ecoflex Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-            {ecoflexProducts.length > 0 ? (
-              ecoflexProducts.map((scrub) => (
-                <div className="scrubCard" key={scrub.id}>
-                  <img src={scrub.image} alt={scrub.name} width="300px" />
-                  <div className="scrubDetails">
-                    <div className="rating">
-                      <h5>Ecoflex</h5>
-                      <h5>{scrub.rating}</h5>
-                    </div>
-                    <h3>{scrub.name}</h3>
-                    <p>Price: ₹{scrub.price}</p>
-                    <p>Color: {scrub.color}</p>
-                    <div
-                      className="addToCartbtn"
-                      onClick={() => dispatch(addToCart(scrub))}
-                    >
-                      Add to Cart
-                    </div>
+            {ecoflexProducts.map((scrub) => (
+              <div className="scrubCard" key={scrub.id}>
+                <img src={scrub.image} alt={scrub.name} width="300px" />
+                <div className="scrubDetails">
+                  <div className="rating">
+                    <h5>Ecoflex</h5>
+                    <h5>{scrub.rating}</h5>
+                  </div>
+                  <h3>{scrub.name}</h3>
+                  <p>Price: ₹{scrub.price}</p>
+                  <p>Color: {scrub.color}</p>
+                  <div
+                    className="addToCartbtn"
+                    onClick={() => dispatch(addToCart(scrub))}
+                  >
+                    Add to Cart
                   </div>
                 </div>
-              ))
-            ) : (
-              <>
-                {console.log("There are no products")}
-                <p>No Ecoflex products available.</p>
-              </>
-            )}
+              </div>
+            ))}
           </ul>
         </section>
         <section className="classic">
           <h1>Shop Classic Scrubs</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-           {classicProducts.length > 0 ? (
-              classicProducts.map((scrub) => (
-                <div className="scrubCard" key={scrub.id}>
-                  <img src={scrub.image} alt={scrub.name} width="300px" />
-                  <div className="scrubDetails">
-                    <div className="rating">
-                      <h5>Ecoflex</h5>
-                      <h5>{scrub.rating}</h5>
-                    </div>
-                    <h3>{scrub.name}</h3>
-                    <p>Price: ₹{scrub.price}</p>
-                    <p>Color: {scrub.color}</p>
-                    <div
-                      className="addToCartbtn"
-                      onClick={() => dispatch(addToCart(scrub))}
-                    >
-                      Add to Cart
-                    </div>
+            {classicProducts.map((scrub) => (
+              <div className="scrubCard" key={scrub.id}>
+                <img src={scrub.image} alt={scrub.name} width="300px" />
+                <div className="scrubDetails">
+                  <div className="rating">
+                    <h5>Ecoflex</h5>
+                    <h5>{scrub.rating}</h5>
+                  </div>
+                  <h3>{scrub.name}</h3>
+                  <p>Price: ₹{scrub.price}</p>
+                  <p>Color: {scrub.color}</p>
+                  <div
+                    className="addToCartbtn"
+                    onClick={() => dispatch(addToCart(scrub))}
+                  >
+                    Add to Cart
                   </div>
                 </div>
-              ))
-            ) : (
-              <>
-                {console.log("There are no products")}
-                <p>No Ecoflex products available.</p>
-              </>
-            )}
+              </div>
+            ))}
           </ul>
         </section>
         <section className="stethoscope">
           <h1>Shop Stethoscope</h1>
           <h5>Engineered with 4-way stretch technology</h5>
           <ul className="scrubList">
-              {stethoscope.length > 0 ? (
-              stethoscope.map((scrub) => (
-                <div className="scrubCard" key={scrub.id}>
-                  <img src={scrub.image} alt={scrub.name} width="300px" />
-                  <div className="scrubDetails">
-                    <div className="rating">
-                      <h5>Ecoflex</h5>
-                      <h5>{scrub.rating}</h5>
-                    </div>
-                    <h3>{scrub.name}</h3>
-                    <p>Price: ₹{scrub.price}</p>
-                    <p>Color: {scrub.color}</p>
-                    <div
-                      className="addToCartbtn"
-                      onClick={() => dispatch(addToCart(scrub))}
-                    >
-                      Add to Cart
-                    </div>
+            {stethoscope.map((scrub) => (
+              <div className="scrubCard" key={scrub.id}>
+                <img src={scrub.image} alt={scrub.name} width="300px" />
+                <div className="scrubDetails">
+                  <div className="rating">
+                    <h5>Ecoflex</h5>
+                    <h5>{scrub.rating}</h5>
+                  </div>
+                  <h3>{scrub.name}</h3>
+                  <p>Price: ₹{scrub.price}</p>
+                  <p>Color: {scrub.color}</p>
+                  <div
+                    className="addToCartbtn"
+                    onClick={() => dispatch(addToCart(scrub))}
+                  >
+                    Add to Cart
                   </div>
                 </div>
-              ))
-            ) : (
-              <>
-                {console.log("There are no products")}
-                <p>No Ecoflex products available.</p>
-              </>
-            )}
+              </div>
+            ))}
           </ul>
         </section>
       </div>

@@ -1,6 +1,6 @@
 .aboutRamya {
   display: flex;
-  padding: 50px 100px;
+  padding: 30px 70px;
   flex-direction: column;
   gap: 10px;
 }
@@ -15,7 +15,23 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 480px) {
+  .aboutRamya {
+    padding: 25px 25px;
+    font-size: smaller;
+  }
 
+  .aboutRamya .Readmorebtn {
+    padding: 5px 20px;
+  }
+}
+@media screen and (min-width: 468px) and (max-width: 768px) {
+  .aboutRamya {
+    padding: 25px 25px;
+    font-size: smaller;
+  }
 
-
-
+  .aboutRamya .Readmorebtn {
+    padding: 5px 20px;
+  }
+}
