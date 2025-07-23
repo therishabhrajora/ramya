@@ -10,12 +10,12 @@
   gap: 10px;
 }
 
-
 .classic {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .stethoscope {
   display: flex;
   flex-direction: column;
@@ -31,22 +31,22 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
-.scrubList .scrubCard .scrubDetails h3{
+.scrubList .scrubCard .scrubDetails h3 {
   text-overflow: ellipsis;
   max-width: 300px;
   overflow: hidden;
   white-space: nowrap;
 }
-.scrubDetails{
+.scrubDetails {
+  width: 100%;
   height: 30%;
   display: flex;
   flex-direction: column;
-
 }
-.scrubList .scrubCard img:hover{
+.scrubList .scrubCard img:hover {
   cursor: pointer;
 }
 
@@ -58,7 +58,75 @@
   color: black;
 }
 
-.addToCartbtn{
+.addToCartbtn {
+  width: 100%;
+  background-color: rgb(150, 245, 171);
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 0;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.addToCartbtn:hover {
+  background-color: rgb(100, 200, 120);
+  cursor: pointer;
+}
+
+.scrubCard .scrubDetails .rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scrubCard {
+  width: 300px;
+  height: 500px;
+}
+
+.scrubCard img {
+  width: 100%;
+  height: 70%;
+}
+
+@media screen and (max-width: 468px) {
+  .shopping {
+    margin: 20px 30px 0 30px;
+  }
+ 
+
+  .scrubList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    /* overflow-x: hidden; */
+  }
+
+  /* .scrubList .scrubCard .scrubDetails h3 {
+    text-overflow: ellipsis;
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+  } */
+  /* .scrubDetails {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+  } */
+  /* .scrubList .scrubCard img:hover {
+    cursor: pointer;
+  }
+
+  .shopping h5 {
+    color: slategray;
+  }
+
+  .shopping .scrubDetails {
+    color: black;
+  } */
+
+  /* .addToCartbtn {
     width: 100%;
     background-color: rgb(150, 245, 171);
     text-align: center;
@@ -66,34 +134,26 @@
     padding: 5px 0;
     border-radius: 5px;
     margin-top: 5px;
+  } */
 
-}
-
-.addToCartbtn:hover {
+  /* .addToCartbtn:hover {
     background-color: rgb(100, 200, 120);
     cursor: pointer;
-}
+  } */
 
-.scrubCard .scrubDetails .rating{
+  /* .scrubCard .scrubDetails .rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  } */
+
+  /* .scrubCard {
+    width: 300px;
+    height: 500px;
+  }
+
+  .scrubCard img {
+    width: 100%;
+    height: 70%;
+  } */
 }
-
-.scrubCard{
-  width: 300px;
-  height: 500px;
-}
-
-.scrubCard img{
-  width: 100%;
-  height: 70%;
-}
-
-
-
-
-
-
-
-

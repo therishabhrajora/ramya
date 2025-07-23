@@ -8,13 +8,13 @@ function ShoppingSection() {
 
   const ecoflexProducts = allCollections.filter(
     (product) => product.category === "ecoflex"
-  );
+  ).slice(0, 4);
   const classicProducts = allCollections.filter(
     (product) => product.category === "classic"
-  );
+  ).slice(0, 4);
   const stethoscope = allCollections.filter(
     (product) => product.category === "stethoscope"
-  );
+  ).slice(0, 4);
 
   return (
     <>
