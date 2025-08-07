@@ -68,8 +68,6 @@ public class SecurityConfig {
             config.addAllowedMethod("*");
             return config;
         }));
-       
-
 
         // http.oauth2Login(oauth -> {
         // oauth.loginPage("/collections/account");
@@ -87,7 +85,7 @@ public class SecurityConfig {
                 .invalidSessionUrl("/login?invalidSession=true"));
 
         return http.build();
-         
+
     }
 
     @Bean
