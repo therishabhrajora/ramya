@@ -32,12 +32,12 @@ function FilterCollection() {
 
 
   return (
-    <div className="filterCollectionContainer">
-      <p className="sortBySection">
+    <div className="womenfilterCollectionContainer">
+      <p className="womensortBySection">
         <IoIosArrowDown />
         <span>SORT BY: </span>
         <select
-          className="sortProduct"
+          className="womensortProduct"
           name="sortProduct"
           id="sortProduct"
           value={sortBy}
@@ -51,15 +51,15 @@ function FilterCollection() {
           <option value="newArrivals">New Arrivals</option>
         </select>
       </p>
-      <div className="filter-collection">
-        <section className="filterSection">
+      <div className="womenfilter-collection">
+        <section className="womenfilterSection">
           <h2>Filters</h2>
-          <div className="filterByColour">
+          <div className="womenfilterByColour">
             <h3>
               <span>Colours</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="colourList">
+            <ul className="womencolourList">
               <li>
                 <label htmlFor="navy">navy</label>
                 <input type="checkbox" id="navy" />
@@ -94,32 +94,32 @@ function FilterCollection() {
               </li>
             </ul>
           </div>
-          <div className="filterByPockets">
+          <div className="womenfilterByPockets">
             <h3>
               <span>Pockets</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="pocketsList">
+            <ul className="womenpocketsList">
               <li>
-                <label htmlFor=" 5 pockets"> 5 pockets</label>
+                <label htmlFor=" 5 pockets"> 5</label>
                 <input type="checkbox" id=" 5 pockets" />
               </li>
               <li>
-                <label htmlFor="8 pockets">8 pockets</label>
+                <label htmlFor="8 pockets">8</label>
                 <input type="checkbox" id="8 pockets" />
               </li>
               <li>
-                <label htmlFor="10 pockets">10 pockets</label>
+                <label htmlFor="10 pockets">10  </label>
                 <input type="checkbox" id="10 pockets" />
               </li>
             </ul>
           </div>
-          <div className="filterByGender">
+          <div className="womenfilterByGender">
             <h3>
               <span>Gender</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="genderList">
+            <ul className="womengenderList">
               <li>
                 <label htmlFor="Male">Male</label>
                 <input type="checkbox" id="Male" />
@@ -130,12 +130,12 @@ function FilterCollection() {
               </li>
             </ul>
           </div>
-          <div className="filterByFabric">
+          <div className="womenfilterByFabric">
             <h3>
               <span>Fabric</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="fabricList">
+            <ul className="womenfabricList">
               <li>
                 <label htmlFor="Classic">Classic</label>
                 <input type="checkbox" id="Classic" />
@@ -147,21 +147,21 @@ function FilterCollection() {
             </ul>
           </div>
         </section>
-        <section className="filterResults">
+        <section className="womenfilterResults">
           {womenProducts.map((scrub) => (
-            <div className="scrubCard" key={scrub.id}>
-              <div className="scrubImage">
+            <div className="womenscrubCard" key={scrub.id}>
+              <div className="womenscrubImage">
                 <img src={scrub.image} alt={scrub.name} width="235px" />
               </div>
-              <div className="scrubDetails">
-                <div className="rating">
+              <div className="womenscrubDetails">
+                <div className="womenrating">
                   <h5>Ecoflex</h5>
                   <h5>{scrub.rating}</h5>
                 </div>
                 <h3>{scrub.name}</h3>
                 <p>Price: ₹{scrub.price}</p>
                 <p>Color: {scrub.color}</p>
-                   <div className="addToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
+                   <div className="womenaddToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
               </div>
             </div>
           ))}

@@ -38,13 +38,9 @@ function FilterCollection() {
     );
   });
 
-  
-
-  
-
   let handleCheckBoxes = (e) => {
     let value = e.target.value;
-  
+
     if (e.target.checked) {
       setSelectCheckBox((prev) => [...prev, value]);
     } else {
@@ -52,15 +48,14 @@ function FilterCollection() {
     }
   };
 
-
   return (
-    <div className="filterCollectionContainer">
-      <p className="sortBySection">
+    <div className="menfilterCollectionContainer">
+      <p className="mensortBySection">
         <span>
           <b>SORT BY: </b>
         </span>
         <select
-          className="sortProduct"
+          className="mensortProduct"
           name="sortProduct"
           id="sortProduct"
           value={sortBy}
@@ -74,15 +69,15 @@ function FilterCollection() {
           <option value="newArrivals">New Arrivals</option>
         </select>
       </p>
-      <div className="filter-collection">
-        <section className="filterSection">
+      <div className="menfilter-collection">
+        <section className="menfilterSection">
           <h2>Filters</h2>
-          <div className="filterByColour">
+          <div className="menfilterByColour">
             <h3>
               <span>Colours</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="colourList">
+            <ul className="mencolourList">
               {colors.map((color) => (
                 <li key={color.value}>
                   <label htmlFor={color.label}>{color.label}</label>
@@ -96,12 +91,12 @@ function FilterCollection() {
               ))}
             </ul>
           </div>
-          <div className="filterByPockets">
+          <div className="menfilterByPockets">
             <h3>
               <span>Pockets</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="pocketsList">
+            <ul className="menpocketsList">
               {pockets.map((pocket) => (
                 <li key={pocket}>
                   <label htmlFor={pocket}>{pocket}</label>
@@ -115,12 +110,12 @@ function FilterCollection() {
               ))}
             </ul>
           </div>
-          <div className="filterByGender">
+          <div className="menfilterByGender">
             <h3>
               <span>Gender</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="genderList">
+            <ul className="mengenderList">
               {gender.map((gen) => (
                 <li key={gen}>
                   <label htmlFor={gen}>{gen}</label>
@@ -134,12 +129,12 @@ function FilterCollection() {
               ))}
             </ul>
           </div>
-          <div className="filterByFabric">
+          <div className="menfilterByFabric">
             <h3>
               <span>Fabric</span>
               <IoMdArrowDropup />
             </h3>
-            <ul className="fabricList">
+            <ul className="menfabricList">
               {type.map((t) => (
                 <li key={t}>
                   <label htmlFor={t}>{t}</label>
@@ -154,52 +149,52 @@ function FilterCollection() {
             </ul>
           </div>
         </section>
-        <section className="filterResults">
-
-          {filterproducts.length==0 ? menProducts.map((scrub) => (
-            <div className="scrubCard" key={scrub.id}>
-              <div className="scrubImage">
-                <img src={scrub.image} alt={scrub.name} width="235px" />
-              </div>
-              <div className="scrubDetails">
-                <div className="rating">
-                  <h5>Ecoflex</h5>
-                  <h5>{scrub.rating}</h5>
+        <section className="menfilterResults">
+          {filterproducts.length == 0
+            ? menProducts.map((scrub) => (
+                <div className="menscrubCard" key={scrub.id}>
+                  <div className="menscrubImage">
+                    <img src={scrub.image} alt={scrub.name} width="235px" />
+                  </div>
+                  <div className="menscrubDetails">
+                    <div className="menrating">
+                      <h5>Ecoflex</h5>
+                      <h5>{scrub.rating}</h5>
+                    </div>
+                    <h3>{scrub.name}</h3>
+                    <p>Price: ₹{scrub.price}</p>
+                    <p>Color: {scrub.color}</p>
+                    <div
+                      className="menaddToCartbtn"
+                      onClick={() => dispatch(addToCart(scrub))}
+                    >
+                      Add to Cart
+                    </div>
+                  </div>
                 </div>
-                <h3>{scrub.name}</h3>
-                <p>Price: ₹{scrub.price}</p>
-                <p>Color: {scrub.color}</p>
-                <div
-                  className="addToCartbtn"
-                  onClick={() => dispatch(addToCart(scrub))}
-                >
-                  Add to Cart
+              ))
+            : filterproducts.map((scrub) => (
+                <div className="menscrubCard" key={scrub.id}>
+                  <div className="menscrubImage">
+                    <img src={scrub.image} alt={scrub.name} width="235px" />
+                  </div>
+                  <div className="menscrubDetails">
+                    <div className="menrating">
+                      <h5>Ecoflex</h5>
+                      <h5>{scrub.rating}</h5>
+                    </div>
+                    <h3>{scrub.name}</h3>
+                    <p>Price: ₹{scrub.price}</p>
+                    <p>Color: {scrub.color}</p>
+                    <div
+                      className="menaddToCartbtn"
+                      onClick={() => dispatch(addToCart(scrub))}
+                    >
+                      Add to Cart
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )) :filterproducts.map((scrub) => (
-            <div className="scrubCard" key={scrub.id}>
-              <div className="scrubImage">
-                <img src={scrub.image} alt={scrub.name} width="235px" />
-              </div>
-              <div className="scrubDetails">
-                <div className="rating">
-                  <h5>Ecoflex</h5>
-                  <h5>{scrub.rating}</h5>
-                </div>
-                <h3>{scrub.name}</h3>
-                <p>Price: ₹{scrub.price}</p>
-                <p>Color: {scrub.color}</p>
-                <div
-                  className="addToCartbtn"
-                  onClick={() => dispatch(addToCart(scrub))}
-                >
-                  Add to Cart
-                </div>
-              </div>
-            </div>
-          ))}
-
+              ))}
         </section>
       </div>
     </div>
