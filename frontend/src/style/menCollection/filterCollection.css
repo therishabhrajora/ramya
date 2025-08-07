@@ -1,53 +1,50 @@
-.filterCollectionContainer {
+.menfilterCollectionContainer {
   width: 95%;
   margin: 20px auto;
 }
-.sortBySection {
+.mensortBySection {
   text-align: right;
   display: flex;
   justify-content: flex-end;
   gap: 5px;
 }
 
-.sortBySection span {
+.mensortBySection span {
   text-transform: uppercase;
   font-size: small;
 }
 
-.filter-collection {
+.menfilter-collection {
   display: flex;
 }
 
-.filter-collection .filterSection {
-  width: 20%;
+.menfilter-collection .menfilterSection {
   padding: 10px 30px 10px 10px;
   border-right: 1px solid slategray;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.filterByColour,
-.filterByPockets,
-.filterByGender,
-.filterByFabric {
+.menfilterByColour,
+.menfilterByPockets,
+.menfilterByGender,
+.menfilterByFabric {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-
-
-.filter-collection .filterSection h3 {
+.menfilter-collection .menfilterSection h3 {
   display: flex;
   justify-content: space-between;
 }
-.filter-collection .filterSection ul {
+.menfilter-collection .menfilterSection ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.filter-collection .filterSection ul li {
+.menfilter-collection .menfilterSection ul li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -58,56 +55,179 @@
   text-transform: capitalize;
 }
 
-.filter-collection .filterSection ul li input {
+.menfilter-collection .menfilterSection ul li input {
   cursor: pointer;
 }
 
-
-.filter-collection .filterResults {
+.menfilter-collection .menfilterResults {
   width: 80%;
   padding: 10px 10px 10px 20px;
   border-left: 1px solid slategray;
 }
 
-.filterResults{
+.menfilterResults {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
-
-
-
-.filterResults .scrubCard .scrubDetails{
+.menfilterResults .menscrubCard .menscrubDetails {
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 5px;
 }
 
-.scrubDetails h3{
+.menscrubDetails h3 {
   font-size: 14px;
-  max-width: 100%;         /* Good, but not enough */
-  white-space: nowrap;     /* ✅ required */
-  overflow: hidden;        /* ✅ required */
+  max-width: 100%; /* Good, but not enough */
+  white-space: nowrap; /* ✅ required */
+  overflow: hidden; /* ✅ required */
   text-overflow: ellipsis; /* ✅ required */
-  display: block;  
+  display: block;
 }
 
-.filterResults .scrubCard{
+.menfilterResults .menscrubCard {
   cursor: pointer;
 }
 
-
-.sortProduct{
-  border:  none;
+.mensortProduct {
+  border: none;
 }
 
-.sortProduct:focus{
+.mensortProduct:focus {
   outline: none;
 }
 
-.sortProduct option{
+.mensortProduct option {
   text-transform: capitalize;
   font-size: small;
 }
+
+@media screen and (max-width: 468px) {
+  .menfilter-collection .menfilterSection {
+   
+    padding: 10px;
+  }
+
+  .menfilter-collection .menfilterSection ul li {
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 10px;
+  }
+
+  .menfilter-collection .menfilterSection ul li input {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  /* .menfilter-collection .menfilterResults {
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    border-left: 1px solid slategray;
+  }
+
+  .menfilterResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .menfilterResults .menscrubCard .menscrubDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+
+  .menscrubDetails h3 {
+    font-size: 14px;
+    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .menfilterResults .menscrubCard {
+    cursor: pointer;
+  }
+
+  .mensortProduct {
+    border: none;
+  }
+
+  .mensortProduct:focus {
+    outline: none;
+  }
+
+  .mensortProduct option {
+    text-transform: capitalize;
+    font-size: small;
+  } */
+}
+@media screen {
+  .menfilter-collection .menfilterSection {
+
+    padding: 10px;
+  }
+
+  .menfilter-collection .menfilterSection ul li {
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 10px;
+  }
+
+  .menfilter-collection .menfilterSection ul li input {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  /* .menfilter-collection .menfilterResults {
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    border-left: 1px solid slategray;
+  }
+
+  .menfilterResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .menfilterResults .menscrubCard .menscrubDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+
+  .menscrubDetails h3 {
+    font-size: 14px;
+    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .menfilterResults .menscrubCard {
+    cursor: pointer;
+  }
+
+  .mensortProduct {
+    border: none;
+  }
+
+  .mensortProduct:focus {
+    outline: none;
+  }
+
+  .mensortProduct option {
+    text-transform: capitalize;
+    font-size: small;
+  } */
+}
+
+
+

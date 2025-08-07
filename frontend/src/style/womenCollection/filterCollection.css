@@ -1,53 +1,50 @@
-.filterCollectionContainer {
+.womenfilterCollectionContainer {
   width: 95%;
   margin: 20px auto;
 }
-.sortBySection {
+.womensortBySection {
   text-align: right;
   display: flex;
   justify-content: flex-end;
   gap: 5px;
 }
 
-.sortBySection span {
+.womensortBySection span {
   text-transform: uppercase;
   font-size: small;
 }
 
-.filter-collection {
+.womenfilter-collection {
   display: flex;
 }
 
-.filter-collection .filterSection {
-  width: 20%;
+.womenfilter-collection .womenfilterSection {
   padding: 10px 30px 10px 10px;
   border-right: 1px solid slategray;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.filterByColour,
-.filterByPockets,
-.filterByGender,
-.filterByFabric {
+.womenfilterByColour,
+.womenfilterByPockets,
+.womenfilterByGender,
+.womenfilterByFabric {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-
-
-.filter-collection .filterSection h3 {
+.womenfilter-collection .womenfilterSection h3 {
   display: flex;
   justify-content: space-between;
 }
-.filter-collection .filterSection ul {
+.womenfilter-collection .womenfilterSection ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.filter-collection .filterSection ul li {
+.womenfilter-collection .womenfilterSection ul li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -58,53 +55,179 @@
   text-transform: capitalize;
 }
 
-.filter-collection .filterSection ul li input {
+.womenfilter-collection .womenfilterSection ul li input {
   cursor: pointer;
 }
 
-
-.filter-collection .filterResults {
+.womenfilter-collection .womenfilterResults {
   width: 80%;
   padding: 10px 10px 10px 20px;
   border-left: 1px solid slategray;
 }
 
-.filterResults{
+.womenfilterResults {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
-
-
-
-.filterResults .scrubCard .scrubDetails{
+.womenfilterResults .womenscrubCard .womenscrubDetails {
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 5px;
 }
 
-.filterResults .scrubCard .scrubDetails h3{
+.womenscrubDetails h3 {
   font-size: 14px;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  max-width: 100%; /* Good, but not enough */
+  white-space: nowrap; /* ✅ required */
+  overflow: hidden; /* ✅ required */
+  text-overflow: ellipsis; /* ✅ required */
+  display: block;
 }
 
-.filterResults .scrubCard{
+.womenfilterResults .womenscrubCard {
   cursor: pointer;
 }
 
-.sortProduct{
-  border:  none;
+.womensortProduct {
+  border: none;
 }
 
-.sortProduct:focus{
+.womensortProduct:focus {
   outline: none;
 }
 
-.sortProduct option{
+.womensortProduct option {
   text-transform: capitalize;
   font-size: small;
 }
+
+@media screen and (max-width: 468px) {
+  .womenfilter-collection .womenfilterSection {
+   
+    padding: 10px;
+  }
+
+  .womenfilter-collection .womenfilterSection ul li {
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 10px;
+  }
+
+  .womenfilter-collection .womenfilterSection ul li input {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  /* .womenfilter-collection .womenfilterResults {
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    border-left: 1px solid slategray;
+  }
+
+  .womenfilterResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .womenfilterResults .womenscrubCard .womenscrubDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+
+  .womenscrubDetails h3 {
+    font-size: 14px;
+    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .womenfilterResults .womenscrubCard {
+    cursor: pointer;
+  }
+
+  .womensortProduct {
+    border: none;
+  }
+
+  .womensortProduct:focus {
+    outline: none;
+  }
+
+  .womensortProduct option {
+    text-transform: capitalize;
+    font-size: small;
+  } */
+}
+@media screen {
+  .womenfilter-collection .womenfilterSection {
+
+    padding: 10px;
+  }
+
+  .womenfilter-collection .womenfilterSection ul li {
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 10px;
+  }
+
+  .womenfilter-collection .womenfilterSection ul li input {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  /* .womenfilter-collection .womenfilterResults {
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    border-left: 1px solid slategray;
+  }
+
+  .womenfilterResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .womenfilterResults .womenscrubCard .womenscrubDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+
+  .womenscrubDetails h3 {
+    font-size: 14px;
+    max-width: 100%; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .womenfilterResults .womenscrubCard {
+    cursor: pointer;
+  }
+
+  .womensortProduct {
+    border: none;
+  }
+
+  .womensortProduct:focus {
+    outline: none;
+  }
+
+  .womensortProduct option {
+    text-transform: capitalize;
+    font-size: small;
+  } */
+}
+
+
+
