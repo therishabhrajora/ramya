@@ -7,6 +7,8 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.288);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.829);
 }
 
 .navBar .left {
