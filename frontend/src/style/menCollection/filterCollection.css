@@ -89,6 +89,17 @@
 
 .menfilterResults .menscrubCard {
   cursor: pointer;
+
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.menscrubCard:hover {
+  /* border-top:1px solid gray ;
+  border-left:1px solid gray ; */
+  box-shadow: 4px 4px 5px rgba(116, 115, 115, 0.374);
+  transform: scale(1.01);
+  transition: all .1s ease-in-out;
 }
 
 .mensortProduct {
@@ -102,6 +113,16 @@
 .mensortProduct option {
   text-transform: capitalize;
   font-size: small;
+}
+
+
+.menscrubDetails .menaddToCartbtn{
+  background-color: rgb(80, 194, 80);
+  width: 100%;
+
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
 }
 
 @media screen and (max-width: 468px) {

@@ -89,6 +89,17 @@
 
 .womenfilterResults .womenscrubCard {
   cursor: pointer;
+
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.womenscrubCard:hover {
+  /* border-top:1px solid gray ;
+  border-left:1px solid gray ; */
+  box-shadow: 4px 4px 5px rgba(116, 115, 115, 0.374);
+  transform: scale(1.01);
+  transition: all .1s ease-in-out;
 }
 
 .womensortProduct {
@@ -104,9 +115,17 @@
   font-size: small;
 }
 
+.womenscrubDetails .womenaddToCartbtn {
+  background-color: rgb(80, 194, 80);
+  width: 100%;
+
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
+}
+
 @media screen and (max-width: 468px) {
   .womenfilter-collection .womenfilterSection {
-   
     padding: 10px;
   }
 
@@ -168,7 +187,6 @@
 }
 @media screen {
   .womenfilter-collection .womenfilterSection {
-
     padding: 10px;
   }
 
@@ -228,6 +246,3 @@
     font-size: small;
   } */
 }
-
-
-
