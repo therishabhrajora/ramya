@@ -163,7 +163,7 @@ function FilterCollection() {
                   className="womenaddToCartbtn"
                   onClick={() => {
                     dispatch(addToCart({ ...scrub, quantity: 1 }));
-                    console.log("scrub id ", scrub);
+                
                   }}
                 >
                   Add to Cart

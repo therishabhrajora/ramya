@@ -9,7 +9,5 @@ import com.ramya.ramya.entities.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, String> {
-
     Optional<User> findByEmail(String email);
-
 }

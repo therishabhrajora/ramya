@@ -1,9 +1,6 @@
 package com.ramya.ramya.entities;
-
 import org.springframework.web.multipart.MultipartFile;
-
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -13,7 +10,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

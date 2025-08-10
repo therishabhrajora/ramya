@@ -154,7 +154,7 @@ function FilterCollection() {
             ? menProducts.map((scrub) => (
                 <div className="menscrubCard" key={scrub.productId}>
                   <div className="menscrubImage">
-                    <img src={scrub.image} alt={scrub.name} width="235px" />
+                    <img src={scrub.image} alt={scrub.name}/>
                   </div>
                   <div className="menscrubDetails">
                     <div className="menrating">
@@ -178,7 +178,7 @@ function FilterCollection() {
             : filterproducts.map((scrub) => (
                 <div className="menscrubCard" key={scrub.productId}>
                   <div className="menscrubImage">
-                    <img src={scrub.image} alt={scrub.name} width="235px" />
+                    <img src={scrub.image} alt={scrub.name}/>
                   </div>
                   <div className="menscrubDetails">
                     <div className="menrating">
@@ -192,7 +192,7 @@ function FilterCollection() {
                       className="menaddToCartbtn"
                       onClick={() => {
                         dispatch(addToCart({ ...scrub, quantity: 1 }));
-                        console.log("scrub id ", scrub);
+                     
                       }}
                     >
                       Add to Cart
