@@ -62,7 +62,7 @@ public class SecurityConfig {
 
             config.setAllowedOrigins(List.of(
                     "https://ramyascrubs.netlify.app",
-                    "http://localhost:3000"));
+                    "http://localhost:5173"));
 
             config.addAllowedHeader("*");
             config.addAllowedMethod("*");
