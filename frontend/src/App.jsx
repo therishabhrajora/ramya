@@ -17,6 +17,8 @@ import axios from "axios";
 import { setProducts } from "./slices/ProductSlice";
 import { ENDPOINTS } from "./helper/Constants";
 import { MdSouth } from "react-icons/md";
+import { ToastContainer } from "react-toastify";
+import ResetPassword from "./components/homePage/ResetPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function App() {
     async function fetchProducts() {
       try {
         const res = await axios.get(ENDPOINTS.products);
-        console.log(res.data);
+
         dispatch(setProducts(res.data));
       } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -37,6 +39,7 @@ function App() {
   return (
     <>
       {isCartOpen ? <Cart /> : null}
+
       <Routes>
         {/* <Route path="/" element={<Navigate to="/collections" />} /> */}
         <Route path="/" element={<HomePage />} />
@@ -51,7 +54,9 @@ function App() {
         <Route path="/collections/logout" element={<AccountLogin />} />
         <Route path="/collections/products" element={<ProductOrder />} />
         <Route path="/collections/admin/add-products" element={<Products />} />
+        <Route path="/collections/account/reset-password" element={<ResetPassword />} />
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

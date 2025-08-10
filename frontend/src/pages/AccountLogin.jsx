@@ -9,12 +9,15 @@ import { useDispatch } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
 import { MdSouth } from "react-icons/md";
 import { ENDPOINTS } from "../helper/Constants";
+import Loader from "../components/loader/Loader";
+import { toast } from "react-toastify";
 
 function AccountLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginErrorMessage, setLoginErrorMessage] = useState({});
   const [registerErrorMessage, setRegisterErrorMessage] = useState({});
+  const [loader, setLoader] = useState(false);
 
   const [registeredData, setRegisteredData] = useState({
     firstName: "",
@@ -39,6 +42,7 @@ function AccountLogin() {
 
   const handleLoginForm = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       const res = await axios.post(ENDPOINTS.login, loginData, {
         headers: { "Content-Type": "application/json" },
@@ -57,16 +61,20 @@ function AccountLogin() {
     } catch (e) {
       let error = e.response.data;
       setLoginErrorMessage(error);
+      toast.error("Login failed");
+    } finally {
+      setLoader(false);
     }
   };
 
   const handleRegisterForm = async (e) => {
-    alert("register call");
     e.preventDefault();
+    setLoader(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     try {
-      alert("this is before respose");
+
       const res = await axios.post(ENDPOINTS.register, registeredData);
-      alert("after res");
+ 
       setRegisteredData({
         firstName: "",
         lastName: "",
@@ -74,134 +82,143 @@ function AccountLogin() {
         password: "",
         phone: "",
       });
+      toast.success("Register Succesfully");
     } catch (e) {
-      alert("e catch");
+    
       let error = e.response.data;
       setRegisterErrorMessage(error);
+      toast.error("Register Unsuccessfull");
+      window.scrollTo({ top: 400, behavior: "smooth" });
+    } finally {
+      setLoader(false);
     }
   };
 
   return (
     <>
       <NavBar />
-      <div className="account-login">
-        <form className="login" onSubmit={handleLoginForm}>
-          <h1 className="text-3xl">Login</h1>
-          <div className="email">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="loginemail"
-              autoComplete="off"
-              value={loginData.email}
-              onChange={handleLoginChange}
-              name="email"
-              placeholder="Enter your email"
-            />
-            <small>
-              {loginErrorMessage.email ? loginErrorMessage.email : null}
-            </small>
-          </div>
-          <div className="password">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="loginpassword"
-              autoComplete="new-password"
-              name="password"
-              value={loginData.password}
-              onChange={handleLoginChange}
-              placeholder="Enter your password"
-            />
-            {loginErrorMessage.password && (
-              <small>{loginErrorMessage.password}</small>
-            )}
-          </div>
-          <Link className="Link" to="">
-            <p className="forgot-password">forgot your password ?</p>
-          </Link>
-          <button className="sign-in-btn" type="submit">
-            Sign in
-          </button>
-        </form>
 
-        <form onSubmit={handleRegisterForm} className="register">
-          <h1 className="text-3xl">Register</h1>
-          <div className="first-name">
-            <label htmlFor="first-name">First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              id="first-name"
-              placeholder="Enter your first name"
-              value={registeredData.firstName}
-              onChange={handleRegisterChange}
-            />
-            {registerErrorMessage.firstName && (
-              <small>{registerErrorMessage.firstName}</small>
-            )}
-          </div>
-          <div className="last-name">
-            <label htmlFor="last-name">Last Name</label>
-            <input
-              type="text"
-              id="last-name"
-              name="lastName"
-              placeholder="Enter your last name"
-              value={registeredData.lastName}
-              onChange={handleRegisterChange}
-            />
-            {registerErrorMessage.lastName && (
-              <small>{registerErrorMessage.lastName}</small>
-            )}
-          </div>
-          <div className="email">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              name="email"
-              id="registerEmail"
-              placeholder="Enter your email"
-              value={registeredData.email}
-              onChange={handleRegisterChange}
-            />
-            {registerErrorMessage.email && (
-              <small>{registerErrorMessage.email}</small>
-            )}
-          </div>
-          <div className="password">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="resgisterPassword"
-              name="password"
-              // autocomplete="new-password"
-              placeholder="Enter your password"
-              value={registeredData.password}
-              onChange={handleRegisterChange}
-            />
-            {registerErrorMessage.password && (
-              <small>{registerErrorMessage.password}</small>
-            )}
-          </div>
-          <div className="phone">
-            <label htmlFor="phone">Phone</label>
-            <input
-              type="text"
-              id="phone"
-              value={registeredData.phone}
-              name="phone"
-              placeholder="Enter your phone"
-              onChange={handleRegisterChange}
-            />
-            {registerErrorMessage.phone && (
-              <small>{registerErrorMessage.phone}</small>
-            )}
-          </div>
-          <button className="register-btn" type="submit">
-            Register
-          </button>
-        </form>
+      <div className="account-login">
+        {loader && <Loader />}
+        <div className={`forms ${loader ? " activeLoader" : ""}`}>
+          <form className="login" onSubmit={handleLoginForm}>
+            <h1 className="text-3xl">Login</h1>
+            <div className="email">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="loginemail"
+                autoComplete="off"
+                value={loginData.email}
+                onChange={handleLoginChange}
+                name="email"
+                placeholder="Enter your email"
+              />
+              <small>
+                {loginErrorMessage.email ? loginErrorMessage.email : null}
+              </small>
+            </div>
+            <div className="password">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="loginpassword"
+                autoComplete="new-password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                placeholder="Enter your password"
+              />
+              {loginErrorMessage.password && (
+                <small>{loginErrorMessage.password}</small>
+              )}
+            </div>
+            <Link className="Link" to="/collections/account/reset-password">
+              <p className="forgot-password">forgot your password ?</p>
+            </Link>
+            <button className="sign-in-btn" type="submit">
+              Sign in
+            </button>
+          </form>
+
+          <form onSubmit={handleRegisterForm} className="register">
+            <h1 className="text-3xl">Register</h1>
+            <div className="first-name">
+              <label htmlFor="first-name">First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                id="first-name"
+                placeholder="Enter your first name"
+                value={registeredData.firstName}
+                onChange={handleRegisterChange}
+              />
+              {registerErrorMessage.firstName && (
+                <small>{registerErrorMessage.firstName}</small>
+              )}
+            </div>
+            <div className="last-name">
+              <label htmlFor="last-name">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                name="lastName"
+                placeholder="Enter your last name"
+                value={registeredData.lastName}
+                onChange={handleRegisterChange}
+              />
+              {registerErrorMessage.lastName && (
+                <small>{registerErrorMessage.lastName}</small>
+              )}
+            </div>
+            <div className="email">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                id="registerEmail"
+                placeholder="Enter your email"
+                value={registeredData.email}
+                onChange={handleRegisterChange}
+              />
+              {registerErrorMessage.email && (
+                <small>{registerErrorMessage.email}</small>
+              )}
+            </div>
+            <div className="password">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="resgisterPassword"
+                name="password"
+                // autocomplete="new-password"
+                placeholder="Enter your password"
+                value={registeredData.password}
+                onChange={handleRegisterChange}
+              />
+              {registerErrorMessage.password && (
+                <small>{registerErrorMessage.password}</small>
+              )}
+            </div>
+            <div className="phone">
+              <label htmlFor="phone">Phone</label>
+              <input
+                type="text"
+                id="phone"
+                value={registeredData.phone}
+                name="phone"
+                placeholder="Enter your phone"
+                onChange={handleRegisterChange}
+              />
+              {registerErrorMessage.phone && (
+                <small>{registerErrorMessage.phone}</small>
+              )}
+            </div>
+            <button className="register-btn" type="submit">
+              Register
+            </button>
+          </form>
+        </div>
       </div>
       <Footer />
     </>
