@@ -71,6 +71,16 @@
   gap: 20px;
 }
 
+.menfilterResults .menscrubCard .menscrubImage{
+  width: 100%;
+  height: auto;
+}
+
+.menscrubImage .img{
+  width: 100%;
+  width: 100%;
+}
+
 .menfilterResults .menscrubCard .menscrubDetails {
   display: flex;
   flex-direction: column;
@@ -91,6 +101,7 @@
   cursor: pointer;
   border-radius: 10px;
   padding: 5px;
+  width: 100%;
 }
 
 .menscrubCard:hover {
