@@ -1,22 +1,32 @@
- .account-login {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-evenly;
-    padding: 100px 0;
-    color: rgb(55, 60, 65);
-    gap: 40px;
+.account-login {
+  display: flex;
+  flex-direction: column;
+  padding: 100px 0;
+  gap: 50px;
+}
+
+.account-login .activeLoader{
+    cursor: not-allowed;
+}
+
+.account-login .forms {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  color: rgb(55, 60, 65);
+  gap: 40px;
 }
 
 .account-login small {
-    color: rgb(240, 114, 114);
+  color: rgb(240, 114, 114);
 }
 
 .account-login .login,
 .account-login .register {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Input field container styling */
@@ -25,55 +35,54 @@
 .first-name,
 .last-name,
 .phone {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 /* Input fields */
 .login input,
 .register input {
-    width: 400px;
-    max-width: 90vw;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid rgb(200, 200, 200);
-    padding-left: 10px;
-    outline: none;
-    color: gray;
+  width: 400px;
+  max-width: 90vw;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgb(200, 200, 200);
+  padding-left: 10px;
+  outline: none;
+  color: gray;
 }
 
 .login input:hover,
 .register input:hover {
-    border: 1px solid rgb(245, 150, 166);
-    transition: ease 0.5s;
+  border: 1px solid rgb(245, 150, 166);
+  transition: ease 0.5s;
 }
 
 /* Button styling */
 .login .sign-in-btn,
 .register .register-btn {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(245, 116, 138);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(245, 116, 138);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .login .sign-in-btn:hover,
 .register .register-btn:hover {
-    background-color: rgb(255, 89, 117);
-    transition: ease 0.3s;
+  background-color: rgb(255, 89, 117);
+  transition: ease 0.3s;
 }
 
 .login .forgot-password:active {
-    color: rgb(84, 84, 233);
+  color: rgb(84, 84, 233);
 }
-
 
 
