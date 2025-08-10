@@ -147,7 +147,7 @@ function FilterCollection() {
         </section>
         <section className="womenfilterResults">
           {womenProducts.map((scrub) => (
-            <div className="womenscrubCard" key={scrub.product_id}>
+            <div className="womenscrubCard" key={scrub.productId}>
               <div className="womenscrubImage">
                 <img src={scrub.image} alt={scrub.name} width="235px" />
               </div>

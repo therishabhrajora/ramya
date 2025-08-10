@@ -176,7 +176,7 @@ function FilterCollection() {
                 </div>
               ))
             : filterproducts.map((scrub) => (
-                <div className="menscrubCard" key={scrub.product_id}>
+                <div className="menscrubCard" key={scrub.productId}>
                   <div className="menscrubImage">
                     <img src={scrub.image} alt={scrub.name} width="235px" />
                   </div>
