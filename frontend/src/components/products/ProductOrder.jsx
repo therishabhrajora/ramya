@@ -9,7 +9,7 @@ function ProductOrder() {
           <h1>Order Summary</h1>
           <ul className="productList">
             {selectedProducts.map((product) => (
-              <li key={product.id} className="productItem">
+              <li key={product.product_id} className="productItem">
                 <img src={product.image} alt={product.name} width="100px" />
                 <div className="productDetails">
                   <h3>{product.name}</h3>
