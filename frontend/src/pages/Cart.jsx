@@ -22,7 +22,7 @@ function Cart() {
           <div className="productOrderContainer">
             <ul className="productList">
               {selectedProducts.map((product) => (
-                <li key={product.id} className="productItem">
+                <li key={product.product_id} className="productItem">
                   <img src={product.image} alt={product.name} width="100px" />
                   <div className="productDetails">
                     <div className="productInfo">
