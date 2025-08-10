@@ -13,9 +13,9 @@ function FilterCollection() {
   const gender = useSelector((state) => state.product.gender);
   const type = useSelector((state) => state.product.type);
 
-  const menProducts = allCollections
-    .filter((product) => product.gender === "men")
-    .slice(0, -4);
+  const menProducts = allCollections.filter(
+    (product) => product.gender === "men"
+  );
   const [sortBy, setSortBy] = useState("default");
   const sortProducts = (e) => {
     setSortBy(e.target.value);
@@ -152,7 +152,7 @@ function FilterCollection() {
         <section className="menfilterResults">
           {filterproducts.length == 0
             ? menProducts.map((scrub) => (
-                <div className="menscrubCard" key={scrub.id}>
+                <div className="menscrubCard" key={scrub.productId}>
                   <div className="menscrubImage">
                     <img src={scrub.image} alt={scrub.name} width="235px" />
                   </div>
@@ -166,7 +166,9 @@ function FilterCollection() {
                     <p>Color: {scrub.color}</p>
                     <div
                       className="menaddToCartbtn"
-                      onClick={() => dispatch(addToCart(scrub))}
+                      onClick={() =>
+                        dispatch(addToCart({ ...scrub, quantity: 1 }))
+                      }
                     >
                       Add to Cart
                     </div>
@@ -174,7 +176,7 @@ function FilterCollection() {
                 </div>
               ))
             : filterproducts.map((scrub) => (
-                <div className="menscrubCard" key={scrub.id}>
+                <div className="menscrubCard" key={scrub.product_id}>
                   <div className="menscrubImage">
                     <img src={scrub.image} alt={scrub.name} width="235px" />
                   </div>
@@ -188,7 +190,10 @@ function FilterCollection() {
                     <p>Color: {scrub.color}</p>
                     <div
                       className="menaddToCartbtn"
-                      onClick={() => dispatch(addToCart(scrub))}
+                      onClick={() => {
+                        dispatch(addToCart({ ...scrub, quantity: 1 }));
+                        console.log("scrub id ", scrub);
+                      }}
                     >
                       Add to Cart
                     </div>
