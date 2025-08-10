@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  transform: translateX(0);
+  animation: cart-section .3s ease-in-out 0s;
 }
 
 .close-btn {
@@ -122,6 +124,15 @@
 
 .remove-btn:hover{
   background-color: #b12c3f;
+}
+
+@keyframes cart-section {
+  0%{
+    right: -300px;
+  }
+  100%{
+    right: 0;
+  }
 }
 
 
