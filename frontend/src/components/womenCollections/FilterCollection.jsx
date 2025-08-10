@@ -8,10 +8,11 @@ import { useState } from "react";
 import { addToCart } from "../../slices/ProductSlice";
 function FilterCollection() {
   const dispatch = useDispatch();
-  
+
   const allCollections = useSelector((state) => state.product.products);
-  const womenProducts = allCollections
-    .filter((product) => product.gender === "women")
+  const womenProducts = allCollections.filter(
+    (product) => product.gender === "women"
+  );
 
   const [sortBy, setSortBy] = useState("default");
 
@@ -27,8 +28,6 @@ function FilterCollection() {
     ratingLowToHigh: (a, b) => a.rating - b.rating,
   };
   womenProducts.sort(sortFunctions[sortBy]);
-
-
 
   return (
     <div className="womenfilterCollectionContainer">
@@ -108,7 +107,7 @@ function FilterCollection() {
                 <input type="checkbox" id="8 pockets" />
               </li>
               <li>
-                <label htmlFor="10 pockets">10  </label>
+                <label htmlFor="10 pockets">10 </label>
                 <input type="checkbox" id="10 pockets" />
               </li>
             </ul>
@@ -160,7 +159,15 @@ function FilterCollection() {
                 <h3>{scrub.name}</h3>
                 <p>Price: ₹{scrub.price}</p>
                 <p>Color: {scrub.color}</p>
-                   <div className="womenaddToCartbtn" onClick={()=>dispatch(addToCart(scrub))}>Add to Cart</div>
+                <div
+                  className="womenaddToCartbtn"
+                  onClick={() => {
+                    dispatch(addToCart({ ...scrub, quantity: 1 }));
+                    console.log("scrub id ", scrub);
+                  }}
+                >
+                  Add to Cart
+                </div>
               </div>
             </div>
           ))}
