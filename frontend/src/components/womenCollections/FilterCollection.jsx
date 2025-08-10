@@ -12,7 +12,6 @@ function FilterCollection() {
   const allCollections = useSelector((state) => state.product.products);
   const womenProducts = allCollections
     .filter((product) => product.gender === "women")
-    .slice(0, -4);
 
   const [sortBy, setSortBy] = useState("default");
 
@@ -149,7 +148,7 @@ function FilterCollection() {
         </section>
         <section className="womenfilterResults">
           {womenProducts.map((scrub) => (
-            <div className="womenscrubCard" key={scrub.id}>
+            <div className="womenscrubCard" key={scrub.product_id}>
               <div className="womenscrubImage">
                 <img src={scrub.image} alt={scrub.name} width="235px" />
               </div>
