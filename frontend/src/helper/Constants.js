@@ -5,4 +5,5 @@ export const  ENDPOINTS={
     login: `${DATABASE_ORIGIN}collections/login`,
     products:  `${DATABASE_ORIGIN}collections/products`,
     register:`${DATABASE_ORIGIN}collections/register`,
+    resetpassword:`${DATABASE_ORIGIN}collections/reset-password`,
 }
