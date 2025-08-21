@@ -25,7 +25,7 @@ function ResetPassword() {
     }
 
     try {
-      const res = await axios.post("/collection/reset-password", resetPassword);
+      const res = await axios.post(ENDPOINTS.resetpassword, resetPassword);
       console.log(res);
     } catch (error) {
       console.log(error);
