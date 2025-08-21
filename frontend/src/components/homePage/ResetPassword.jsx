@@ -1,25 +1,55 @@
 import { useState } from "react";
-import "../../style/homepage/resetPassword.css"
+import "../../style/homepage/resetPassword.css";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import { ENDPOINTS } from "../../helper/Constants";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function ResetPassword() {
+  const [resetPassword, setResetPassword] = useState({
+    email: "",
+    newPassword: "",
+    currPassword: "",
+  });
 
-  const [resetPassword,setResetPassword]=useState({
-    newPassword:"",
-    currPassword:""
-  })
+  const handleLoginChange = (e) => {
+    setResetPassword({ ...resetPassword, [e.target.name]: e.target.value });
+  };
 
-  const handleLoginChange=(e)=>{
-    setResetPassword({...resetPassword,[e.target.name]:e.target.value});
-  }
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    if (resetPassword.newPassword == resetPassword.currPassword) {
+      toast.error("Please check confirm Password");
+      return;
+    }
 
-  const handleResetPassword=(e)=>{
-    e.preventDefault()
-  }
+    try {
+      const res = await axios.post("/collection/reset-password", resetPassword);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div className="resetPassword">
+    <>
+      <NavBar />
+      <div className="resetPassword">
         <form className="forms" onSubmit={handleResetPassword}>
           <h1 className="text-3xl">Reset Password</h1>
+          <div className="email">
+            <label htmlFor="emaill">Enter Email</label>
+            <input
+              type="email"
+              id="emaill"
+              autoComplete="off"
+              value={resetPassword.email}
+              onChange={handleLoginChange}
+              name="email"
+              placeholder="Enter email"
+            />
+          </div>
           <div className="email">
             <label htmlFor="newPassword">New Password</label>
             <input
@@ -44,11 +74,17 @@ function ResetPassword() {
               placeholder="Confirm password"
             />
           </div>
-          <button className="resetBtn" type="submit">
+          <button
+            className="resetBtn"
+            type="submit"
+            onSubmit={handleResetPassword}
+          >
             Reset Password
           </button>
         </form>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.ramya.ramya.entities.User;
 import com.ramya.ramya.repositories.UserRepo;
 
+import forms.ResetForm;
 import forms.UserForm;
 import helper.ResponseMessageConstants;
 import helper.RoleConstants;
@@ -56,6 +57,17 @@ public class UserService {
 
     public User getUserByEmail(String username) {
         return userRepo.findByEmail(username).orElse(null);
+    }
+
+    public ResponseEntity<?> resetPassword(ResetForm resetForm) {
+       User user=userRepo.findByEmail(resetForm.getEmail()).get();
+       if(user==null){
+            return ResponseEntity.ok().body("emial is not found");
+       }
+       
+       user.setPassword(passwordEncoder.encode(resetForm.getNewpass()));
+       userRepo.save(user);
+       return ResponseEntity.ok().body("Password Reset");
     }
 
 }

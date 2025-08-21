@@ -24,6 +24,7 @@ import com.ramya.ramya.services.CustomUserDetailService;
 import com.ramya.ramya.services.UserService;
 
 import forms.LoginRequest;
+import forms.ResetForm;
 import forms.UserForm;
 import helper.ErrorMessages;
 import helper.ResponseMessageConstants;
@@ -108,5 +109,13 @@ public class PageController {
     public String logout() {
         return "logout";
     }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetForm resetForm){
+        return userService.resetPassword(resetForm);
+    }
+
+
+   
 
 }
