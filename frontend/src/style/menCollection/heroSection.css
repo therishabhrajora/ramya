@@ -1,15 +1,48 @@
-.heroSectionMen{
-    padding-top: 60px;
-    width:100%;
+.heroSectionMen {
+  position: relative;
+  padding-top: 60px;
+  width: 100%;
+  background: linear-gradient(135deg, #f9f9f9, #f0f4ff);
+  overflow: hidden;
 }
 
-.heroSectionMen img{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
+.heroSectionMen img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 
+.heroSectionMen img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
 
+/* 📱 Small devices */
+@media screen and (max-width: 480px) {
+  .heroSectionMen {
+    padding-top: 40px;
+    background: linear-gradient(135deg, #ffffff, #eef5ff);
+  }
 
+  .heroSectionMen img {
+    max-height: 60vh;
+    border-radius: 8px;
+  }
+}
 
+/* 📱 Tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .heroSectionMen {
+    padding-top: 50px;
+    background: linear-gradient(135deg, #fdfdfd, #eaf0ff);
+  }
+
+  .heroSectionMen img {
+    max-height: 70vh;
+  }
+}

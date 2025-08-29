@@ -1,256 +1,211 @@
+/* 📦 Main Container */
 .womenfilterCollectionContainer {
   width: 95%;
   margin: 20px auto;
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
 }
+
+/* 🔽 Sort Section */
 .womensortBySection {
   text-align: right;
   display: flex;
   justify-content: flex-end;
-  gap: 5px;
+  gap: 8px;
+  align-items: center;
 }
 
 .womensortBySection span {
   text-transform: uppercase;
-  font-size: small;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #555;
 }
 
+.womensortProduct {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  transition: all 0.3s ease;
+}
+
+.womensortProduct:hover {
+  border-color: #1e3c72;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 🧩 Layout */
 .womenfilter-collection {
   display: flex;
+  gap: 15px;
 }
 
+/* 🎚️ Filter Sidebar */
 .womenfilter-collection .womenfilterSection {
-  padding: 10px 30px 10px 10px;
-  border-right: 1px solid slategray;
+  padding: 15px;
+  width: 20%;
+  border-right: 1px solid #d6d6d6;
+  background: linear-gradient(180deg, #f8f9fa, #f1f3f6);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  transition: all 0.3s ease;
 }
+
+.womenfilter-collection .womenfilterSection:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
 .womenfilterByColour,
 .womenfilterByPockets,
 .womenfilterByGender,
 .womenfilterByFabric {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .womenfilter-collection .womenfilterSection h3 {
-  display: flex;
-  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2a5298;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
+
 .womenfilter-collection .womenfilterSection ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .womenfilter-collection .womenfilterSection ul li {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  font-size: 0.9rem;
+  text-transform: capitalize;
   display: flex;
   justify-content: space-between;
-  padding-right: 5px;
-  font-size: smaller;
-  text-transform: capitalize;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
+.womenfilter-collection .womenfilterSection ul li:hover {
+  background: rgba(42, 82, 152, 0.08);
+  cursor: pointer;
+}
+
+/* 🎨 Checkbox */
 .womenfilter-collection .womenfilterSection ul li input {
   cursor: pointer;
 }
 
+/* 🛍️ Product Results */
 .womenfilter-collection .womenfilterResults {
-  width: 80%;
-  padding: 10px 10px 10px 20px;
-  border-left: 1px solid slategray;
+  flex: 1;
+  padding: 10px 20px;
+  border-left: 1px solid #d6d6d6;
 }
 
 .womenfilterResults {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
 }
 
+/* 🖼️ Product Card */
+.womenfilterResults .womenscrubCard {
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.womenfilterResults .womenscrubCard:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.womenfilterResults .womenscrubImage {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.womenscrubImage img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
+}
+
+.womenscrubCard:hover .womenscrubImage img {
+  transform: scale(1.05);
+}
+
+/* 📑 Card Details */
 .womenfilterResults .womenscrubCard .womenscrubDetails {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .womenscrubDetails h3 {
-  font-size: 14px;
-  max-width: 100%; /* Good, but not enough */
-  white-space: nowrap; /* ✅ required */
-  overflow: hidden; /* ✅ required */
-  text-overflow: ellipsis; /* ✅ required */
-  display: block;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #2c3e50;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.womenfilterResults .womenscrubCard {
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.womenfilterResults .womenscrubImage{
-  width: 100%;
-  height: auto;
-}
-
-.womenscrubImage .img{
-  width: 100%;
-}
-
-.womenscrubCard:hover {
-  /* border-top:1px solid gray ;
-  border-left:1px solid gray ; */
-  box-shadow: 4px 4px 5px rgba(116, 115, 115, 0.374);
-  transform: scale(1.01);
-  transition: all .1s ease-in-out;
-}
-
-.womensortProduct {
-  border: none;
-}
-
-.womensortProduct:focus {
-  outline: none;
-}
-
-.womensortProduct option {
-  text-transform: capitalize;
-  font-size: small;
-}
-
+/* 🟢 Add to Cart Button */
 .womenscrubDetails .womenaddToCartbtn {
-  background-color: rgb(80, 194, 80);
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
   width: 100%;
-
-  border-radius: 5px;
+  border-radius: 6px;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 468px) {
-  .womenfilter-collection .womenfilterSection {
-    padding: 10px;
-  }
-
-  .womenfilter-collection .womenfilterSection ul li {
-    margin-left: 5px;
-    margin-right: 5px;
-    gap: 10px;
-  }
-
-  .womenfilter-collection .womenfilterSection ul li input {
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
-  /* .womenfilter-collection .womenfilterResults {
-    width: 80%;
-    padding: 10px 10px 10px 20px;
-    border-left: 1px solid slategray;
-  }
-
-  .womenfilterResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  .womenfilterResults .womenscrubCard .womenscrubDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
-  }
-
-  .womenscrubDetails h3 {
-    font-size: 14px;
-    max-width: 100%; 
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    display: block;
-  }
-
-  .womenfilterResults .womenscrubCard {
-    cursor: pointer;
-  }
-
-  .womensortProduct {
-    border: none;
-  }
-
-  .womensortProduct:focus {
-    outline: none;
-  }
-
-  .womensortProduct option {
-    text-transform: capitalize;
-    font-size: small;
-  } */
+.womenscrubDetails .womenaddToCartbtn:hover {
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  box-shadow: 0 4px 12px rgba(42, 82, 152, 0.4);
+  transform: translateY(-2px);
+  cursor: pointer;
 }
-@media screen {
-  .womenfilter-collection .womenfilterSection {
-    padding: 10px;
-  }
 
-  .womenfilter-collection .womenfilterSection ul li {
-    margin-left: 5px;
-    margin-right: 5px;
-    gap: 10px;
-  }
-
-  .womenfilter-collection .womenfilterSection ul li input {
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
-  /* .womenfilter-collection .womenfilterResults {
-    width: 80%;
-    padding: 10px 10px 10px 20px;
-    border-left: 1px solid slategray;
-  }
-
-  .womenfilterResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  .womenfilterResults .womenscrubCard .womenscrubDetails {
-    display: flex;
+/* 📱 Responsive */
+@media screen and (max-width: 768px) {
+  .womenfilter-collection {
     flex-direction: column;
-    align-items: start;
-    gap: 5px;
   }
 
-  .womenscrubDetails h3 {
-    font-size: 14px;
-    max-width: 100%; 
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    display: block;
+  .womenfilter-collection .womenfilterSection {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
   }
 
-  .womenfilterResults .womenscrubCard {
-    cursor: pointer;
+  .womenfilter-collection .womenfilterResults {
+    width: 100%;
+    border-left: none;
   }
-
-  .womensortProduct {
-    border: none;
-  }
-
-  .womensortProduct:focus {
-    outline: none;
-  }
-
-  .womensortProduct option {
-    text-transform: capitalize;
-    font-size: small;
-  } */
 }

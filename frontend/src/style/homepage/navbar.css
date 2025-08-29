@@ -1,45 +1,50 @@
+/* 🌐 NAVBAR */
 .navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 12px 30px;
   font-size: larger;
   position: fixed;
   width: 100%;
   z-index: 1000;
-  border: 1px solid rgba(0, 0, 0, 0.288);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.829);
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue gradient */
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  top: 0;
 }
 
 .navBar .left {
   display: flex;
+  align-items: center;
 }
 
+/* 🌟 Logo */
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 100px;
+  padding-left: 50px;
   font-size: xx-large;
   font-weight: 900;
+  color: #fff;
+  transition: transform 0.3s ease;
 }
 
 .logo:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
 
-li {
-  list-style: none;
-  padding: 0 20px;
-}
-
+/* 📋 Menu Bar */
 .menuBar {
   display: flex;
-  /* justify-content: space-around; changed from space-between for better spacing */
   align-items: center;
   font-weight: 600;
-  gap: 5px; /* Adds consistent spacing between menu items */
-  padding: 0 0.2rem;
+  gap: 15px;
+  padding: 0 0.5rem;
 }
 
 .menuBar ul {
@@ -54,28 +59,38 @@ li {
 }
 
 .menuBar .Link {
-  color: rgb(49, 49, 163);
+  color: #f0f4ff;
   text-decoration: none;
-  transition: color 0.3s ease;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
 }
 
 .menuBar .Link:hover {
-  color: rgba(49, 49, 163, 0.637);
-  text-decoration: underline;
-  cursor: pointer;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* 🛒 Cart & User Menu */
 .cartMenu {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: x-large;
-  gap: 1rem;
+  gap: 1.5rem;
+  color: #fff;
+}
+
+.cartMenu li{
+  list-style: none;
 }
 
 .cartMenu li:hover {
-  color: rgb(72, 75, 78);
+  color: #ffdd57;
   cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 .cartMenu .login .admin-section {
@@ -83,13 +98,10 @@ li {
   justify-content: center;
   align-items: center;
   gap: 30px;
-  color: black;
+  color: #fff;
 }
 
-.admin-section .admin-profile {
-  position: relative;
-}
-
+.admin-section .admin-profile,
 .user-profile {
   position: relative;
 }
@@ -105,62 +117,47 @@ li {
 
 .cartCount span {
   position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1rem;
-  background: white;
-  color: red;
+  top: -5px;
+  right: -5px;
+  font-size: 0.8rem;
+  background: #ff4757;
+  color: #fff;
   border-radius: 50%;
   align-content: center;
   text-align: center;
-  height: 1rem;
-  width: 1rem;
-
-  color: rgb(49, 49, 163);
+  height: 1.2rem;
+  width: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* 📱 Mobile Responsiveness */
 @media screen and (max-width: 480px) {
   .logo {
-    padding-left: 20px;
+    padding-left: 10px;
     font-size: x-large;
   }
 
-  li {
-    list-style: none;
-    padding: 0 5px;
-    font-size: medium;
-  }
-
   .menuBar {
-    /* font-size: medium; */
-    display: none;
+    display: none; /* Hide menu, can be toggled with hamburger */
   }
 
   .cartMenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: xx-large;
   }
 }
-
 
 @media screen and (min-width: 481px) and (max-width: 703px) {
   .menuBar {
-    display: none;
+    display: none; /* Hidden for small tablets */
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 704px) and (max-width: 1024px) {
   .logo {
     padding-left: 20px;
     font-size: x-large;
-  }
-
-  li {
-    list-style: none;
-    padding: 0 5px;
-    font-size: medium;
   }
 
   .menuBar {
@@ -168,22 +165,6 @@ li {
   }
 
   .cartMenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .logo {
-    padding-left: 20px;
     font-size: x-large;
-  }
-
-  li {
-    list-style: none;
-    padding: 0 5px;
-    font-size: large;
   }
 }

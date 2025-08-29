@@ -1,16 +1,15 @@
+/* 🌟 Footer */
 .footer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   padding: 50px 100px;
-  color: rgb(41, 47, 53);
   margin-bottom: 25px;
-  border-top-right-radius: 200px;
-}
-
-.footer section .head {
-  font-size: x-large;
-  font-weight: bold;
-  color: rgb(57, 63, 70);
+  border-top-right-radius: 120px;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+  color: #2a2f35;
+  gap: 40px;
+  box-shadow: 0px -4px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .footer section {
@@ -19,18 +18,46 @@
   gap: 10px;
 }
 
+.footer section .head {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer section a {
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.footer section a:hover {
+  color: #2563eb;
+  transform: translateX(4px);
+}
+
+/* ✉️ Contact Us Section */
 .contactUs {
   padding: 50px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 1;
-  border-bottom-right-radius: 200px;
   margin-bottom: 25px;
+  border-bottom-right-radius: 120px;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
+
 .contactUs p {
-  font-size: xx-large;
+  font-size: 2rem;
+  font-weight: 700;
   width: 40%;
+  line-height: 1.4;
 }
 
 .contactUs .contact-Us-Input-Container {
@@ -40,126 +67,91 @@
 .contactUs .contact-Us-Label {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  border-bottom: 2px solid rgb(197, 197, 197);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.contactUs .contact-Us-Label:focus-within {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .contactUs .contact-Us-Label input {
-  font-size: x-large;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
   width: 100%;
-  background-color: transparent;
+  background: transparent;
   outline: none;
   border: none;
-  color: rgb(197, 197, 197);
+  color: white;
 }
 
 .contactUs .contact-Us-Label input::placeholder {
-  color: rgb(197, 197, 197);
-  opacity: 1;
+  color: rgba(255, 255, 255, 0.7);
 }
 
+/* 📱 Mobile (≤468px) */
 @media screen and (max-width: 468px) {
   .footer {
     grid-template-columns: 1fr 1fr;
-    padding: 25px 50px;
-    margin-bottom: 0px;
-    border-top-right-radius: 0px;
+    padding: 25px 40px;
+    border-top-right-radius: 0;
+    gap: 20px;
   }
 
   .footer section .head {
-    font-size: large;
+    font-size: 1rem;
   }
 
   .contactUs {
-    padding: 25px 50px;
-    display: flex;
-    gap: 10px;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    flex-shrink: 0;
-    border-bottom-right-radius: 0px;
-    margin-bottom: 25px;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 30px 40px;
+    border-bottom-right-radius: 0;
   }
+
   .contactUs p {
-    font-size: x-large;
+    font-size: 1.4rem;
     width: 100%;
   }
 
   .contactUs .contact-Us-Input-Container {
     width: 100%;
   }
-
-  .contactUs .contact-Us-Label {
-    width: 100%;
-    border-radius: 0px;
-    border-bottom: 2px solid rgb(197, 197, 197);
-  }
-
-  .contactUs .contact-Us-Label input {
-    font-size: large;
-    font-weight: 600;
-    font-size: medium;
-  }
-
-  .contactUs .contact-Us-Label input::placeholder {
-    color: rgb(197, 197, 197);
-    opacity: 1;
-  }
 }
 
+/* 📱 Tablet (469px–768px) */
 @media screen and (min-width: 469px) and (max-width: 768px) {
   .footer {
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 25px 50px;
-    margin-bottom: 0px;
-    border-top-right-radius: 0px;
+    padding: 30px 50px;
+    border-top-right-radius: 0;
+    gap: 25px;
   }
 
   .footer section .head {
-    font-size: large;
+    font-size: 1.1rem;
   }
 
   .contactUs {
-    padding: 25px 50px;
-    display: flex;
-    gap: 10px;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    flex-shrink: 0;
-    border-bottom-right-radius: 0px;
-    margin-bottom: 25px;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 40px 50px;
+    border-bottom-right-radius: 0;
   }
+
   .contactUs p {
-    font-size: x-large;
+    font-size: 1.6rem;
     width: 100%;
   }
 
   .contactUs .contact-Us-Input-Container {
     width: 100%;
   }
-
-  .contactUs .contact-Us-Label {
-    width: 100%;
-    border-radius: 0px;
-    border-bottom: 2px solid rgb(197, 197, 197);
-  }
-
-  .contactUs .contact-Us-Label input {
-    font-size: large;
-    font-weight: 600;
-    font-size: medium;
-  }
-
-  .contactUs .contact-Us-Label input::placeholder {
-    color: rgb(197, 197, 197);
-    opacity: 1;
-  }
 }
-
-
-

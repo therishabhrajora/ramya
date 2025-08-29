@@ -1,37 +1,81 @@
 .aboutRamya {
   display: flex;
-  padding: 30px 70px;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  padding: 40px 80px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+  color: #333;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
 }
 
+.aboutRamya h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.aboutRamya p {
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Read More Button */
 .aboutRamya .Readmorebtn {
   display: flex;
   align-items: center;
-  gap: 2px;
-  border: 1px solid black;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: white;
+  border: none;
+  border-radius: 30px;
   width: fit-content;
-  padding: 5px 30px;
+  padding: 8px 28px;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(66, 165, 245, 0.3);
 }
 
+.aboutRamya .Readmorebtn:hover {
+  background: linear-gradient(135deg, #1565c0, #2196f3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(25, 118, 210, 0.35);
+}
+
+/* Mobile first */
 @media screen and (max-width: 480px) {
   .aboutRamya {
-    padding: 25px 25px;
-    font-size: smaller;
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+
+  .aboutRamya h2 {
+    font-size: 1.4rem;
   }
 
   .aboutRamya .Readmorebtn {
-    padding: 5px 20px;
+    padding: 6px 20px;
+    font-size: 0.85rem;
   }
 }
-@media screen and (min-width: 468px) and (max-width: 768px) {
+
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 768px) {
   .aboutRamya {
-    padding: 25px 25px;
-    font-size: smaller;
+    padding: 30px;
+    font-size: 1rem;
+  }
+
+  .aboutRamya h2 {
+    font-size: 1.6rem;
   }
 
   .aboutRamya .Readmorebtn {
-    padding: 5px 20px;
+    padding: 7px 24px;
+    font-size: 0.9rem;
   }
 }

@@ -1,34 +1,51 @@
-*{
+/* ===== Reset ===== */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.baseBg{
-    background-color: pink;
+/* ===== Backgrounds ===== */
+.baseBg {
+    /* Soft gradient background */
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
 }
 
-.baseBackgroundColor{
-    background-color: rgb(255, 89, 117);
+/* Accent background color (good for sections/cards) */
+.baseBackgroundColor {
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Indigo → Purple */
+    color: white;
 }
 
-.baseButtonColor{
-    background-color:rgb(245, 150, 166)
+/* Button background color */
+.baseButtonColor {
+    background: linear-gradient(135deg, #ff6a00, #ee0979); /* Orange → Pink */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.baseTextColor{
-    color:rgb(0, 0, 110);
+.baseButtonColor:hover {
+    background: linear-gradient(135deg, #ee0979, #ff6a00); /* reverse */
 }
 
-.Link{
+/* ===== Text Colors ===== */
+.baseTextColor {
+    color: #1a202c; /* Neutral dark gray for readability */
+}
+
+/* ===== Links ===== */
+.Link {
     text-decoration: none;
+    color: #2563eb; /* Professional blue */
+    transition: color 0.2s ease;
 }
-.Link:active{
-    color:black;
+
+.Link:hover {
+    color: #1e40af; /* darker blue */
 }
 
-
-
-
-
-
+.Link:active {
+    color: black;
+}

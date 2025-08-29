@@ -1,30 +1,65 @@
+/* 🌟 Container */
 .menfilterCollectionContainer {
   width: 95%;
   margin: 20px auto;
+  font-family: "Inter", system-ui, sans-serif;
 }
+
+/* Sorting Section */
 .mensortBySection {
-  text-align: right;
   display: flex;
   justify-content: flex-end;
-  gap: 5px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #475569;
 }
 
 .mensortBySection span {
   text-transform: uppercase;
-  font-size: small;
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
+.mensortProduct {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mensortProduct:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.mensortProduct option {
+  text-transform: capitalize;
+}
+
+/* Layout */
 .menfilter-collection {
   display: flex;
+  gap: 20px;
 }
 
+/* Sidebar Filters */
 .menfilter-collection .menfilterSection {
-  padding: 10px 30px 10px 10px;
-  border-right: 1px solid slategray;
+  flex: 0 0 220px;
+  padding: 15px;
+  border-right: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  background: #fafafa;
+  border-radius: 8px;
 }
+
 .menfilterByColour,
 .menfilterByPockets,
 .menfilterByGender,
@@ -37,7 +72,12 @@
 .menfilter-collection .menfilterSection h3 {
   display: flex;
   justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 5px;
 }
+
 .menfilter-collection .menfilterSection ul {
   display: flex;
   flex-direction: column;
@@ -46,227 +86,131 @@
 
 .menfilter-collection .menfilterSection ul li {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   justify-content: space-between;
-  padding-right: 5px;
-  font-size: smaller;
-  text-transform: capitalize;
+  font-size: 0.85rem;
+  color: #334155;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.menfilter-collection .menfilterSection ul li:hover {
+  background: #f1f5f9;
 }
 
 .menfilter-collection .menfilterSection ul li input {
   cursor: pointer;
 }
 
+/* Product Grid */
 .menfilter-collection .menfilterResults {
-  width: 80%;
-  padding: 10px 10px 10px 20px;
-  border-left: 1px solid slategray;
+  flex: 1;
+  padding: 10px 0 10px 20px;
+  border-left: 1px solid #e2e8f0;
 }
 
 .menfilterResults {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
 
-.menfilterResults .menscrubCard .menscrubImage{
-  width: 100%;
-  height: auto;
-}
-
-.menscrubImage .img{
-  width: 100%;
-  width: 100%;
-}
-
-.menfilterResults .menscrubCard .menscrubDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 5px;
-}
-
-.menscrubDetails h3 {
-  font-size: 14px;
-  max-width: 100%; /* Good, but not enough */
-  white-space: nowrap; /* ✅ required */
-  overflow: hidden; /* ✅ required */
-  text-overflow: ellipsis; /* ✅ required */
-  display: block;
-}
-
+/* Product Cards */
 .menfilterResults .menscrubCard {
   cursor: pointer;
   border-radius: 10px;
-  padding: 5px;
-  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .menscrubCard:hover {
-  /* border-top:1px solid gray ;
-  border-left:1px solid gray ; */
-  box-shadow: 4px 4px 5px rgba(116, 115, 115, 0.374);
-  transform: scale(1.01);
-  transition: all 0.1s ease-in-out;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
 }
 
-.mensortProduct {
-  border: none;
-}
-
-.mensortProduct:focus {
-  outline: none;
-}
-
-.mensortProduct option {
-  text-transform: capitalize;
-  font-size: small;
-}
-
-.menscrubDetails .menaddToCartbtn {
-  background-color: rgb(80, 194, 80);
+.menscrubImage img {
   width: 100%;
+  height: auto;
+  display: block;
+}
 
-  border-radius: 5px;
+/* Card Details */
+.menfilterResults .menscrubCard .menscrubDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 10px;
+}
+
+.menscrubDetails h3 {
+  font-size: 0.9rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Add to Cart */
+.menscrubDetails .menaddToCartbtn {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 6px;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0;
+  margin-top: 4px;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
-@media screen and (max-width: 468px) {
-  .menfilter-collection .menfilterSection {
-    padding: 10px;
-  }
+.menscrubDetails .menaddToCartbtn:hover {
+  background: linear-gradient(90deg, #15803d, #16a34a);
+  transform: translateY(-1px);
+}
 
-  .menfilter-collection .menfilterSection ul li {
-    margin-left: 5px;
-    margin-right: 5px;
-    gap: 10px;
-  }
+.menscrubDetails .menaddToCartbtn:active {
+  transform: translateY(0);
+}
 
-  .menfilter-collection .menfilterSection ul li input {
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
-  .menfilterResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 20px;
-  }
-
-  @media screen and(max-width:780px) {
-    .menfilterResults {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 20px;
-    }
-  }
-
-  /* .menfilter-collection .menfilterResults {
-    width: 80%;
-    padding: 10px 10px 10px 20px;
-    border-left: 1px solid slategray;
-  }
-
-  .menfilterResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  .menfilterResults .menscrubCard .menscrubDetails {
-    display: flex;
+/* 📱 Responsive */
+@media (max-width: 992px) {
+  .menfilter-collection {
     flex-direction: column;
-    align-items: start;
-    gap: 5px;
+  }
+
+  .menfilter-collection .menfilterSection {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    flex: unset;
+  }
+
+  .menfilter-collection .menfilterResults {
+    border-left: none;
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .menfilterResults {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .menfilterResults {
+    grid-template-columns: 1fr;
   }
 
   .menscrubDetails h3 {
-    font-size: 14px;
-    max-width: 100%; 
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    display: block;
+    font-size: 0.85rem;
   }
-
-  .menfilterResults .menscrubCard {
-    cursor: pointer;
-  }
-
-  .mensortProduct {
-    border: none;
-  }
-
-  .mensortProduct:focus {
-    outline: none;
-  }
-
-  .mensortProduct option {
-    text-transform: capitalize;
-    font-size: small;
-  } */
-}
-@media screen {
-  .menfilter-collection .menfilterSection {
-    padding: 10px;
-  }
-
-  .menfilter-collection .menfilterSection ul li {
-    margin-left: 5px;
-    margin-right: 5px;
-    gap: 10px;
-  }
-
-  .menfilter-collection .menfilterSection ul li input {
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
-  /* .menfilter-collection .menfilterResults {
-    width: 80%;
-    padding: 10px 10px 10px 20px;
-    border-left: 1px solid slategray;
-  }
-
-  .menfilterResults {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  .menfilterResults .menscrubCard .menscrubDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
-  }
-
-  .menscrubDetails h3 {
-    font-size: 14px;
-    max-width: 100%; 
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    display: block;
-  }
-
-  .menfilterResults .menscrubCard {
-    cursor: pointer;
-  }
-
-  .mensortProduct {
-    border: none;
-  }
-
-  .mensortProduct:focus {
-    outline: none;
-  }
-
-  .mensortProduct option {
-    text-transform: capitalize;
-    font-size: small;
-  } */
 }
