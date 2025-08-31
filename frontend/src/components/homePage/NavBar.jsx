@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenHoverSection from "../hoverComponents/MenHoverSection";
 import WomenHoverSection from "../hoverComponents/WomenHoverSection";
 import Profile from "../profile/profile";
+import { useEffect } from "react";
 
 function NavBar() {
   const dispatch = useDispatch();
@@ -39,6 +40,11 @@ function NavBar() {
   );
   const cartProducts = useSelector((state) => state.product.cartProducts);
   const cartCount = cartProducts.length;
+
+  // useEffect(()=>{
+  //   const token=localStorage.getItem("token");
+  //   console.log(token);
+  // },cartCount)
 
   return (
     <div className="navBar baseBackgroundColor">

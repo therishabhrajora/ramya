@@ -169,7 +169,7 @@ function Products() {
                   }
                 />
               </div>
-              <div class="imagePreview">
+              <div className="imagePreview">
                 {productsData.image && (
                   <img
                     src={URL.createObjectURL(productsData.image)}

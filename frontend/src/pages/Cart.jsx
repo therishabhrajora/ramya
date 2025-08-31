@@ -10,6 +10,10 @@ import "../style/homepage/carts.css";
 function Cart() {
   const dispatch = useDispatch();
   const selectedProducts = useSelector((state) => state.product.cartProducts);
+  const subtotal = selectedProducts.reduce((acc, item) => acc + item.price, 0);
+  const tax = Math.round(subtotal * 0.06); // Example: 6% tax
+  const delivery = 0; // Free delivery
+  const total = subtotal + tax + delivery;
 
   return (
     <div className="cart-section">
@@ -55,17 +59,44 @@ function Cart() {
             </Link>
           </div>
         )}
-        {selectedProducts.length > 0 ?(
+
+        {selectedProducts.length > 0 ? (
           <Link
-          className="Link"
-          to={"/collections"}
-          onClick={() => dispatch(cartOpen())}
-        >
-          <p className="shopping-btn">Continue Shopping &rarr;</p>
-        </Link>
-        ):null}
-        
+            className="Link"
+            to={"/collections"}
+            onClick={() => dispatch(cartOpen())}
+          >
+            <p className="shopping-btn">Continue Shopping &rarr;</p>
+          </Link>
+        ) : null}
       </div>
+      {selectedProducts.length > 0 ? (
+        <div className="order-summary">
+          <h2>Order Summary</h2>
+
+          <div className="summary-item">
+            <span>Subtotal:</span>
+            <span>₹{subtotal}</span>
+          </div>
+          <div className="summary-item">
+            <span>Delivery:</span>
+            <span>{delivery === 0 ? "Free" : `₹${delivery}`}</span>
+          </div>
+          <div className="summary-item">
+            <span>Tax:</span>
+            <span>₹{tax}</span>
+          </div>
+          <div className="summary-item total">
+            <span>Total:</span>
+            <span>₹{total}</span>
+          </div>
+
+          <div className="delivery-info">📦 Estimated Delivery: 3–5 Days</div>
+          <div className="buttons">
+            <button className="btn btn-primary">Checkout</button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

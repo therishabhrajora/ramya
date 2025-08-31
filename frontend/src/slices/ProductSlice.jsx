@@ -18,6 +18,9 @@ const productSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
+      const token=localStorage.getItem("token");
+      console.log(token);
+    
       const product = state.products.find(
         (item) => item.productId === action.payload.productId
       );
