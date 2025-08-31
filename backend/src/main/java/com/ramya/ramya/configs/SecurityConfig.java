@@ -43,7 +43,10 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .httpBasic(httpbasic -> httpbasic.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/collections/**").permitAll() // homepage, men/women, register, login
+                        .requestMatchers("/collections/**", "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html")
+                        .permitAll() // homepage, men/women, register, login
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
 
