@@ -1,19 +1,34 @@
 import { MdOutlineClose } from "react-icons/md";
 import { cartOpen } from "../slices/NavBarSlice";
+import { clearCart } from "../slices/ProductSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { MdDeleteForever } from "react-icons/md";
 import { removeFromCart } from "../slices/ProductSlice";
 import "../style/homepage/carts.css";
+import { useState } from "react";
 
 function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [ordersProduct,setOrderProducts]=useState([]);
   const selectedProducts = useSelector((state) => state.product.cartProducts);
   const subtotal = selectedProducts.reduce((acc, item) => acc + item.price, 0);
   const tax = Math.round(subtotal * 0.06); // Example: 6% tax
   const delivery = 0; // Free delivery
   const total = subtotal + tax + delivery;
+  const handleCheckout=()=>{
+    const token=localStorage.getItem("token");
+    if(!token){
+      navigate("/login");
+      return alert("You are not login, Please login first");
+
+    }
+    setOrderProducts(selectedProducts);
+    dispatch(clearCart()); 
+    navigate("/collections/track-order");
+  }
 
   return (
     <div className="cart-section">
@@ -93,7 +108,9 @@ function Cart() {
 
           <div className="delivery-info">📦 Estimated Delivery: 3–5 Days</div>
           <div className="buttons">
-            <button className="btn btn-primary">Checkout</button>
+            <button
+            onClick={()=>handleCheckout()}
+            className="btn btn-primary">Checkout</button>
           </div>
         </div>
       ) : null}

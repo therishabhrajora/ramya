@@ -95,13 +95,6 @@ function NavBar() {
           </div>
 
           {/* Static links (no hover) */}
-          <ul className="menu-list">
-            <li className="exoflex">
-              <Link className="Link" to="/collections/ecoflex">
-                Ecoflex
-              </Link>
-            </li>
-          </ul>
           <ul>
             <li className="stethoscope">
               <Link className="Link" to="/collections/stethoscope">

@@ -3,9 +3,8 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import MenCollections from "./pages/MenCollections";
 import WomenCollections from "./pages/WomenCollections";
-import Ecoflex from "./components/ecoflexSection/Ecoflex";
 import Stethoscope from "./components/stethoscpe/Stethoscope";
-import TrackOrder from "./components/tackOrder/TrackOrder";
+import TrackOrder from "./components/trackOrder/TrackOrder";
 import BulkOrder from "./components/bulkOrder/BulkOrder";
 import AccountLogin from "./pages/AccountLogin";
 import Products from "./pages/admin/Products";
@@ -46,12 +45,12 @@ function App() {
         <Route path="/collections" element={<HomePage />} />
         <Route path="/collections/men" element={<MenCollections />} />
         <Route path="/collections/women" element={<WomenCollections />} />
-        <Route path="/collections/ecoflex" element={<Ecoflex />} />
+        {/* <Route path="/collections/ecoflex" element={<Ecoflex />} /> */}
         <Route path="/collections/stethoscope" element={<Stethoscope />} />
         <Route path="/collections/track-order" element={<TrackOrder />} />
         <Route path="/collections/bulk-order" element={<BulkOrder />} />
-        <Route path="/collections/account" element={<AccountLogin />} />
-        <Route path="/collections/logout" element={<AccountLogin />} />
+        <Route path="/login" element={<AccountLogin />} />
+        <Route path="/logout" element={<AccountLogin />} />
         <Route path="/collections/products" element={<ProductOrder />} />
         <Route path="/collections/admin/add-products" element={<Products />} />
         <Route path="/collections/account/reset-password" element={<ResetPassword />} />
