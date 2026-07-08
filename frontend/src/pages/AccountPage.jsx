@@ -25,6 +25,7 @@ export default function AccountPage() {
   
   const cartItems = useSelector((state) => state.product.cartProducts);
   const addresses = useSelector((state) => state.address.addresses);
+  const orders = useSelector((state) => state.order.orders);
 
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -64,12 +65,7 @@ export default function AccountPage() {
 
 
 
-  // Mock Data
-  const orders = [
-    { id: '#ORD-9482', date: 'Feb 15, 2026', total: '$129.00', status: 'Delivered' },
-    { id: '#ORD-8371', date: 'Jan 10, 2026', total: '$45.50', status: 'Shipped' }
-  ];
-
+ 
   const menuItems = [
     { id: 'profile', label: 'Profile Info', icon: User },
     { id: 'orders', label: 'Order History', icon: ShoppingBag },
@@ -171,13 +167,14 @@ export default function AccountPage() {
                 <h2 className="tab-title">Order History</h2>
                 <div className="list-stack">
                   {orders.map((order) => (
-                    <div key={order.id} className="order-row">
+                    console.log(order),
+                    <div key={order.id} onClick={()=>navigate(`/collections/order-details/${order.orderId}`)} className="order-row">
                       <div className="row-left">
-                        <p className="order-id">{order.id}</p>
-                        <p className="small-text">{order.date}</p>
+                        <p className="order-id">{order.orderId}</p>
+                        <p className="small-text">{order.orderDate}</p>
                       </div>
                       <div className="text-right">
-                        <p className="bold-text">{order.total}</p>
+                        <p className="bold-text">{order.totalAmount}</p>
                         <span className={`status-badge ${order.status.toLowerCase()}`}>
                           {order.status}
                         </span>

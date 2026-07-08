@@ -10,6 +10,8 @@ export const ENDPOINTS = {
     productsByCategory: (category) => `collections/products/category/${category.toLowerCase()}`,
     productDetails: (id) => `collections/products/details/${id}`,
 
+    getProductColors:`collections/products/colors`,
+
     addProducts: `collections/admin/add-products`,
     updateProduct: (id) => `collections/admin/update-product/${id}`,
     deleteProduct: (id) => `collections/admin/delete-product/${id}`,
@@ -18,6 +20,7 @@ export const ENDPOINTS = {
     getAllOrder:`orders/all`,
     trackOrder: (orderId) => `orders/track/${orderId}`,
     cancelOrder: (orderId) => `orders/cancel/${orderId}`,
+    getOrderById: (id) => `orders/${id}`,
 
     customerOrderHistory: (email) => `/orders/customer?email=${encodeURIComponent(email)}`,
     adminAllOrders: `orders/all`,

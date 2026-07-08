@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Products {
 
     @Id
-    @Column(name = "product_id")
+    @Column(name = "product_id", length = 50)
     private String productId;
 
     @NotBlank(message = "Product name is mandatory")
@@ -60,11 +60,6 @@ public class Products {
 
     @Column(name = "cloudinary_image_public_id")
     private String cloudinaryImagePublicId;
-
-    /* 
-     * SECTIONS COLLECTION MAPPINGS
-     * Uses @ElementCollection to store basic array list attributes in secondary tables automatically.
-     */
     
     @ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
@@ -72,12 +67,12 @@ public class Products {
     private List<String> images; // Stores multiple image paths
 
     @ElementCollection
-    @CollectionTable(name = "product_colors", joinColumns = @JoinColumn(name = "product_id"))
+    @CollectionTable(name = "product_colors", joinColumns = @JoinColumn(name = "product_id", columnDefinition = "VARCHAR(50)"))
     @Column(name = "color_name")
     private List<String> colors; // Array mapping ['Space Gray', 'Silver Oxide']
 
     @ElementCollection
-    @CollectionTable(name = "product_sizes", joinColumns = @JoinColumn(name = "product_id"))
+    @CollectionTable(name = "product_sizes", joinColumns = @JoinColumn(name = "product_id", columnDefinition = "VARCHAR(50)"))
     @Column(name = "size_name")
     private List<String> sizes; // Array mapping ['S', 'M', 'L']
 }

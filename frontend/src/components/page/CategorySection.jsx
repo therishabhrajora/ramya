@@ -7,18 +7,28 @@ import forestgreen from "../../assets/forestgreen.png";
 import olive from "../../assets/olive.png";
 import galaxyblue from "../../assets/galaxyblue.png";
 import hotpink from "../../assets/hotpink.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import apiClient from "../../app/AppClient";
+import { ENDPOINTS } from "../../services/Constants";
+import { useDispatch } from "react-redux";
+import { setColors } from "../../slices/ProductSlice";
 
 function CategorySection() {
-  const categories = [
-    { name: "Navy Blue", image: navyblue },
-    { name: "Black", image: black },
-    { name: "Wine", image: wine },
-    { name: "Forest Green", image: forestgreen },
-    { name: "Olive", image: olive },
-    { name: "Galaxy Blue", image: galaxyblue },
-    { name: "Hot Pink", image: hotpink },
-  ];
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const [color,setColor]=useState([]);
+
+  useEffect(()=>{
+    const fetchColors=async()=>{
+      const colors=await apiClient.get(ENDPOINTS.getProductColors);
+      console.log(colors.data);
+      setColor(colors.data);
+      dispatch(setColors(colors.data));
+    }
+    fetchColors();
+  },[]);
+
 
   return (
     <div className="categorySection">
@@ -36,10 +46,10 @@ function CategorySection() {
       <div className="byColor baseTextColor">
         <h1>Shop By Color</h1>
         <ul className="colorList">
-          {categories.map((category, index) => (
-            <li className={category.name} key={index}>
-              <img src={category.image} alt={category.name} width="150px"/>
-              <h4>{category.name}</h4>
+          {color.map((color, index) => (
+            <li className={color} key={index} onClick={()=>navigate(`/collections/${color}`)}>
+              <img src={color} alt={color} width="150px"/>
+              <h4>{color}</h4>
             </li>
           ))}
         </ul>

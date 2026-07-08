@@ -8,6 +8,7 @@ import { orderPlaced } from '../slices/OrderSlice';
 import { addAddress } from '../slices/AddressSlice';
 import apiClient from '../app/AppClient';
 import { ENDPOINTS } from '../services/Constants';
+import { clearCart } from '../slices/ProductSlice';
 
 export default function CheckoutPage() {
   const [theme, setTheme] = useState('light');
@@ -18,6 +19,7 @@ export default function CheckoutPage() {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const address = useSelector(state => state.address.addresses)
   const profile=JSON.parse(localStorage.getItem("profile"));
+  const cartProducts=JSON.parse(localStorage.getItem("cartProducts"));
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -76,6 +78,8 @@ export default function CheckoutPage() {
           }
         }
       });
+      dispatch(clearCart());
+      
 
     } else {
       alert("Please! select address before place order");

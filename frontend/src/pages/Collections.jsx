@@ -3,18 +3,22 @@ import NavBar from "../components/page/NavBar";
 import FilterCollection from "../components/collections/FilterCollection";
 import Collection from "../components/collections/Collection";
 import HeroSection from "../components/collections/HeroSection";
+import { useParams, useSearchParams } from "react-router-dom";
 
 
-function MenCollections() {
+function Collections() {
+  const [c]=useSearchParams();
+  const color=c.get("color");
+
   return (
     <div>
       <NavBar />
       <HeroSection />
-      <Collection />
-      <FilterCollection />
+      <Collection  />
+      <FilterCollection  />
       <Footer />
     </div>
   );
 }
 
-export default MenCollections;
+export default Collections;

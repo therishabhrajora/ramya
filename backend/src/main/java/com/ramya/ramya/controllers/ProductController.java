@@ -26,5 +26,11 @@ public class ProductController {
        
 
      }
+
+     @GetMapping("/products/colors")
+     public ResponseEntity<List<String>> getColors(){
+      List<String> colors = productService.getAllDistinctColors();
+      return ResponseEntity.ok(colors);
+     }
     
 }

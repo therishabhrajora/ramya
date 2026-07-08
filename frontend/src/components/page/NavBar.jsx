@@ -105,7 +105,7 @@ function NavBar() {
           </ul>
           <ul>
             <li className="trackOrder">
-              <Link className="Link" to="/collections/track-order">
+              <Link className="Link" to="/collections/my-orders">
                 Track Order
               </Link>
             </li>

@@ -5,14 +5,7 @@ const productSlice = createSlice({
   name: "productSlice",
   initialState: {
     products: [],
-    colors: [
-      { label: "Black", value: "black" },
-      { label: "Ciel Blue", value: "blue" },
-      { label: "Navy", value: "navy" },
-      { label: "Wine", value: "wine" },
-      { label: "Forest Green", value: "green" },
-      { label: "Heather Grey", value: "grey" },
-    ],
+    colors: [],
     pockets:[5,8,10],
     gender: ["male", "female"],
     type: ["classic", "ecoflex"],
@@ -61,9 +54,13 @@ const productSlice = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload;
     },
+
+    setColors:(state,action)=>{
+      state.colors = action.payload;
+    }
   },
 });
 
-export const { addToCart, removeFromCart, setProducts, clearCart } = productSlice.actions;
+export const { addToCart, removeFromCart, setProducts, clearCart, setColors } = productSlice.actions;
 
 export default productSlice.reducer;

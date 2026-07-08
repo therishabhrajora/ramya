@@ -26,6 +26,9 @@ import OrderPlaced from "./pages/OrderPlaced";
 import apiClient from "./app/AppClient";
 import { ENDPOINTS } from "./services/Constants";
 import { addAddress ,setAddresses} from "./slices/AddressSlice";
+import OrderList from "./pages/OrderList";
+import OrderDetailPage from "./pages/OrderDetailPage";
+import { setOrderHistory } from "./slices/OrderSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +37,10 @@ function App() {
       try {
         const productsResponse = await apiClient.get(ENDPOINTS.products);
         const addressesResponse = await apiClient.get(ENDPOINTS.allAddress);
+        const ordersResponse = await apiClient.get(ENDPOINTS.getAllOrder);
         dispatch(setProducts( productsResponse.data));
          dispatch(setAddresses(addressesResponse.data)); 
+         dispatch(setOrderHistory(ordersResponse.data));
       } catch (error) {
         console.error("Failed to fetch application resources:", error);
       }
@@ -53,15 +58,16 @@ function App() {
         {/* <Route path="/" element={<Navigate to="/collections" />} /> */}
         <Route path="/" element={<HomePage />} />
         <Route path="/collections" element={<HomePage />} />
-        {/* <Route path="/collections/women" element={<WomenCollections />} /> */}
         <Route path="/collections/order-placed/:id" element={<OrderPlaced />} />
         <Route path="/collections/stethoscope" element={<Stethoscope />} />
-        <Route path="/collections/track-order" element={<TrackOrder />} />
         <Route path="/collections/bulk-order" element={<BulkOrder />} />
+        <Route path="/collections/my-orders" element={<OrderList />} />
         <Route path="/collections/products" element={<ProductOrder />} />
         <Route path="/collections/admin/add-products" element={<Products />} />
         <Route path="/collections/account/reset-password" element={<ResetPassword />} />
         <Route path="/collections/checkout" element={<CheckoutPage />} />
+        <Route path="/collections/track-order" element={<TrackOrder />} />
+        <Route path="/collections/order-details/:id" element={<OrderDetailPage />} />
         <Route path="/collections/:c/:id" element={<ProductDetailPage />} />
         <Route path="/collections/:c" element={<Collections />} />
         <Route path="/login" element={<AccountLogin />} />
@@ -69,7 +75,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/address" element={<Address />} />
       </Routes>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={1000} />
     </>
   );
 }

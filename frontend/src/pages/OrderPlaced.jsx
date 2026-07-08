@@ -46,7 +46,7 @@ export default function OrderPlaced() {
           <button 
             type="button" 
             className="btn-track-order"
-            onClick={() => navigate("/collections/track-order",{state:{id:id}})}
+            onClick={() => navigate(`/collections/track-order?id=${id}`, {state: {id: id}})}
           >
             📦 Track My Order
           </button>

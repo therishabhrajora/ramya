@@ -42,6 +42,10 @@ public class ProductService {
         return productsRepo.findAll();
     }
 
+   public List<String> getAllDistinctColors() {
+    return productsRepo.findDistinctColors(); // Ensure this matches the repository method name
+}
+
 
     
 
