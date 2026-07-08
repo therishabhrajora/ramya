@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 
-import NavBar from "../../components/homePage/NavBar";
-import Footer from "../../components/homePage/Footer";
-import "../../style/homepage/products.css";
+import NavBar from "../../components/page/NavBar";
+import Footer from "../../components/page/Footer";
+import "../../style/page/products.css";
 import axios from "axios";
-import { ENDPOINTS } from "../../helper/Constants";
+import { ENDPOINTS } from "../../services/Constants";
 
 function Products() {
 

@@ -18,7 +18,6 @@ import helper.ResponseMessageConstants;
 public class ProductService {
     private final ProductsRepo productsRepo;
 
-    @Autowired
     ProductService(ProductsRepo productsRepo) {
         this.productsRepo = productsRepo;
 
@@ -29,7 +28,7 @@ public class ProductService {
         ArrayList<String> arr = new ArrayList<>();
         arr.add(products.getName().replaceAll(" ", "-").toLowerCase());
         arr.add(products.getCategory());
-        arr.add(products.getColor());
+        // arr.add(products.getColors());
         arr.add(String.valueOf(products.getPocket()));
         String id = String.join("-", arr);
 

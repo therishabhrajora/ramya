@@ -51,7 +51,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").hasRole("USER")
 
                         // 🔐 Secure endpoints
-                        .requestMatchers("/user/**").authenticated()
+                        .requestMatchers("/user/**","/address/**","/bulk-orders/**","/orders/**").authenticated()
 
                         // fallback: block anything else
                         .anyRequest().denyAll())

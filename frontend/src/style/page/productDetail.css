@@ -1,0 +1,390 @@
+/* Inherits structural core layout assets from previous stylesheets */
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 868px) {
+  .grid-2-col {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+/* ==========================================================================
+   LEFT SIDE GALLERY DESIGN
+   ========================================================================== */
+.product-media-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main-preview-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-primary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-primary-img:hover {
+  transform: scale(1.03);
+}
+
+/* Floating Like Target Button */
+.wishlist-floating-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.wishlist-floating-btn:hover {
+  transform: scale(1.1);
+  color: var(--danger);
+}
+
+.wishlist-floating-btn.liked {
+  color: #ef4444;
+  background-color: var(--danger-light);
+  border-color: transparent;
+}
+
+.wishlist-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Horizontal Thumbnail Strips selection row */
+.thumbnails-wrapper-row {
+  display: flex;
+  gap: 10px;
+}
+
+.thumb-card-btn {
+  flex: 1;
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--bg-surface);
+  padding: 0;
+}
+
+.thumb-card-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-card-btn.selected {
+  border-color: var(--primary);
+}
+
+/* ==========================================================================
+   RIGHT SIDE INFORMATIONAL ARCHITECTURE
+   ========================================================================== */
+.product-badge-accent {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.product-main-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+@media (min-width: 1024px) {
+  .product-main-title {
+    font-size: 2.1rem;
+  }
+}
+
+.product-tagline-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+/* Ratings component alignment rules */
+.ratings-summary-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rating-pill {
+  background-color: #eab308;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.star-icon-filled {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.reviews-count {
+  margin: 0;
+}
+
+/* Price presentation container box block rules */
+.price-structure-card {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.price-tag-large {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.original-price-strike {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.discount-tag-percent {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Variant Pill lists and Chips logic settings */
+.variant-selection-section {
+  margin-bottom: 20px;
+}
+
+.selected-meta-txt {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.color-swatch-flex, .size-selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.color-chip-btn {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-chip-btn:hover {
+  border-color: var(--text-muted);
+}
+
+.color-chip-btn.active {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.size-square-btn {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.size-square-btn:hover {
+  border-color: var(--text-muted);
+}
+
+.size-square-btn.active {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Stepper counter UI box configuration */
+.quantity-block-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.quantity-block-wrapper .form-label {
+  margin-bottom: 0;
+}
+
+.stepper-control-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.stepper-trigger-btn {
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.stepper-trigger-btn:hover {
+  background-color: var(--bg-main);
+}
+
+.stepper-value-text {
+  width: 40px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Primary CTA Cluster row distribution styling */
+.product-actions-btn-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 480px) {
+  .product-actions-btn-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.action-cta-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px !important;
+  font-size: 1rem !important;
+}
+
+.secondary-outline-btn {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 2px solid var(--text-main);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.secondary-outline-btn:hover {
+  opacity: 0.8;
+}
+
+/* Lower Section Trust Badges block panels styles */
+.trust-badges-list-stack {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trust-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.badge-icon-frame {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+}
+
+.thin-title {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.clear-margin {
+  margin: 2px 0 0 0;
+}

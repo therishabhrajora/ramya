@@ -1,5 +1,5 @@
 import { LuLoaderCircle } from "react-icons/lu";
-import "../../style/homepage/loader.css";
+import "../../style/page/loader.css";
 function Loader() {
   const token = localStorage.getItem("token");
   return (

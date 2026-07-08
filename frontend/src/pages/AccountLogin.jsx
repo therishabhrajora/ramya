@@ -1,16 +1,17 @@
-import "../style/homepage/accountLogin.css";
+import "../style/page/accountLogin.css";
 import "../index.css";
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "../components/homePage/NavBar";
-import Footer from "../components/homePage/Footer";
+import NavBar from "../components/page/NavBar";
+import Footer from "../components/page/Footer";
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../slices/AuthSlice";
 import { MdSouth } from "react-icons/md";
-import { ENDPOINTS } from "../helper/Constants";
+import { ENDPOINTS } from "../services/Constants";
 import Loader from "../components/loader/Loader";
 import { toast } from "react-toastify";
+import apiClient from "../app/AppClient";
 
 function AccountLogin() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function AccountLogin() {
     e.preventDefault();
     setLoader(true);
     try {
-      const res = await axios.post(ENDPOINTS.login, loginData, {
+      const res = await apiClient.post(ENDPOINTS.login, loginData, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -73,7 +74,7 @@ function AccountLogin() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     try {
 
-      const res = await axios.post(ENDPOINTS.register, registeredData);
+      const res = await apiClient.post(ENDPOINTS.register, registeredData);
  
       setRegisteredData({
         firstName: "",

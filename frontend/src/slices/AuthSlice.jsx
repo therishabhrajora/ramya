@@ -1,21 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// 1. Safe parsing utility to guard against corrupted localStorage strings crashing the app
+const getSafeUserFromStorage = () => {
+  const storedUser = localStorage.getItem("user");
+  if (!storedUser) return null;
+  try {
+    return JSON.parse(storedUser);
+  } catch (error) {
+    console.error("Failed to parse corrupted user object from localStorage:", error);
+    localStorage.removeItem("user"); 
+    return null;
+  }
+};
+
 const tokenFromLocalStorage = localStorage.getItem("token");
-const userFromLocalStorage = localStorage.getItem("user");
 const roleFromLocalStorage = localStorage.getItem("role");
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: tokenFromLocalStorage || null,
-    user: userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null,
+    user: getSafeUserFromStorage(),
     isLoggedIn: !!tokenFromLocalStorage,
-     role: roleFromLocalStorage || null,
+    role: roleFromLocalStorage || null,
   },
 
   reducers: {
+ 
     loginSuccess: (state, action) => {
       const { token, user, role } = action.payload;
+      
       state.token = token;
       state.user = user;
       state.role = role;
@@ -23,7 +37,7 @@ const authSlice = createSlice({
 
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("profile", JSON.stringify(user));
     },
 
     logout: (state) => {
@@ -33,11 +47,16 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
 
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
+      localStorage.removeItem("profile");
       localStorage.removeItem("role");
     },
   },
 });
 
 export const { loginSuccess, logout } = authSlice.actions;
+
+export const selectAuth = (state) => state.auth;
+export const selectCurrentUser = (state) => state.auth.user;
+export const selectIsAdmin = (state) => state.auth.role === "admin";
+
 export default authSlice.reducer;

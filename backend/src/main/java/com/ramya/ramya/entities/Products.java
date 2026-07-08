@@ -1,7 +1,12 @@
 package com.ramya.ramya.entities;
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -18,22 +23,61 @@ import lombok.Setter;
 @Data
 @Table(name = "products")
 public class Products {
+
     @Id
+    @Column(name = "product_id")
     private String productId;
-    @NotBlank
+
+    @NotBlank(message = "Product name is mandatory")
     private String name;
-    private String image;
-    @NotBlank
+
+    @NotBlank(message = "Tagline cannot be blank")
+    private String tagline;
+
+    @NotBlank(message = "Gender target is mandatory")
     private String gender;
-    @NotBlank
+
+    @NotBlank(message = "Category is mandatory")
     private String category;
-    @NotBlank
-    private String color;
-    @Min(value = 1, message = "Pocket must be at least 1")
+
+    @Min(value = 0, message = "Price must be positive")
     private float price;
-    @Min(value = 1, message = "Pocket must be at least 1")
+
+    @Column(name = "original_price")
+    @Min(value = 0, message = "Original price must be positive")
+    private float originalPrice;
+
+    private String discount; // Calculated string like '33% OFF'
+
+    @Min(value = 0, message = "Pocket inventory capacity must be at least 0")
     private int pocket;
-    @Min(value = 1, message = "Pocket must be at least 1")
+
+    @Min(value = 0, message = "Rating cannot be lower than 0")
     private float rating;
+
+    @Column(name = "reviews_count")
+    private int reviewsCount;
+
+    @Column(name = "cloudinary_image_public_id")
     private String cloudinaryImagePublicId;
+
+    /* 
+     * SECTIONS COLLECTION MAPPINGS
+     * Uses @ElementCollection to store basic array list attributes in secondary tables automatically.
+     */
+    
+    @ElementCollection
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image_url")
+    private List<String> images; // Stores multiple image paths
+
+    @ElementCollection
+    @CollectionTable(name = "product_colors", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "color_name")
+    private List<String> colors; // Array mapping ['Space Gray', 'Silver Oxide']
+
+    @ElementCollection
+    @CollectionTable(name = "product_sizes", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "size_name")
+    private List<String> sizes; // Array mapping ['S', 'M', 'L']
 }

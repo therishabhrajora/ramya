@@ -21,7 +21,7 @@ function ProductOrder() {
               ))}
             </ul>
           </div>
-          {/* <div style={{backgroundColor:"red"}}>{selectedProducts.length}</div> */}
+        
           
         </>
       ) : (

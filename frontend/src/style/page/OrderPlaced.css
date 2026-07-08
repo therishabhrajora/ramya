@@ -1,0 +1,155 @@
+.success-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  background-color: #f9fafb;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.success-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+/* --- Premium Checkmark Scale Animation --- */
+.success-animation-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.success-checkmark-circle {
+  width: 80px;
+  height: 80px;
+  background: #e6f4ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.success-checkmark-draw {
+  width: 16px;
+  height: 32px;
+  border-right: 4px solid #137333;
+  border-bottom: 4px solid #137333;
+  transform: rotate(45deg);
+  margin-top: -6px;
+  opacity: 0;
+  animation: drawCheck 0.3s ease-out 0.3s forwards;
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes drawCheck {
+  0% { opacity: 0; width: 0; height: 0; }
+  50% { opacity: 1; width: 16px; height: 0; }
+  100% { opacity: 1; width: 16px; height: 32px; }
+}
+
+/* --- Typography Hierarchy --- */
+.success-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px 0;
+}
+
+.success-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0 0 30px 0;
+}
+
+/* --- Information Card Summary Box --- */
+.order-summary-box {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 30px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.border-none {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.summary-value {
+  color: #111827;
+  font-weight: 600;
+}
+
+.core-id {
+  font-family: monospace;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #4f46e5;
+}
+
+.delivery-highlight {
+  color: #059669;
+}
+
+/* --- Interactive Core Navigation Action --- */
+.success-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.success-action-buttons button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-track-order {
+  background: #111827;
+  color: #ffffff;
+}
+
+.btn-track-order:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.btn-continue-shopping {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-continue-shopping:hover {
+  background: #e5e7eb;
+}

@@ -1,43 +1,84 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../style/hoverComponents/TrackOrder.css";
-import NavBar from "../homePage/NavBar";
+import NavBar from "../page/NavBar";
+import { useLocation } from "react-router-dom";
+import apiClient from "../../app/AppClient";
+import { ENDPOINTS } from "../../services/Constants";
 
 export default function TrackOrder() {
   const [searchId, setSearchId] = useState("EF-98431-ZX");
+  const [orderDetails, setOrderDetails] = useState({});
+  const location = useLocation();
+  const id = location.state.id;
+
+  useEffect(() => {
+    const orderDetails = async () => {
+      const order = await apiClient.get(ENDPOINTS.trackOrder(id));
+      order.data.estimatedDelivery = order.data.orderDate + 7;
+      order.data.statusStep = 3;
+      order.data.carrier = "EcoPost Express"
+      order.data.dimensions = "1.4 kg • 30x20x10 cm",
+      order.data.history = [
+          {
+            id: 1,
+            time: "July 03, 10:14 AM",
+            location: "Delhi Hub, IN",
+            detail: "Departed sorting facility",
+          },
+          {
+            id: 2,
+            time: "July 02, 04:30 PM",
+            location: "Mumbai Sorting Center",
+            detail: "Processed and manifest generated",
+          },
+          {
+            id: 3,
+            time: "July 01, 09:00 AM",
+            location: "Warehouse Alpha",
+            detail: "Order packaged and handed to carrier",
+          },
+        ],
+
+        setOrderDetails(order.data);
+    }
+    orderDetails();
+  },[]);
+  console.log(orderDetails);
+
 
   // Mock tracking matrix data
-  const orderDetails = {
-    id: "EF-98431-ZX",
-    status: "In Transit", // Options: Processing, Shipped, In Transit, Delivered
-    statusStep: 3, // 1 to 4 step progress marker
-    estimatedDelivery: "Tuesday, July 7, 2026",
-    carrier: "EcoPost Express",
-    dimensions: "1.4 kg • 30x20x10 cm",
-    history: [
-      {
-        id: 1,
-        time: "July 03, 10:14 AM",
-        location: "Delhi Hub, IN",
-        detail: "Departed sorting facility",
-      },
-      {
-        id: 2,
-        time: "July 02, 04:30 PM",
-        location: "Mumbai Sorting Center",
-        detail: "Processed and manifest generated",
-      },
-      {
-        id: 3,
-        time: "July 01, 09:00 AM",
-        location: "Warehouse Alpha",
-        detail: "Order packaged and handed to carrier",
-      },
-    ],
-  };
+  // const orderDetails = {
+  //   id: "EF-98431-ZX",
+  //   status: "In Transit", // Options: Processing, Shipped, In Transit, Delivered
+  //   statusStep: 3, // 1 to 4 step progress marker
+  //   estimatedDelivery: "Tuesday, July 7, 2026",
+  //   carrier: "EcoPost Express",
+  //   dimensions: "1.4 kg • 30x20x10 cm",
+  //   history: [
+  //     {
+  //       id: 1,
+  //       time: "July 03, 10:14 AM",
+  //       location: "Delhi Hub, IN",
+  //       detail: "Departed sorting facility",
+  //     },
+  //     {
+  //       id: 2,
+  //       time: "July 02, 04:30 PM",
+  //       location: "Mumbai Sorting Center",
+  //       detail: "Processed and manifest generated",
+  //     },
+  //     {
+  //       id: 3,
+  //       time: "July 01, 09:00 AM",
+  //       location: "Warehouse Alpha",
+  //       detail: "Order packaged and handed to carrier",
+  //     },
+  //   ],
+  // };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    alert(`Querying tracking ecosystem logs for token: ${searchId}`);
+    a(`Querying tracking ecosystem logs for token: ${searchId}`);
   };
 
   return (
@@ -70,7 +111,7 @@ export default function TrackOrder() {
             <header className="monitor-header">
               <div className="header-meta-block">
                 <span className="meta-label">Tracking Number</span>
-                <h2 className="tracking-id-text">{orderDetails.id}</h2>
+                <h2 className="tracking-id-text">{orderDetails.orderId}</h2>
               </div>
               <div className="header-delivery-block">
                 <span className="meta-label">Estimated Arrival</span>

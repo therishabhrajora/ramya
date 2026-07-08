@@ -1,10 +1,10 @@
 
-import AboutRamya from "../components/homePage/AboutRamya";
-import CategorySection from "../components/homePage/CategorySection";
-import Footer from "../components/homePage/Footer";
-import HeroSection from "../components/homePage/HeroSection";
-import NavBar from "../components/homePage/NavBar";
-import ShoppingSection from "../components/homePage/ShoppingSection";
+import AboutRamya from "../components/page/AboutRamya";
+import CategorySection from "../components/page/CategorySection";
+import Footer from "../components/page/Footer";
+import HeroSection from "../components/page/HeroSection";
+import NavBar from "../components/page/NavBar";
+import ShoppingSection from "../components/page/ShoppingSection";
 
 function HomePage() {
   return (

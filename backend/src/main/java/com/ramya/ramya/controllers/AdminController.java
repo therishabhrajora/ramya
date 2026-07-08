@@ -49,14 +49,15 @@ public class AdminController {
 
             Products products = new Products();
             products.setCategory(productForm.getCategory().toLowerCase());
-            products.setColor(productForm.getColor().toLowerCase());
-            products.setColor(productForm.getColor().toLowerCase());
+            products.setColors(null);
+            // products.setColors(productForm.getColor().toLowerCase());
+            // products.setColors(productForm.getColor().toLowerCase());
             products.setGender(productForm.getGender().toLowerCase());
             products.setName(productForm.getName().toLowerCase());
             products.setPocket(productForm.getPocket());
             products.setPrice(productForm.getPrice());
             products.setRating(productForm.getRating());
-            products.setImage(fileURl);
+            // products.setImage(fileURl);
             products.setCloudinaryImagePublicId(fileName);
             productService.saveProducts(products);
 
