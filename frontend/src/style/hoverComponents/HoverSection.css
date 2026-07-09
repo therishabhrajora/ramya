@@ -4,7 +4,7 @@
   padding: 20px 70px;
   top: 57px;
   left: 0;
-  background-color: rgb(252, 175, 255);
+  background-color: #a9bad6;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   transition: all .3s ease-in-out 1s;
@@ -16,7 +16,7 @@
   padding: 20px 70px;
   top: 57px;
   left: 0;
-  background-color: rgb(252, 175, 255);
+  background-color: #a9bad6;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   transition: all .3s ease-in-out 1s;
@@ -31,7 +31,7 @@ ul {
 
 ul li .Link {
   text-decoration: none;
-  color: black;
+  color: #1E40AF;
 }
 
 .head {

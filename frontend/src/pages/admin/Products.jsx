@@ -1,44 +1,60 @@
 import { useRef, useState } from "react";
+import * as XLSX from "xlsx";
+import axios from "axios";
 
 import NavBar from "../../components/page/NavBar";
 import Footer from "../../components/page/Footer";
-import "../../style/page/products.css";
-import axios from "axios";
+import "../../style/page/Products.css";
+
 import { ENDPOINTS } from "../../services/Constants";
 
 function Products() {
+  const fileRef = useRef(null);
 
-  // const { token, user, isLoggedIn, role } = useSelector((state) => state.auth);
-  const imageInputRef=useRef(null);
-  const [productsData, setProductsData] = useState({
-    productId: "",
-    category: "",
-    color: "",
-    gender: "",
-    image: null,
-    name: "",
-    pocket: "",
-    price: "",
-    rating: "",
-  });
+  const [file, setFile] = useState(null);
+  const [previewData, setPreviewData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleProductsChange = (e) => {
-    setProductsData({ ...productsData, [e.target.name]: e.target.value });
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (!selectedFile) return;
+
+    setFile(selectedFile);
+
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const workbook = XLSX.read(event.target.result, {
+        type: "binary",
+      });
+
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+      const json = XLSX.utils.sheet_to_json(sheet);
+
+      setPreviewData(json);
+    };
+
+    reader.readAsBinaryString(selectedFile);
   };
-  const handleProductsForm = (e) => {
+
+  const handleUpload = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", productsData.name);
-    formData.append("gender", productsData.gender);
-    formData.append("category", productsData.category);
-    formData.append("color", productsData.color);
-    formData.append("price", productsData.price);
-    formData.append("pocket", productsData.pocket);
-    formData.append("rating", productsData.rating);
-    formData.append("image", productsData.image);
+
+    if (!file) {
+      alert("Please select a CSV or Excel file.");
+      return;
+    }
+
     try {
-      axios.post(
-        ENDPOINTS.addProducts,
+      setLoading(true);
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      await axios.post(
+        ENDPOINTS.bulkUploadProducts,
         formData,
         {
           headers: {
@@ -47,144 +63,114 @@ function Products() {
           withCredentials: true,
         }
       );
-      setProductsData({
-        productId: "",
-        category: "",
-        color: "",
-        gender: "",
-        image: null,
-        name: "",
-        pocket: "",
-        price: "",
-        rating: "",
-      });
-      imageInputRef.current.value = null;
-    } catch (e) {
-      console.log("Upload error",e);
+
+      alert("Products uploaded successfully.");
+
+      setFile(null);
+      setPreviewData([]);
+
+      if (fileRef.current) {
+        fileRef.current.value = "";
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Upload Failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
       <NavBar />
-      <div className="products-form">
-        <form onSubmit={handleProductsForm} className="product">
-          <h1 className="text-3xl">Add Product</h1>
-          <div className="input-section">
-            <div className="left">
-              <div className="label-input name">
-                <label htmlFor="name">name</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={productsData.name}
-                  name="name"
-                  placeholder="Enter product name"
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input category">
-                <label htmlFor="category">catergory</label>
-                <input
-                  type="text"
-                  name="category"
-                  id="category"
-                  placeholder="Enter catergory ( Ecoflex Or Classic )"
-                  value={productsData.category}
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input color">
-                <label htmlFor="color">color</label>
-                <input
-                  type="text"
-                  id="color"
-                  name="color"
-                  placeholder="Enter color"
-                  value={productsData.color}
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input gender">
-                <label htmlFor="gender">gender</label>
-                <input
-                  type="gender"
-                  name="gender"
-                  id="gender"
-                  placeholder="Enter gender"
-                  value={productsData.gender}
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input pocket">
-                <label htmlFor="pocket">pocket</label>
-                <input
-                  type="text"
-                  id="pocket"
-                  value={productsData.pocket}
-                  name="pocket"
-                  placeholder="Enter your pocket"
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input price">
-                <label htmlFor="price">price</label>
-                <input
-                  type="text"
-                  id="price"
-                  value={productsData.price}
-                  name="price"
-                  placeholder="Enter price"
-                  onChange={handleProductsChange}
-                />
-              </div>
-              <div className="label-input rating">
-                <label htmlFor="rating">rating</label>
-                <input
-                  type="text"
-                  id="rating"
-                  value={productsData.rating}
-                  name="rating"
-                  placeholder="Enter rating"
-                  onChange={handleProductsChange}
-                />
-              </div>
-            </div>
-            <div className="right">
-              <div className="label-input image">
-                <label htmlFor="imagelink">Select Image</label>
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept="image/*"
-                   ref={imageInputRef}
-                  // autocomplete="new-imagelink"
-                  placeholder="Enter your image"
-                  onChange={(e) =>
-                    setProductsData({
-                      ...productsData,
-                      image: e.target.files[0],
-                    })
-                  }
-                />
-              </div>
-              <div className="imagePreview">
-                {productsData.image && (
-                  <img
-                    src={URL.createObjectURL(productsData.image)}
-                    alt="preview"
-                    style={{ marginTop: "10px", borderRadius: "8px" }}
-                  />
-                )}
-              </div>
-              <button className="register-btn" type="submit">
-                Add Product
-              </button>
-            </div>
+
+      <div className="bulk-upload-container">
+
+        <form
+          className="bulk-upload-form"
+          onSubmit={handleUpload}
+        >
+
+          <h2>Bulk Upload Products</h2>
+
+          <div className="file-box">
+
+            <label>Select CSV / Excel File</label>
+
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".csv,.xlsx,.xls"
+              onChange={handleFileChange}
+            />
+
+            {file && (
+              <p className="file-name">
+                {file.name}
+              </p>
+            )}
+
           </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Uploading..." : "Upload Products"}
+          </button>
+
         </form>
+
+        {previewData.length > 0 && (
+
+          <div className="preview-table">
+
+            <h3>
+              Preview ({previewData.length} Records)
+            </h3>
+
+            <div className="table-wrapper">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    {Object.keys(previewData[0]).map((key) => (
+                      <th key={key}>{key}</th>
+                    ))}
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  {previewData.slice(0, 10).map((row, index) => (
+
+                    <tr key={index}>
+
+                      {Object.values(row).map((value, i) => (
+                        <td key={i}>{String(value)}</td>
+                      ))}
+
+                    </tr>
+
+                  ))}
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+            {previewData.length > 10 && (
+              <p>Showing first 10 rows only...</p>
+            )}
+
+          </div>
+
+        )}
+
       </div>
+
       <Footer />
     </>
   );

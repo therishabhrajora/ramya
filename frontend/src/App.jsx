@@ -29,6 +29,7 @@ import { addAddress ,setAddresses} from "./slices/AddressSlice";
 import OrderList from "./pages/OrderList";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import { setOrderHistory } from "./slices/OrderSlice";
+import BulkUpload from "./pages/forms/BulkUpload";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,8 @@ function App() {
         <Route path="/collections/bulk-order" element={<BulkOrder />} />
         <Route path="/collections/my-orders" element={<OrderList />} />
         <Route path="/collections/products" element={<ProductOrder />} />
-        <Route path="/collections/admin/add-products" element={<Products />} />
+        {/* <Route path="/collections/admin/add-products" element={<Products />} /> */}
+        <Route path="/admin/add" element={<BulkUpload />} />
         <Route path="/collections/account/reset-password" element={<ResetPassword />} />
         <Route path="/collections/checkout" element={<CheckoutPage />} />
         <Route path="/collections/track-order" element={<TrackOrder />} />

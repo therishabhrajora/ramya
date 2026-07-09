@@ -133,25 +133,18 @@ function NavBar() {
                 onMouseLeave={() => dispatch(closeProfile())}
               >
                 <li
-                  className="Link admin-profile"
-                // onMouseEnter={() => dispatch(profileOpen())}
-                >
-                  <MdOutlineAdminPanelSettings />
-                </li>
-                <ul
+                  className="Link user-profile"
                   onClick={() => navigate("/account")}
                 >
-                  <li className="Link user-profile">
-                    <CgProfile />
-                  </li>
 
-                </ul>
-                <Link
-                  className="Link add-products"
-                  to="/collections/admin/add-products"
-                >
+                  <CgProfile />
+
+
+                </li>
+                <li className="Link add-product" onClick={() => navigate("/admin/add")}>
                   <TiFolderAdd />
-                </Link>
+                </li>
+
               </ul>
             ) : (
               <ul

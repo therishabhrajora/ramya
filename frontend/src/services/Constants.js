@@ -5,7 +5,8 @@ export const ENDPOINTS = {
     register: `collections/register`,
     resetpassword: `collections/reset-password`,
     updateProfile: `collections/account/update-profile`,
-    
+    bulkUpload: `admin/bulk-upload`,
+
     products: `collections/products`,
     productsByCategory: (category) => `collections/products/category/${category.toLowerCase()}`,
     productDetails: (id) => `collections/products/details/${id}`,
